@@ -18,9 +18,7 @@ class Pokeversity(arcade.Window):
         player_image = "images/player_stand.png"        #get sprite from images folder
 
 
-        self.player_sprite = Player(player_image,0.05)  #Player object from entity.py, 0.05 is scaling of image
-        self.player_sprite.center_x = self.width//2
-        self.player_sprite.center_y = self.height//2
+        self.player_sprite = Player('id',self.width//2,self.height//2,player_image,0.05)  #Player object from entity.py, 0.05 is scaling of image
         self.player_list.append(self.player_sprite)
 
     def on_draw(self):
