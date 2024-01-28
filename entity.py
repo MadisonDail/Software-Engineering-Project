@@ -1,32 +1,27 @@
-import arcade
+import pygame
+RED = (255,0,0)
+
+class Entity(pygame.sprite.Sprite):
+    def __init__(self,id,x,y,spriteImage):  #store id, x and y position, and sprite image
+        super().__init__()
+        self.id = id
+        self.position = [x,y]
+        self.speed = 0
+        self.image = pygame.transform.scale(pygame.image.load(spriteImage),(100,100))   #scale image size to 100x100
+        self.rect = self.image.get_rect()   #set rectangle to the image
+        self.rect.center = (x,y)            #center of rectangle(x and y coords)
+
+    def show_hitbox(self,screen):
+        pygame.draw.rect(screen,RED,self.rect,1)                   
 
 
-class Entity(arcade.AnimatedTimeBasedSprite):
-    def __init__(self,id,x,y,filename,scale=0.05):
-        super().__init__(filename,scale)
-        self.id = id                        #id to identify entity
-        self.center_x = x                   #x and y coords relative to map layout
-        self.center_y = y
-    
-    def update(self):
-        super().update()
+class Player(Entity):                       #inherit from entity
+    def __init__(self,id,x,y,spriteImage):
+        super().__init__(id,x,y,spriteImage)
 
-    def draw(self):
-        super().draw()
+    # def movement_controls(self):
+    #     key_press = pygame.key.get_pressed()
+    #     if key_press[pygame.K_LEFT]:
 
 
-class Player(Entity):
-    def __init__(self,id,x,y,filename,scale=0.05):
-        super().__init__(id,x,y,filename,scale)
 
-    def update(self):
-        super().update()
-        self.movement_speed = 3
-        self.center_x += self.change_x
-        self.center_y += self.change_y
-
-class NPC(arcade.AnimatedTimeBasedSprite):
-    def update(self):
-        self.movement_speed = 0
-        self.center_x += self.change_x
-        self.center_y += self.change_y
