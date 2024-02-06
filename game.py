@@ -11,13 +11,12 @@ sprites = pygame.sprite.Group()
 player_image = "images/player_stand.png"
 
 player_sprite = entity.Player("player",400,400,player_image,screen)
-player_sprite.show_hitbox()
 sprites.add(player_sprite)
 
+clock = pygame.time.Clock()         #get clock
 running = True
 while running:
     screen.fill((0,0,0))             #call fill to remove movement duplicates
-    #pygame.time.delay(100)          #clock, delay for 100 milliseconds
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
@@ -25,6 +24,7 @@ while running:
     sprites.update()            #update all sprites in group
     sprites.draw(screen)        #draw sprites to screen
     pygame.display.flip()       #update the display   
+    clock.tick(30)              #run at 30 fps to avoid possible program issues        
 
 
 pygame.quit()
