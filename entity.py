@@ -2,26 +2,38 @@ import pygame
 RED = (255,0,0)
 
 class Entity(pygame.sprite.Sprite):
-    def __init__(self,id,x,y,spriteImage):  #store id, x and y position, and sprite image
+    def __init__(self,id,x,y,spriteImage,screen):  #store id, x and y position, and sprite image
         super().__init__()
         self.id = id
         self.position = [x,y]
-        self.speed = 0
+        self.velocity = 1
         self.image = pygame.transform.scale(pygame.image.load(spriteImage),(100,100))   #scale image size to 100x100
         self.rect = self.image.get_rect()   #set rectangle to the image
         self.rect.center = (x,y)            #center of rectangle(x and y coords)
+        self.screen = screen
 
-    def show_hitbox(self,screen):
-        pygame.draw.rect(screen,RED,self.rect,1)                   
+    def show_hitbox(self):
+        pygame.draw.rect(self.screen,RED,self.rect,1)                   
 
 
 class Player(Entity):                       #inherit from entity
-    def __init__(self,id,x,y,spriteImage):
-        super().__init__(id,x,y,spriteImage)
+    def __init__(self,id,x,y,spriteImage,screen):
+        super().__init__(id,x,y,spriteImage,screen)
 
-    # def movement_controls(self):
-    #     key_press = pygame.key.get_pressed()
-    #     if key_press[pygame.K_LEFT]:
+    def movement(self):                     #adjust sprite position if a key is pressed
+        key_press = pygame.key.get_pressed()
+        if key_press[pygame.K_LEFT]:
+            self.rect.x -= self.velocity
+        if key_press[pygame.K_RIGHT]:
+            self.rect.x += self.velocity
+        if key_press[pygame.K_UP]:
+            self.rect.y -= self.velocity
+        if key_press[pygame.K_DOWN]:
+            self.rect.y += self.velocity
+        super().show_hitbox()
+
+    def update(self):                       #check for key press for every update
+        self.movement()
 
 
 
