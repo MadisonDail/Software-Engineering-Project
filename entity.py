@@ -33,5 +33,8 @@ class Player(Entity):                       #inherit from entity
     def update(self):                       #check for key press for every update
         self.movement()
 
+class TrainerNPC(Entity):
+    def __init__(self,id,x,y,spriteImage,screen):
+        super().__init__(id,x,y,spriteImage,screen)
 
 
