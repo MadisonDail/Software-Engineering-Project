@@ -1,6 +1,6 @@
 import pygame
-from sprites import *
 from config import *
+from player import *
 import sys
 
 class Game:
@@ -19,7 +19,8 @@ class Game:
         self.blocks = pygame.sprite.LayeredUpdates()        #object containing all of the borders/walls
         self.enemies = pygame.sprite.LayeredUpdates()       #contains enemies
         
-        self.player = Player(self, 1, 2) #Player spawned at x:32 y:64
+        player_image = "images/player_stand.png"
+        self.player = Player("player",self,PLAYER_LAYER,0,0,player_image,self.screen) #Player spawned at x:0 y:0
 
     def events(self):   #any event (any key pressed events)
         for event in pygame.event.get():        #gets every event that happens in pygame
