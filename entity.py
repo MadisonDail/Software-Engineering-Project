@@ -23,3 +23,4 @@ class TrainerNPC(Entity):
         super().__init__(id,game,layer,x,y,spriteImage,screen)
 
 
+
