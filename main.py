@@ -11,16 +11,26 @@ class Game:
         #self.font = pygame.font.Font('Arial', 32)   #in-game font
         self.running = True     #whether the game should be running or not (set to true on new game)
 
+    def createTilemap(self):
+        for i, row in enumerate(tilemap):
+            for j, column in enumerate(row):
+                if column == "B":
+                    Block(self, j, i)   #Creates block at position (j,i)
+                if column == "P":
+                    Player("player", self, PLAYER_LAYER, j, i, player_image,self.screen)        #create player at position (j,i) CURRENTLY STILL SPAWNING AT (1,1) FOR SOME REASON AND IDK WHY
+                if column == "X":
+                    pass #Door(j, i, layer, nextscreen)     #creates tile that moves player to other screen/area
+
     def new(self):
         #new game starts
+        
         self.playing = True
 
         self.all_sprites = pygame.sprite.LayeredUpdates()       #contains all game sprites (player, NPCs, etc.)
         self.blocks = pygame.sprite.LayeredUpdates()        #object containing all of the borders/walls
         self.enemies = pygame.sprite.LayeredUpdates()       #contains enemies
         
-        player_image = "images/player_stand.png"
-        self.player = Player("player",self,PLAYER_LAYER,0,0,player_image,self.screen) #Player spawned at x:0 y:0
+        self.createTilemap()
 
     def events(self):   #any event (any key pressed events)
         for event in pygame.event.get():        #gets every event that happens in pygame
