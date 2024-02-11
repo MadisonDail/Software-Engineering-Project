@@ -11,6 +11,7 @@ class Game:
         #self.font = pygame.font.Font('Arial', 32)   #in-game font
         self.running = True     #whether the game should be running or not (set to true on new game)
 
+
     def new(self):
         #new game starts
         self.playing = True
