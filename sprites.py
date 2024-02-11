@@ -27,3 +27,7 @@ class Player(pygame.sprite.Sprite): # inherits from pygame.sprite.Sprite
     
     def update(self): # Update method, currently empty as there is no specific update logic for the player
         pass
+
+# class Farming(pygame.sprite.Sprite): #inherits from sprite class
+#     def __init__(self,game, x, y):
+
