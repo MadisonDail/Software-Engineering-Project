@@ -16,9 +16,9 @@ class Game:
             for j, column in enumerate(row):
                 if column == "B":
                     Block(self, j, i)   #Creates block at position (j,i)
-                if column == "P":
+                elif column == "P":
                     Player("player", self, PLAYER_LAYER, j, i, player_image,self.screen)        #create player at position (j,i) CURRENTLY STILL SPAWNING AT (1,1) FOR SOME REASON AND IDK WHY
-                if column == "X":
+                elif column == "X":
                     pass #Door(j, i, layer, nextscreen)     #creates tile that moves player to other screen/area
 
     def new(self):

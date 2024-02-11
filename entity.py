@@ -8,7 +8,7 @@ class Entity(pygame.sprite.Sprite):
         self.velocity = 5
         self.image = pygame.transform.scale(pygame.image.load(spriteImage),(TILE_SIZE,TILE_SIZE))   #scale image size to a tile
         self.rect = self.image.get_rect()   #set rectangle to the image
-        self.rect.topleft = (x,y)           #top left of rectangle(x and y coords)
+        self.rect.topleft = (x*TILE_SIZE,y*TILE_SIZE)           #top left of rectangle(x and y coords)
 
         self.screen = screen
         self.game = game
