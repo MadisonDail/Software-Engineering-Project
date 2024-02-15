@@ -2,11 +2,10 @@
 
 # Example file showing a basic pygame "game loop"
 import pygame
-import startScreen
-import loadScreen
+
 # pygame setup
 
-def DisplayMenu():
+def DisplayStart():
     pygame.init()
     pygame.freetype.init()
     screen = pygame.display.set_mode((1000, 800))
@@ -17,8 +16,8 @@ def DisplayMenu():
     print(screenWidth)
     print(screenHeight)
     startButton = pygame.Rect(((screenWidth / 4), (screenHeight / 4), (screenWidth / 2), 100))
-    loadButton = pygame.Rect(((screenWidth / 4), (screenHeight / 4) * 2, (screenWidth / 2), 100))
-    quitButton = pygame.Rect(((screenWidth / 4), (screenHeight / 4) * 3, (screenWidth / 2), 100))
+    # loadButton = pygame.Rect(((screenWidth / 4), (screenHeight / 4) * 2, (screenWidth / 2), 100))
+    # quitButton = pygame.Rect(((screenWidth / 4), (screenHeight / 4) * 3, (screenWidth / 2), 100))
 
     # Initialize font
     font = pygame.font.Font('ProtestStrike-Regular.ttf', 84)
@@ -26,8 +25,8 @@ def DisplayMenu():
     # Create text
     # Note: needs updating
     startFont = font.render('  Start   Game  ', True, (0, 0, 255), (100, 0, 0))
-    loadFont = font.render('   Load Game   ', True, (0, 0, 255), (100, 0, 0))
-    quitFont = font.render('   Quit Game    ', True, (0, 0, 255), (100, 0, 0))
+    # loadFont = font.render('   Load Game   ', True, (0, 0, 255), (100, 0, 0))
+    # quitFont = font.render('   Quit Game    ', True, (0, 0, 255), (100, 0, 0))
 
     # Functions for checking to see if the coordinates of the click overlap a button
     # Will replace print statement once we get different screen views created
@@ -35,13 +34,13 @@ def DisplayMenu():
         if(x > (screenWidth / 4) and x < ((screenWidth / 4) + (screenWidth / 2)) and y > screenHeight / 4 and y < (screenHeight / 4) + 100):
             return True
 
-    def checkLoadClicked(x, y):
-        if(x > (screenWidth / 4) and x < ((screenWidth / 4) + (screenWidth / 2)) and y > ((screenHeight / 4) * 2) and y < (screenHeight / 4) * 2 + 100):
-            return True
+    # def checkLoadClicked(x, y):
+    #     if(x > (screenWidth / 4) and x < ((screenWidth / 4) + (screenWidth / 2)) and y > ((screenHeight / 4) * 2) and y < (screenHeight / 4) * 2 + 100):
+    #         print('load')
 
-    def checkQuitClicked(x, y):
-        if(x > (screenWidth / 4) and x < ((screenWidth / 4) + (screenWidth / 2)) and y > ((screenHeight / 4) * 3) and y < (screenHeight / 4) * 3 + 100):
-            return True
+    # def checkQuitClicked(x, y):
+    #     if(x > (screenWidth / 4) and x < ((screenWidth / 4) + (screenWidth / 2)) and y > ((screenHeight / 4) * 3) and y < (screenHeight / 4) * 3 + 100):
+    #         print('quit')
 
     running = True
 
@@ -58,23 +57,20 @@ def DisplayMenu():
                     # Check coordinates of mouse click
                     x, y = pygame.mouse.get_pos()
                     print(str(x) + " " + str(y))
-                    if(checkStartClicked(x, y)):
-                        startScreen.DisplayStart()
-                    if(checkLoadClicked(x, y)):
-                        loadScreen.DisplayLoad()
-                    if(checkQuitClicked(x, y)):
-                            pygame.quit()
+                    # if(checkStartClicked(x, y)):
+                    # checkLoadClicked(x, y)
+                    # checkQuitClicked(x, y)
                     
 
         # fill the screen with a color to wipe away anything from last frame
-        screen.fill("purple")
+        screen.fill("pink")
         pygame.draw.rect(screen, (0, 0 , 0), startButton)
-        pygame.draw.rect(screen, (0, 0 , 0), loadButton)
-        pygame.draw.rect(screen, (0, 0 , 0), quitButton)
+        # pygame.draw.rect(screen, (0, 0 , 0), loadButton)
+        # pygame.draw.rect(screen, (0, 0 , 0), quitButton)
         # Display text after the buttons have been created
         screen.blit(startFont, startButton)
-        screen.blit(loadFont, loadButton)
-        screen.blit(quitFont, quitButton)
+        # screen.blit(loadFont, loadButton)
+        # screen.blit(quitFont, quitButton)
 
         # flip() the display to put your work on screen
         pygame.display.flip()
