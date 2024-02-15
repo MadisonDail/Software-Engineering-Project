@@ -2,7 +2,7 @@
 
 # Example file showing a basic pygame "game loop"
 import pygame
-
+import game
 # pygame setup
 
 def DisplayLoad():
@@ -57,8 +57,12 @@ def DisplayLoad():
                     # Check coordinates of mouse click
                     x, y = pygame.mouse.get_pos()
                     print(str(x) + " " + str(y))
-                    # if(checkGameClicked(x, y)):
-                        # load map here 
+                    if(checkGameClicked(x, y)):
+                        g=game.Game()
+                        g.new()
+                        while g.running:
+                            g.main()
+                            g.game_over()
                     # checkLoadClicked(x, y)
                     # checkQuitClicked(x, y)
                     
