@@ -45,7 +45,7 @@ class Game:
         
         if entities_collided:
                                                 #if there is at least one entity collided with the player, display dialog
-            self.temp = dialog.Dialog(self.player,self.npc)
+            self.temp = dialog.Dialog(self.player,self.npc,pygame)
             self.temp.draw(self.screen)
 
             #self.player.rect.x += 10
