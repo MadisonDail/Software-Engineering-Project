@@ -3,6 +3,7 @@ from config import *
 from player import *
 import sys
 import dialog
+from NPC import *
 
 class Game:
     def __init__(self):
@@ -24,31 +25,22 @@ class Game:
         self.player = Player("player",self,PLAYER_LAYER,320,320,player_image,self.screen) #Player spawned at x:0 y:0
         
         trainer_image = "images/player_stand.png"
-        self.npc = TrainerNPC("npc",self,PLAYER_LAYER,50,50,trainer_image,self.screen)
-        self.enemies.add(self.npc)
+        self.npc = NPC("npc",self,PLAYER_LAYER,50,50,trainer_image,self.screen,self.player)
+        # self.enemies.add(self.npc)
 
-    def events(self):   #any event (any key pressed events)
-        for event in pygame.event.get():        #gets every event that happens in pygame
+    def events(self,events):   #any event (any key pressed events)
+        for event in events:        #gets every event that happens in pygame
             if event.type == pygame.QUIT:
                 self.playing = False
                 self.running = False
 
-    def update(self):   #updates image
-        self.all_sprites.update()       #finds update method in every sprite object 
+    def update(self,events):   #updates image
+        self.all_sprites.update(events)       #finds update method in every sprite object 
 
     def draw(self):     #displays sprites and textures
 
-        entities_collided = self.collision_detect(self.player,self.enemies)
-
         self.screen.fill(BLACK)
         self.all_sprites.draw(self.screen)      #calls draw method which looks through every sprite and draws correct ones
-        
-        if entities_collided:
-                                                #if there is at least one entity collided with the player, display dialog
-            self.temp = dialog.Dialog(self.player,self.npc,pygame)
-            self.temp.draw(self.screen)
-
-            #self.player.rect.x += 10
 
         self.clock.tick(FPS)        #update screen at 60fps
         pygame.display.update()     #updates screen
@@ -56,8 +48,9 @@ class Game:
     def main(self):
         #game loop
         while self.playing:
-            self.events()
-            self.update()
+            events_of_loop = pygame.event.get()
+            self.events(events_of_loop)
+            self.update(events_of_loop)
             self.draw()
         self.running = False
 

@@ -18,8 +18,5 @@ class Entity(pygame.sprite.Sprite):
 
         self.hitbox = pygame.draw.rect(self.image,RED,self.image.get_rect(),1)          #show rect border of entity                  
 
-class TrainerNPC(Entity):
-    def __init__(self,id,game,layer,x,y,spriteImage,screen):
-        super().__init__(id,game,layer,x,y,spriteImage,screen)
 
 

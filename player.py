@@ -16,5 +16,5 @@ class Player(Entity):                       #inherit from entity
         if key_press[pygame.K_DOWN]:
             self.rect.y += self.velocity
 
-    def update(self):                       #check for key press for every update
+    def update(self,events):                       #check for key press for every update
         self.movement()
