@@ -4,6 +4,7 @@ from player import *
 import sys
 import dialog
 from NPC import *
+from TRAINER import *
 
 class Game:
     def __init__(self):
@@ -25,10 +26,16 @@ class Game:
         self.player = Player("player",self,PLAYER_LAYER,320,320,player_image,self.screen) #Player spawned at x:0 y:0
         
         trainer_image = "images/player_stand.png"
-        self.npc = NPC("npc",self,PLAYER_LAYER,50,50,trainer_image,self.screen,self.player)
+        # self.npc = NPC("npc",self,PLAYER_LAYER,50,50,trainer_image,self.screen,self.player)
         # self.enemies.add(self.npc)
 
+        TRAINER_image = "images/player_stand.png"
+        self.trainer = TRAINER("trainer_1",self,PLAYER_LAYER,50,100,TRAINER_image,self.screen,self.player,"up")
+        print(self.all_sprites)
+
+
     def events(self,events):   #any event (any key pressed events)
+        self.screen.fill(BLACK)
         for event in events:        #gets every event that happens in pygame
             if event.type == pygame.QUIT:
                 self.playing = False
@@ -39,11 +46,10 @@ class Game:
 
     def draw(self):     #displays sprites and textures
 
-        self.screen.fill(BLACK)
         self.all_sprites.draw(self.screen)      #calls draw method which looks through every sprite and draws correct ones
 
-        self.clock.tick(FPS)        #update screen at 60fps
-        pygame.display.update()     #updates screen
+        # self.clock.tick(FPS)        #update screen at 60fps
+        # pygame.display.update()     #updates screen
 
     def main(self):
         #game loop
@@ -52,6 +58,9 @@ class Game:
             self.events(events_of_loop)
             self.update(events_of_loop)
             self.draw()
+            
+            self.clock.tick(FPS)        #update screen at 60fps
+            pygame.display.update()     #updates screen
         self.running = False
 
     def collision_detect(self,player,entity_group):
