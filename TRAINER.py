@@ -25,12 +25,12 @@ class TRAINER(Entity):                       #inherit from entity
 
             # else:                                       #if facing left
         else:
-            for event in events:
-                if event.type == pygame.MOUSEBUTTONUP:
+            for event in events:                          #when trainer is encountered
+                if event.type == pygame.MOUSEBUTTONUP:    #if the dialog box drawn is clicked by mouse, remove it from screen
                     if self.dialog.get_rect().collidepoint(event.pos):
                         self.isEncountered = False
                         
-            if self.isEncountered:
+            if self.isEncountered:                        #continue to draw dialog box until dialog box is clicked to exit
                 self.dialog.draw(self.screen)
 
 
