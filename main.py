@@ -71,6 +71,3 @@ menuScreen.DisplayMenu()
 # while g.running:
 #     g.main()
 #     g.game_over()
-
-# pygame.quit()
-# sys.exit()
