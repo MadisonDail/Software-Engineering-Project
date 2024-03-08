@@ -2,7 +2,7 @@ import pygame
 from entity import *
 from config import *
 
-class Dialog(Entity):
+class Dialog():
     def __init__(self):
         self.dialog_index = 0
         self.font = pygame.font.SysFont('Comic Sans', 20)
