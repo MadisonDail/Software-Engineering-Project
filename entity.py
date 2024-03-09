@@ -16,7 +16,8 @@ class Entity(pygame.sprite.Sprite):
         self.groups = self.game.all_sprites #assign the sprite to the 'all_sprites' group
         pygame.sprite.Sprite.__init__(self, self.groups)
 
-        self.hitbox = pygame.draw.rect(self.image,RED,self.image.get_rect(),1)          #show rect border of entity                  
+        self.hitbox = pygame.draw.rect(self.image,RED,self.image.get_rect(),1)          #show rect border of entity 
+    
 
     def set_position(self,x,y):
         self.rect.topleft = (x*TILE_SIZE,y*TILE_SIZE)

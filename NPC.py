@@ -9,6 +9,7 @@ class NPC(Entity):                                  #inherit from entity
         self.isClicked= False
         super().__init__(id,game,layer,x,y,spriteImage,screen)
 
+
     def update(self,events):                       #check for mouse click for every update
 
         if not self.isClicked:

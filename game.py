@@ -45,6 +45,7 @@ class Game:
         self.trainer = TRAINER("trainer_1",self,PLAYER_LAYER,self.character_locations["trainer"][0],self.character_locations["trainer"][0],trainer_image,self.screen,self.player,"up")
         self.npc = NPC("npc",self,PLAYER_LAYER,self.character_locations["npc"][0],self.character_locations["npc"][1],nurse_image,self.screen,self.player)
 
+
     def events(self,events):   #any event (any key pressed events)
         for event in events:        #gets every event that happens in pygame
             if event.type == pygame.QUIT:
