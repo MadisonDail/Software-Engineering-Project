@@ -16,6 +16,90 @@ def BattleMenu():
             print("Invalid")
         else:
             return choice
+        
+def CheckPriority(userMove, enemyMove):
+    # Checks if user's move has higher priority
+    if(userMove.priority > enemyMove.priority):
+        return userMove
+    # Checks if enemy's move has higher priority
+    elif(enemyMove.priority > userMove.priority):
+        return enemyMove
+    # If the priority of the moves are the same, returns 0 to lead to CheckSpeed() where the pokemons' speeds are checked
+    else:
+        return 0
+
+def CheckSpeed(userPokemon, enemyPokemon):
+    # Will return 0 if user's pokemon is faster, will return 1 if enemy's pokemon is faster
+    # Checks if the user's pokemon is faster
+    if(userPokemon.speed > enemyPokemon.speed):
+        return 0
+    # Checks if the enemy's pokemon is faster
+    elif(enemyPokemon.speed > userPokemon):
+        return 1
+    # If the user's pokemon and enemy's pokemon have the same speed, a random one will be chosen
+    else:
+        if(random.randint(1, 2) == 1):
+            return 0
+        else:
+            return 1
+        
+def UseMove(move):
+    # Checks if the move is a status, physical, or special move
+    # If it is a status move, check effect
+    # If it is a physical or special move, calculate damage and apply secondary effect
+    pass
+
+def CheckEffect(move, userPokemon, enemyPokemon):
+    splitEffect = move.secondaryEffect.split()
+    if(splitEffect[0] == "NONE"):
+        return
+    if(splitEffect[0] == "SELF"):
+        # Apply Effect to userPokemon
+        ApplyEffect(splitEffect, userPokemon)
+        pass
+    elif(splitEffect[0] == "ENEMY"):
+        # Apply Effect to enemyPokemon
+        ApplyEffect(splitEffect, enemyPokemon)
+        pass
+
+def ApplyEffect(effect, pkmn):
+    # Will apply effect on the pokemon
+    if(effect[1] == "PRZ"):
+        if(random.randint(1, 100) < int(effect[2])):
+            # Apply Paralysis to Pokemon
+            pass
+    elif(effect[1] == "BRN"):
+        if(random.randint(1, 100) < int(effect[2])):
+            # Apply Burn to Pokemon
+            pass
+    elif(effect[1] == "PSN"):
+        if(random.randint(1, 100) < int(effect[2])):
+            # Apply Poison to Pokemon
+            pass
+    elif(effect[1] == "SLP"):
+        if(random.randint(1, 100) < int(effect[2])):
+            # Apply Sleep to Pokemon
+            pass
+    elif(effect[1] == "ATK"):
+        # pkmn.attack += int(effect[2])
+        pass
+    elif(effect[1] == "DEF"):
+        # pkmn.defense += int(effect[2])
+        pass
+    elif(effect[1] == "SPATK"):
+        # pkmn.specAttack += int(effect[2])
+        pass
+    elif(effect[1] == "SPDEF"):
+        # pkmn.specDefense += int(effect[2])
+        pass
+    elif(effect[1] == "SPD"):
+        # pkmn.speed += int(effect[2])
+        pass
+    elif(effect[1] == "HP"):
+        # UNFININSHED
+        pass
+    
+
 
 # Battle function that will be looped until either party reaches 0
 def Battle(userP, enemyP):
@@ -29,6 +113,15 @@ def Battle(userP, enemyP):
         BattleMenu()
         userFaints += 1
         # Check which move has the higher priority
+        # Check if return is 0 for same priority, if so, check speed
+        # if(CheckPriority(userMove, enemyMove) == 0):
+            # # Checks speed for the same priority
+            # if(CheckSpeed(userPokemon, enemyPokemon) == 0):
+                # Use the user's move
+            # else:
+                # use enemy's move
+        
+
 
 def calculateDamage(userLvl, movePower, userAtk, enemyDef, stab, typeMult):
     # will return the hp to be subtracted from the defending pokemon
