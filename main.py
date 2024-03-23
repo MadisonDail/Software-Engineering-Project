@@ -4,7 +4,8 @@ from player import *
 import sys
 import dialog
 from NPC import *
-from TRAINER import *
+from Trainer import *
+from Nurse import *
 
 class Game:
     def __init__(self):
@@ -30,7 +31,7 @@ class Game:
         # self.enemies.add(self.npc)
 
         TRAINER_image = "images/player_stand.png"
-        self.trainer = TRAINER("trainer_1",self,PLAYER_LAYER,50,100,TRAINER_image,self.screen,self.player,"up")
+        self.trainer = Trainer("trainer_1",self,PLAYER_LAYER,50,100,TRAINER_image,self.screen,self.player,"up")
         print(self.all_sprites)
 
 
