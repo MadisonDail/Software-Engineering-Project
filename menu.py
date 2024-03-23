@@ -3,7 +3,7 @@
 # Example file showing a basic pygame "game loop"
 import pygame
 import sys
-
+import game
 #Defines the Class for New Game, handles all semantics New Game Screem will have
 class NewGameScreen:
     def __init__(self, screen):
@@ -44,6 +44,11 @@ class NewGameScreen:
                     # If the user clicked on the Start Game button.
                     if start_game_btn.collidepoint(event.pos):
                         print(f"Starting New Game: {self.game_name}")
+                        g=game.Game()
+                        g.new()
+                        while g.running:
+                            g.main()
+                            g.game_over()
                         # Will trnasition to new game 
                 elif event.type == pygame.KEYDOWN:
                     if self.active:
