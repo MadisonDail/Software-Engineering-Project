@@ -8,17 +8,26 @@ class Game:
         self.screen = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))      #creates window for game. parameters are tuple of map dimensions (in pixels)
         self.clock = pygame.time.Clock()    #sets framerate
         #self.font = pygame.font.Font('Arial', 32)   #in-game font
+        self.tilemap = tilemap #added for collision detection 
         self.running = True     #whether the game should be running or not (set to true on new game)
 
     def createTilemap(self):
-        for i, row in enumerate(tilemap):
+        for i, row in enumerate(self.tilemap):
             for j, column in enumerate(row):
                 if column == "B":
                     Block(self, j, i)   #Creates block at position (j,i)
                 elif column == "P":
-                    Player("player", self, PLAYER_LAYER, j, i, player_image,self.screen)        #create player at position (j,i) CURRENTLY STILL SPAWNING AT (1,1) FOR SOME REASON AND IDK WHY
+                    Player("player", self, PLAYER_LAYER, j, i, player_image,self.screen)        
                 elif column == "X":
                     pass #Door(j, i, layer, nextscreen)     #creates tile that moves player to other screen/area
+    #changes map
+    def changeMap(self, newtilemap):
+        self.tilemap = newtilemap
+        self.all_sprites.empty() 
+        self.blocks.empty()
+        #both get emptied to account for new ones in diff map generation
+        self.createTilemap() 
+        #displays new map on screen
 
     def new(self):
         #new game starts

@@ -1,6 +1,3 @@
-# Initialization from official documentation of the pygame library: https://www.pygame.org/docs/
-
-# Example file showing a basic pygame "game loop"
 import pygame
 import sys
 import game
@@ -47,6 +44,7 @@ class NewGameScreen:
                         g=game.Game()
                         g.new()
                         while g.running:
+                            pygame.display.set_caption(f"{self.game_name}")
                             g.main()
                             g.game_over()
                         # Will trnasition to new game 
@@ -157,11 +155,12 @@ class MenuScreen:
         self.display_text(text, self.font, self.fsu_gold, x_center, y_center)
 
 # Pygame setup
-pygame.init()
-WIN_WIDTH, WIN_HEIGHT = 640, 480
-screen = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
-pygame.display.set_caption("Menu Screen")
+def RunGame():
+    pygame.init()
+    WIN_WIDTH, WIN_HEIGHT = 640, 480
+    screen = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
+    pygame.display.set_caption("Menu Screen")
 
-# Run the menu screen
-menu_screen = MenuScreen(screen)
-menu_screen.run()
+    # Run the menu screen
+    menu_screen = MenuScreen(screen)
+    menu_screen.run()
