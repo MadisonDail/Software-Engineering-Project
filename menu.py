@@ -10,7 +10,7 @@ class NewGameScreen:
         self.black = (0, 0, 0)  # Black color for the input box outline
         self.font = pygame.font.Font('Adobe Garamond Pro Regular.ttf', 35)
         self.game_name = ""  # The name entered by the user, this will be saved later 
-        self.input_box = pygame.Rect(100, 250, 440, 50)  # Arbitrary input box dimensions
+        self.input_box = pygame.Rect(100, 250, 440, 50) 
         self.active = False  # Input box is not active until clicked
         pygame.display.set_caption("New Game")
 
@@ -44,7 +44,7 @@ class NewGameScreen:
                         g=game.Game()
                         g.new()
                         while g.running:
-                            pygame.display.set_caption(f"{self.game_name}")
+                            pygame.display.set_caption(f"{self.game_name}") #Updates caption for the game screen
                             g.main()
                             g.game_over()
                         # Will trnasition to new game 
@@ -54,7 +54,6 @@ class NewGameScreen:
                             self.game_name = self.game_name[:-1]
                         else:
                             self.game_name += event.unicode
-
             pygame.display.update()
         pygame.quit() 
         sys.exit()

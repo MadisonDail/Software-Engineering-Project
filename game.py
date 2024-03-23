@@ -31,13 +31,11 @@ class Game:
 
     def new(self):
         #new game starts
-        
         self.playing = True
 
         self.all_sprites = pygame.sprite.LayeredUpdates()       #contains all game sprites (player, NPCs, etc.)
         self.blocks = pygame.sprite.LayeredUpdates()        #object containing all of the borders/walls
         self.enemies = pygame.sprite.LayeredUpdates()       #contains enemies
-        
         self.createTilemap()
 
     def events(self):   #any event (any key pressed events)
