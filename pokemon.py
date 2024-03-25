@@ -10,7 +10,12 @@ class Pokemon:
         self.currentHp = currentHp #pokemon's current hp
         self.hp = hp #pokemon's hp stat
         self.attack = attack #pokemon's attack stat
+        self.currentAttack = attack #pokemon's current attack (in battle)
         self.defense = defense #pokemon's defense stat
+        self.currentDefense = defense #pokemon's current defense (in battle)
         self.specAttack = specAttack #pokemon's special attack stat
+        self.currentSpecAttack = specAttack #pokemon's current special attack (in battle)
         self.specDefense = specDefense #pokemon's special defense stat
+        self.currentSpecDefense = specDefense #pokemon's current special defense (in battle)
         self.speed = speed #pokemon's speed
+        self.currentSpeed = speed #pokemon's current speed (in battle)

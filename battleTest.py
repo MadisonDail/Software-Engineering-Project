@@ -31,10 +31,10 @@ def CheckPriority(userMove, enemyMove):
 def CheckSpeed(userPokemon, enemyPokemon):
     # Will return 0 if user's pokemon is faster, will return 1 if enemy's pokemon is faster
     # Checks if the user's pokemon is faster
-    if(userPokemon.speed > enemyPokemon.speed):
+    if(userPokemon.currentSpeed > enemyPokemon.currentSpeed):
         return 0
     # Checks if the enemy's pokemon is faster
-    elif(enemyPokemon.speed > userPokemon):
+    elif(enemyPokemon.currentSpeed > userPokemon.currentSpeed):
         return 1
     # If the user's pokemon and enemy's pokemon have the same speed, a random one will be chosen
     else:
@@ -81,6 +81,7 @@ def ApplyEffect(effect, pkmn):
             # Apply Sleep to Pokemon
             pass
     elif(effect[1] == "ATK"):
+        # Will have to adjust multiplier for attack
         # pkmn.attack += int(effect[2])
         pass
     elif(effect[1] == "DEF"):
@@ -98,6 +99,13 @@ def ApplyEffect(effect, pkmn):
     elif(effect[1] == "HP"):
         # UNFININSHED
         pass
+
+def ResetStats(currentPokemon):
+    currentPokemon.currentAttack = currentPokemon.attack;
+    currentPokemon.currentDefense = currentPokemon.defense
+    currentPokemon.currentSpecAttack = currentPokemon.specAttack;
+    currentPokemon.currentSpecDefense = currentPokemon.specDefense
+    currentPokemon.currentSpeed = currentPokemon.speed
     
 
 
@@ -111,6 +119,7 @@ def Battle(userP, enemyP):
     print(enemyTargetFainted)
     while(userFaints != userTargetFainted and enemyFaints != enemyTargetFainted):
         BattleMenu()
+        # If pokemon switches, reset stats
         userFaints += 1
         # Check which move has the higher priority
         # Check if return is 0 for same priority, if so, check speed
@@ -120,6 +129,7 @@ def Battle(userP, enemyP):
                 # Use the user's move
             # else:
                 # use enemy's move
+    # After battle, reset stats
         
 
 
@@ -130,6 +140,7 @@ def calculateDamage(userLvl, movePower, userAtk, enemyDef, stab, typeMult):
 
     # critical hit chance to be defined later
     critical = 1
+    
     # userAtk is the attack stat for the pokemon using the move
     # enemyDef is the defense stat for the defending pokemon
     # stab is 1.5 if the move being used matches the user's type, 1 otherwise
