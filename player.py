@@ -4,26 +4,27 @@ import pygame
 class Player(Entity):                       #inherit from entity
     def __init__(self,id,game,layer,x,y,spriteImage,screen):
         super().__init__(id,game,layer,x,y,spriteImage,screen)
+        self.x_change = 0   #temp variable to be added to coordinated in update
+        self.y_change = 0
+        self.facing = 'down'
+        
 
     def movement(self):                     
     # adjust sprite position if a key is pressed
         key_press = pygame.key.get_pressed()
         if key_press[pygame.K_LEFT]:
-            new_rect = self.rect.move(-self.velocity, 0) #if a collision, it will not move
-            if not self.tile_collision(new_rect.x // TILE_SIZE, self.rect.y // TILE_SIZE):
-                self.rect = new_rect # if collision gets updated
+            self.x_change -= self.velocity  #velocity is element from entity class (speed of player)
+            self.facing = 'left'
         if key_press[pygame.K_RIGHT]:
-            new_rect = self.rect.move(self.velocity, 0)
-            if not self.tile_collision(new_rect.x // TILE_SIZE, self.rect.y // TILE_SIZE):
-                self.rect = new_rect
+            self.x_change += self.velocity
+            self.facing = 'right'
         if key_press[pygame.K_UP]:
-            new_rect = self.rect.move(0, -self.velocity)
-            if not self.tile_collision(self.rect.x // TILE_SIZE, new_rect.y // TILE_SIZE):
-                self.rect = new_rect
+            self.y_change -= self.velocity
+            self.facing = 'right'
         if key_press[pygame.K_DOWN]:
-            new_rect = self.rect.move(0, self.velocity)
-            if not self.tile_collision(self.rect.x // TILE_SIZE, new_rect.y // TILE_SIZE):
-                self.rect = new_rect
+            self.y_change += self.velocity
+            self.facing = 'down'
+
         current_x = self.rect.x // TILE_SIZE # updates x&y position 
         current_y = self.rect.y // TILE_SIZE
 
@@ -44,30 +45,43 @@ class Player(Entity):                       #inherit from entity
             self.game.changeMap(tilemap3)
 
     #accounts for what tiles you are on, changes accordingly        
-    def tile_collision(self, x, y):
-        # Check if the tile at the given (x, y) position is a 'B'
-        if self.game.tilemap[y][x] == 'B':
-            return True
-        #checks to see if it is an "exit"
-        else:
-            return False
+    def tile_collision(self, direction):
+        if direction == "x":
+            hits = pygame.sprite.spritecollide(self, self.game.blocks, False)   
+            if hits:
+                if self.x_change > 0:   #moving right
+                    self.rect.x = hits[0].rect.left - self.rect.width   #moves player back to point of collision instead of moving inside block
+                if self.x_change < 0:   #moving left
+                    self.rect.x = hits[0].rect.right
+        if direction == "y":
+            hits = pygame.sprite.spritecollide(self, self.game.blocks, False)
+            if hits:
+                if self.y_change > 0:   #moving down
+                    self.rect.y = hits[0].rect.top - self.rect.height
+                if self.y_change < 0:   #moving up
+                    self.rect.y = hits[0].rect.bottom
 
     def update(self):                       #check for key press for every update
         self.movement()
+        self.rect.x += self.x_change
+        self.tile_collision('x')
+        self.rect.y += self.y_change
+        self.tile_collision('y')
+        self.x_change = 0
+        self.y_change = 0
 
 class Block(pygame.sprite.Sprite):
     def __init__(self, game, x, y):
         self.game = game
         self._layer = BLOCK_LAYER
         self.groups = self.game.all_sprites, self.game.blocks
+        
         pygame.sprite.Sprite.__init__(self, self.groups)
-
         #block is square 32x32 pixels
         self.x = x * TILE_SIZE
         self.y = y * TILE_SIZE
         self.width = TILE_SIZE 
         self.height = TILE_SIZE
-
         self.image = pygame.Surface([self.width, self.height])
         self.image.fill(BLUE)
         self.rect = self.image.get_rect()

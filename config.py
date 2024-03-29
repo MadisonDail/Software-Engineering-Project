@@ -9,7 +9,7 @@ RED = (255, 0, 0)   #color red (rgb tuple)
 BLUE = (0, 0, 255)
 GREEN = (0,255,0)
 
-player_image = "images/player_stand.png"
+player_image = "images/img/img/single.png"
 tilemap = [
     'BBBBBBBBB00BBBBBBBBB',
     'B..................B',
