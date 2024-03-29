@@ -31,7 +31,7 @@ class Game:
         # self.enemies.add(self.npc)
 
         TRAINER_image = "images/player_stand.png"
-        self.trainer = Trainer("trainer_1",self,PLAYER_LAYER,50,100,TRAINER_image,self.screen,self.player,"up")
+        self.trainer = Trainer("trainer_1",self,PLAYER_LAYER,50,100,TRAINER_image,self.screen,self.player,"down")
         print(self.all_sprites)
 
 
