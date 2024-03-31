@@ -24,3 +24,4 @@ class TrainerNPC(Entity):
 
 
 
+#word

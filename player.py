@@ -82,8 +82,9 @@ class Block(pygame.sprite.Sprite):
         self.y = y * TILE_SIZE
         self.width = TILE_SIZE 
         self.height = TILE_SIZE
-        self.image = pygame.Surface([self.width, self.height])
-        self.image.fill(BLUE)
+        #self.image = pygame.Surface([self.width, self.height])
+        self.image = pygame.transform.scale(pygame.image.load("images/boulder.png"),(TILE_SIZE,TILE_SIZE))   #scale image size to a tile
+        #self.image.fill(BLUE)
         self.rect = self.image.get_rect()
         self.rect.x = self.x
         self.rect.y = self.y
