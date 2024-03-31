@@ -11,9 +11,12 @@ class Game:
         self.tilemap = tilemap #added for collision detection 
         self.running = True     #whether the game should be running or not (set to true on new game)
 
+        self.terrain_spritesheet = Spritesheet('images/img/img/terrain.png')
+
     def createTilemap(self):
         for i, row in enumerate(self.tilemap):
             for j, column in enumerate(row):
+                Ground(self, j, i)
                 if column == "B":
                     Block(self, j, i)   #Creates block at position (j,i)
                 elif column == "P":
