@@ -46,8 +46,9 @@ def CheckSpeed(userPokemon, enemyPokemon):
 def UseMove(move):
     # Checks if the move is a status, physical, or special move
     # If it is a status move, check effect
-    # If it is a physical or special move, calculate damage and apply secondary effect
+    # If it is a physical or special move, check accuracy, calculate damage and apply secondary effect
     pass
+
 
 def CheckEffect(move, userPokemon, enemyPokemon):
     splitEffect = move.secondaryEffect.split()
@@ -100,7 +101,9 @@ def ApplyEffect(effect, pkmn):
         # UNFININSHED
         pass
 
-def ResetStats(currentPokemon):
+def ResetStats(currentPokemon, statStages):
+    for i in range(5):
+        statStages[i] = 0
     currentPokemon.currentAttack = currentPokemon.attack;
     currentPokemon.currentDefense = currentPokemon.defense
     currentPokemon.currentSpecAttack = currentPokemon.specAttack;
@@ -109,28 +112,7 @@ def ResetStats(currentPokemon):
     
 
 
-# Battle function that will be looped until either party reaches 0
-def Battle(userP, enemyP):
-    userTargetFainted = len(enemyP)
-    enemyTargetFainted = len(userP)
-    userFaints = 0
-    enemyFaints = 0
-    print(userTargetFainted)
-    print(enemyTargetFainted)
-    while(userFaints != userTargetFainted and enemyFaints != enemyTargetFainted):
-        BattleMenu()
-        # If pokemon switches, reset stats
-        userFaints += 1
-        # Check which move has the higher priority
-        # Check if return is 0 for same priority, if so, check speed
-        # if(CheckPriority(userMove, enemyMove) == 0):
-            # # Checks speed for the same priority
-            # if(CheckSpeed(userPokemon, enemyPokemon) == 0):
-                # Use the user's move
-            # else:
-                # use enemy's move
-    # After battle, reset stats
-        
+
 
 
 def calculateDamage(userLvl, movePower, userAtk, enemyDef, stab, typeMult):
@@ -443,7 +425,32 @@ def TypeMatchup(type1, type2, moveType):
 
 
         
-
+# Battle function that will be looped until either party reaches 0
+def Battle(userP, enemyP):
+    userTargetFainted = len(enemyP)
+    enemyTargetFainted = len(userP)
+    userFaints = 0
+    enemyFaints = 0
+    userStatStages = (0, 0, 0, 0, 0)    # Stat Stages go from -6 to 6, ordered as Attack, Defense, Special Attack, Special Defense, Speed
+    enemyStatStages = (0, 0, 0, 0, 0)
+    print(userTargetFainted)
+    print(enemyTargetFainted)
+    while(userFaints != userTargetFainted and enemyFaints != enemyTargetFainted):
+        BattleMenu()
+        # If pokemon switches, reset stats
+        userFaints += 1
+        # Check which move has the higher priority
+        # Check if return is 0 for same priority, if so, check speed
+        # if(CheckPriority(userMove, enemyMove) == 0):
+            # # Checks speed for the same priority
+            # if(CheckSpeed(userPokemon, enemyPokemon) == 0):
+                # Use the user's move
+                # if enemy is alive, use enemy move
+            # else:
+                # use enemy's move
+                # if user is alive, use user move
+    # After battle, reset stats except hp
+        
 
 
 
@@ -461,6 +468,14 @@ enemyParty.append(pokedex.Blastoise)
 
 # Battle(userParty, enemyParty)
 print(TypeMatchup("RCK", "STL", "NRM"))
+for j in userParty:
+    print(j.name)
+for i in enemyParty:
+    print(i.name)
+
+Battle(userParty, enemyParty)
+
+
 
 
 
