@@ -9,7 +9,7 @@ class Trainer(NPC):                       #inherit from NPC
         self.isEncountered = False
         self.isDefeated = False
         self.dialog = dialog.Dialog()
-        self.dialog.set_dialog_text(["You seem strong!", "Let's battle!"])
+        self.dialog.set_dialog_text([["Here we go!",["Yeah!","No thanks.","WHAR",'hi']],"You seem strong!", "Let's battle!"])
         self.has_encountered = False
 
         super().__init__(id,game,layer,x,y,spriteImage,screen,player)
