@@ -11,6 +11,7 @@ class Dialog(Entity):
         self.is_rendered = False
         self.save_render = {}
         self.currentoptions = []
+        self.events = 0
 
 
     def draw(self,screen):
@@ -72,14 +73,24 @@ class Dialog(Entity):
         num_of_options = len(options)
         dialogbox = pygame.draw.rect(screen,GARNET,pygame.Rect(DIALOG_OPTION_X,DIALOG_OPTION_Y-(DIALOG_OPTION_HEIGHT*(num_of_options-1)),DIALOG_OPTION_WIDTH,DIALOG_OPTION_HEIGHT*num_of_options),0,10)
         pygame.draw.rect(screen,GOLD,dialogbox,3,10) 
-
+        isrend = False
         for count,option in enumerate(options):
-            screen.blit(self.font.render(option,False,GOLD),(DIALOG_OPTION_X+DIALOG_BOX_MARGIN,DIALOG_OPTION_Y-(DIALOG_OPTION_HEIGHT*(num_of_options-1-count))+DIALOG_BOX_MARGIN,DIALOG_OPTION_WIDTH,DIALOG_OPTION_HEIGHT))
-    
+            if pygame.mouse.get_focused() != 0:         #if mouse is not outside of screen
+                temprect = pygame.Rect(DIALOG_OPTION_X+DIALOG_BOX_MARGIN,DIALOG_OPTION_Y-(DIALOG_OPTION_HEIGHT*(num_of_options-1-count))+DIALOG_BOX_MARGIN,DIALOG_OPTION_WIDTH,DIALOG_OPTION_HEIGHT)
+                if temprect.collidepoint(pygame.mouse.get_pos()):       #if mouse is over a certain option, adjust color to indicate so
+                    screen.blit(self.font.render(option,False,SELECTGOLD),(DIALOG_OPTION_X+DIALOG_BOX_MARGIN,DIALOG_OPTION_Y-(DIALOG_OPTION_HEIGHT*(num_of_options-1-count))+DIALOG_BOX_MARGIN,DIALOG_OPTION_WIDTH,DIALOG_OPTION_HEIGHT))
+                    isrend = True
+                    # print('PRESSING')
+            if not isrend:
+                screen.blit(self.font.render(option,False,GOLD),(DIALOG_OPTION_X+DIALOG_BOX_MARGIN,DIALOG_OPTION_Y-(DIALOG_OPTION_HEIGHT*(num_of_options-1-count))+DIALOG_BOX_MARGIN,DIALOG_OPTION_WIDTH,DIALOG_OPTION_HEIGHT))
+            isrend = False
     def detect_options(self):
         dialogtext = self.text[self.count][0]
         options = self.text[self.count][1]
         return dialogtext,options
+    
+    def getevents(self,events):
+        self.events = events
 
 
 

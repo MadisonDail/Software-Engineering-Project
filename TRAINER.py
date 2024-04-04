@@ -9,7 +9,7 @@ class Trainer(NPC):                       #inherit from NPC
         self.isEncountered = False
         self.isDefeated = False
         self.dialog = dialog.Dialog()
-        self.dialog.set_dialog_text([["Here we go!",["Yeah!","No thanks.","WHAR",'hi']],"You seem strong!", "Let's battle!"])
+        self.dialog.set_dialog_text(["You seem strong!",["Here we go!",["Yeah!","No thanks.","WHAR",'hi']], "Let's battle!"])
         self.has_encountered = False
 
         super().__init__(id,game,layer,x,y,spriteImage,screen,player)
@@ -47,7 +47,8 @@ class Trainer(NPC):                       #inherit from NPC
                         # print("Hi")
                         # print(self.isEncountered)
                         
-            if self.isEncountered:                       
+            if self.isEncountered:
+                self.dialog.getevents(events)                       
                 self.dialog.draw(self.screen)
                 self.player.stop_movement()
             else:

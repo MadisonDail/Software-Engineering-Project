@@ -8,6 +8,7 @@ BLACK = (0, 0, 0)
 RED = (255, 0, 0)   #color red (rgb tuple)
 GOLD = (206, 184, 136)
 GARNET = (120, 47, 64)
+SELECTGOLD = (206, 124, 136)
 
 DIALOG_BOX_WIDTH = WIN_WIDTH - WIN_WIDTH//3
 DIALOG_BOX_HEIGHT = int((1/4)*WIN_HEIGHT)
