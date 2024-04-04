@@ -92,5 +92,9 @@ class Dialog(Entity):
     def getevents(self,events):
         self.events = events
 
+    def reset_dialog(self):
+        self.count = 0
+        self.is_rendered = False
+
 
 

@@ -32,6 +32,10 @@ class Game:
 
         TRAINER_image = "images/player_stand.png"
         self.trainer = Trainer("trainer_1",self,PLAYER_LAYER,50,100,TRAINER_image,self.screen,self.player,"down")
+        
+        TRAINER_image = "images/player_stand.png"
+        self.trainer2 = Nurse("trainer_2",self,PLAYER_LAYER,150,100,TRAINER_image,self.screen,self.player,"down")
+        
         print(self.all_sprites)
 
 
