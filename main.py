@@ -50,11 +50,10 @@ class Game:
         self.all_sprites.update(events)       #finds update method in every sprite object 
 
     def draw(self):     #displays sprites and textures
-
         self.all_sprites.draw(self.screen)      #calls draw method which looks through every sprite and draws correct ones
-
-        # self.clock.tick(FPS)        #update screen at 60fps
-        # pygame.display.update()     #updates screen
+        self.clock.tick(FPS)        #update screen at 60fps
+        pygame.display.update()     #updates screen
+ 
 
     def main(self):
         #game loop
@@ -63,9 +62,6 @@ class Game:
             self.events(events_of_loop)
             self.update(events_of_loop)
             self.draw()
-            
-            self.clock.tick(FPS)        #update screen at 60fps
-            pygame.display.update()     #updates screen
         self.running = False
 
     def collision_detect(self,player,entity_group):

@@ -28,7 +28,7 @@ class Dialog(Entity):
                 self.render_text(screen,self.text[self.count])
                 self.is_rendered = True             #once dialog and text are rendered
                 self.constant_display(screen,self.text[self.count])
-            print(self.text[self.count])
+            # print(self.text[self.count])
         else:                                   #keep dialog on screen 
             if isinstance(self.text[self.count],list):
                 self.display_options(screen,self.currentoptions)
@@ -41,16 +41,16 @@ class Dialog(Entity):
         pygame.draw.rect(screen,GOLD,dialogbox,3,10) 
         
 
-    def render_text(self,screen,text):                     #draw text onto location
-        for i in range(len(text)+1): #loop prints text letter by letter
+    def render_text(self,screen,text):                      #draw text onto location
+        for i in range(len(text)+1):                        #loop prints text letter by letter
             screen.blit(self.font.render(text[:i],False,GOLD),(DIALOG_BOX_X+DIALOG_BOX_MARGIN,DIALOG_BOX_Y+DIALOG_BOX_MARGIN))
-            pygame.display.update(pygame.Rect(DIALOG_BOX_X, DIALOG_BOX_Y, DIALOG_BOX_WIDTH, DIALOG_BOX_HEIGHT)) #update only dialog box area
-            pygame.time.wait(50)
+            # pygame.display.update(pygame.Rect(DIALOG_BOX_X, DIALOG_BOX_Y, DIALOG_BOX_WIDTH, DIALOG_BOX_HEIGHT)) #update only dialog box area
+            # pygame.time.wait(50)
 
     def constant_display(self,screen,text):
         self.save_render['t'] = self.font.render(text,False,GOLD)
         screen.blit(self.save_render['t'],(DIALOG_BOX_X+DIALOG_BOX_MARGIN,DIALOG_BOX_Y+DIALOG_BOX_MARGIN))
-        pygame.display.update(pygame.Rect(DIALOG_BOX_X, DIALOG_BOX_Y, DIALOG_BOX_WIDTH, DIALOG_BOX_HEIGHT))     #update only dialog box area
+        # pygame.display.update(pygame.Rect(DIALOG_BOX_X, DIALOG_BOX_Y, DIALOG_BOX_WIDTH, DIALOG_BOX_HEIGHT))     #update only dialog box area
 
     def get_rect(self):
         return pygame.Rect(DIALOG_BOX_X, DIALOG_BOX_Y, DIALOG_BOX_WIDTH, DIALOG_BOX_HEIGHT)
@@ -84,6 +84,7 @@ class Dialog(Entity):
             if not isrend:
                 screen.blit(self.font.render(option,False,GOLD),(DIALOG_OPTION_X+DIALOG_BOX_MARGIN,DIALOG_OPTION_Y-(DIALOG_OPTION_HEIGHT*(num_of_options-1-count))+DIALOG_BOX_MARGIN,DIALOG_OPTION_WIDTH,DIALOG_OPTION_HEIGHT))
             isrend = False
+
     def detect_options(self):
         dialogtext = self.text[self.count][0]
         options = self.text[self.count][1]

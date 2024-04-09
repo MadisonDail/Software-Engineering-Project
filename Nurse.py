@@ -33,6 +33,3 @@ class Nurse(NPC):                       #inherit from NPC
                 self.player.resume_movement()
                 self.dialog.reset_dialog()
             
-
-    # def set_dialog(self):
-    #     self.dialog
