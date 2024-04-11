@@ -1,13 +1,12 @@
 from entity import *
 import pygame
-
+import random  #battle encounters 
 class Player(Entity):                       #inherit from entity
     def __init__(self,id,game,layer,x,y,spriteImage,screen):
         super().__init__(id,game,layer,x,y,spriteImage,screen)
         self.x_change = 0   #temp variable to be added to coordinated in update
         self.y_change = 0
         self.facing = 'down'
-        
 
     def movement(self):                     
     # adjust sprite position if a key is pressed
@@ -28,21 +27,33 @@ class Player(Entity):                       #inherit from entity
         current_x = self.rect.x // TILE_SIZE # updates x&y position 
         current_y = self.rect.y // TILE_SIZE
 
-        if self.game.tilemap[current_y][current_x] == 'X':
+        #think we could use current_tile to save to memory for when reopening game but idk ? 
+        current_tile = self.game.tilemap[current_y][current_x]
+
+        if current_tile == 'X':
             # Here you can choose which tilemap to switch to
             self.game.changeMap(tilemap)
 
-        elif self.game.tilemap[current_y][current_x] == '0':
+        elif current_tile == '0':
             self.game.changeMap(tilemap0)
 
-        elif self.game.tilemap[current_y][current_x] == '1':
+        elif current_tile == '1':
             self.game.changeMap(tilemap1)
 
-        elif self.game.tilemap[current_y][current_x] == '2':
+        elif current_tile == '2':
             self.game.changeMap(tilemap2)
 
-        elif self.game.tilemap[current_y][current_x] == '3':
+        elif current_tile == '3':
             self.game.changeMap(tilemap3)
+            
+        #battle schemantics 
+        if (current_tile == '.' and self.facing != 'battle' and random.randint(1,100) == 1):
+            self.trigger_battle()
+
+    def trigger_battle(self):
+        print("A WILD POKEMON APPEARS!") #this will be on the actual game screen, just for testing purposes 
+        self.facing = 'battle' # self facing battle lets us change 
+        # change battle screen 
 
     #accounts for what tiles you are on, changes accordingly        
     def tile_collision(self, direction):
@@ -69,6 +80,10 @@ class Player(Entity):                       #inherit from entity
         self.tile_collision('y')
         self.x_change = 0
         self.y_change = 0
+        
+        #game update for after battle occurs
+        if(self.facing == 'battle'):
+            self.facing = 'down'
 
 class Block(pygame.sprite.Sprite):
     def __init__(self, game, x, y):
