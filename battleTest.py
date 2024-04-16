@@ -9,14 +9,44 @@ import math
 # Choosing the move for a battle
 def BattleMenu():
     print("1. Move 1\n2. Move 2\n3. Move 3\n4. Move 4\n")
-    choice = 0
-    while(choice < 1 or choice > 4):
-        choice = int(input())
-        if(choice < 1 or choice > 4):
+    moveChoice = 0
+    while(moveChoice < 1 or moveChoice > 4):
+        moveChoice = int(input())
+        if(moveChoice < 1 or moveChoice > 4):
             print("Invalid")
         else:
-            return choice
+            return moveChoice
         
+def SwitchMenu(party, current):
+    for i in range(len(party)):
+        print(str(i + 1) + ". " + party[i].name)
+    choice = 0
+    while((choice < 1 or choice > len(party)) or (choice == (current + 1))):
+        choice = int(input("Which pokemon would you like to send out "))
+        if(choice == current + 1):
+            print("That pokemon is already in battle")
+        if(choice < 1 or choice > len(party)):
+           print("Invalid Choice")
+    return choice
+
+# Checks if either team has all fainted pokemon, returns 1 if user party is all fainted, 2 if enemy party is all fainted, 0 if there are alive pokemon on both teams
+def CheckAliveParty(partyUser, partyEnemy):
+    counter = 0
+    for currentPokemon in partyUser:
+        if(currentPokemon.currentHp <= 0):
+            counter += 1
+    if(counter == len(partyUser)):
+        return 1
+    counter = 0
+    for currentPokemon in partyEnemy:
+        if(currentPokemon.currentHp <= 0):
+            counter += 1
+    if(counter == len(partyEnemy)):
+        return 2
+    else:
+        return 0
+        
+
 def CheckPriority(userMove, enemyMove):
     # Checks if user's move has higher priority
     if(userMove.priority > enemyMove.priority):
@@ -47,6 +77,7 @@ def UseMove(move):
     # Checks if the move is a status, physical, or special move
     # If it is a status move, check effect
     # If it is a physical or special move, check accuracy, calculate damage and apply secondary effect
+    
     pass
 
 
@@ -427,28 +458,80 @@ def TypeMatchup(type1, type2, moveType):
         
 # Battle function that will be looped until either party reaches 0
 def Battle(userP, enemyP):
-    userTargetFainted = len(enemyP)
-    enemyTargetFainted = len(userP)
-    userFaints = 0
-    enemyFaints = 0
+    userPokemonIndex = 0         # Index of pokemon that is sent out for the user
+    enemyPokemonIndex = 0         # Index of pokemon that is sent out for the user
+
     userStatStages = (0, 0, 0, 0, 0)    # Stat Stages go from -6 to 6, ordered as Attack, Defense, Special Attack, Special Defense, Speed
     enemyStatStages = (0, 0, 0, 0, 0)
-    print(userTargetFainted)
-    print(enemyTargetFainted)
-    while(userFaints != userTargetFainted and enemyFaints != enemyTargetFainted):
-        BattleMenu()
+    
+    while(True):
+    # Check if the battle should continue
+        if(CheckAliveParty(userP, enemyP) == 1):
+            print("Enemy wins!")
+            break
+        elif(CheckAliveParty(userP, enemyP) == 2):
+            print("User wins!")
+            break
+        choice = 0
+        moveChoice = 0
+        while(choice < 1 or choice > 3):
+            choice = int(input("1. Use Move\n2. Switch Pokemon\n3. Use Item\n "))
+
+        # Select User's Move
+        if(choice == 1):
+            print("Use move")
+            moveIndex = BattleMenu()
+            if(moveIndex == 1):
+                userMove = userP[userPokemonIndex].move1
+            elif(moveIndex == 2):
+                userMove = userP[userPokemonIndex].move2
+            elif(moveIndex == 3):
+                userMove = userP[userPokemonIndex].move3
+            elif(moveIndex == 4):
+                userMove = userP[userPokemonIndex].move4
+
+            eMoveIndex = random.randint(1, 4)
+            if(eMoveIndex == 1):
+                enemyMove = userP[enemyPokemonIndex].move1
+            elif(eMoveIndex == 2):
+                enemyMove = userP[enemyPokemonIndex].move2
+            elif(eMoveIndex == 3):
+                enemyMove = userP[enemyPokemonIndex].move3
+            elif(eMoveIndex == 4):
+                enemyMove = userP[enemyPokemonIndex].move4
+        elif(choice == 2):
+            print("Switch pkmn")
+            ResetStats(userP[userPokemonIndex])     # Reset stats of the pokemon switched out
+            userPokemonIndex = SwitchMenu(userP, userPokemonIndex) - 1      # Switch the index of the current pokemon to the new one
+            
+        elif(choice ==3):
+            print("Use item")
+        
+        print("CHECK PRIORITY")
+        print(CheckPriority(userMove, enemyMove))
+        
         # If pokemon switches, reset stats
-        userFaints += 1
         # Check which move has the higher priority
         # Check if return is 0 for same priority, if so, check speed
-        # if(CheckPriority(userMove, enemyMove) == 0):
+        if(CheckPriority(userMove, enemyMove) == 0):
             # # Checks speed for the same priority
-            # if(CheckSpeed(userPokemon, enemyPokemon) == 0):
-                # Use the user's move
+            if(CheckSpeed(userP[userPokemonIndex], userP[enemyPokemonIndex]) == 0):
+                # Use the user's move first
+                UseMove(userMove)
                 # if enemy is alive, use enemy move
-            # else:
-                # use enemy's move
+                if(CheckAliveParty(userP, enemyP) == 2):
+                    print("User wins!")
+                    break
+                UseMove(enemyMove)
+            else:
+                # use enemy's move first
+                UseMove(enemyMove)
                 # if user is alive, use user move
+                if(CheckAliveParty(userP, enemyP) == 1):
+                    print("Enemy wins!")
+                    break
+                UseMove(userMove)
+                
     # After battle, reset stats except hp
         
 
@@ -472,6 +555,7 @@ for j in userParty:
     print(j.name)
 for i in enemyParty:
     print(i.name)
+
 
 Battle(userParty, enemyParty)
 
