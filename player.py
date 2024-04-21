@@ -1,12 +1,22 @@
 from entity import *
 import pygame
 import random  #battle encounters 
+
 class Player(Entity):                       #inherit from entity
     def __init__(self,id,game,layer,x,y,spriteImage,screen):
         super().__init__(id,game,layer,x,y,spriteImage,screen)
         self.x_change = 0   #temp variable to be added to coordinated in update
         self.y_change = 0
         self.facing = 'down'
+
+    def set_position(self,x,y):
+        self.rect.topleft = (x*TILE_SIZE,y*TILE_SIZE) 
+    
+    def stop_movement(self):                #don't allow player sprite to move
+        self.velocity = 0
+    
+    def resume_movement(self, vel=DEFAULT_SPEED):
+        self.velocity = vel                 #allow player to move again
 
     def movement(self):                     
     # adjust sprite position if a key is pressed
@@ -72,7 +82,7 @@ class Player(Entity):                       #inherit from entity
                 if self.y_change < 0:   #moving up
                     self.rect.y = hits[0].rect.bottom
 
-    def update(self):                       #check for key press for every update
+    def update(self,events):                       #check for key press for every update
         self.movement()
         self.rect.x += self.x_change
         self.tile_collision('x')
