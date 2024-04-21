@@ -3,17 +3,20 @@ from entity import *
 from config import *
 
 class Dialog(Entity):
-    def __init__(self,game,layer,screen,x=DIALOG_BOX_X,y=DIALOG_BOX_Y):
+    def __init__(self,game,layer,screen,object_type,x=DIALOG_BOX_X,y=DIALOG_BOX_Y):
         self.dialog_index = 0
         self.font = pygame.font.SysFont('Comic Sans', 20)
-        self.text = []
+        self.text = ["test",["check",["lol","no"]]]
         self.count = 0
         self.is_rendered = False
         self.save_render = {}
         self.currentoptions = []
         self.events = 0
-        self._layer = PLAYER_LAYER+1
+        self._layer = DIALOG_LAYER
 
+        print(object_type)
+        # if isinstance(object_type,Trainer):
+        #     self.text = ["Let's battle!",["test",['y','n']]]
         # super().__init__('dialog',game,layer,x,y,spriteImage,screen)
 
 
@@ -46,10 +49,6 @@ class Dialog(Entity):
 
     def render_text(self,screen,text):                      #draw text onto location
         screen.blit(self.font.render(text,False,GOLD),(DIALOG_BOX_X+DIALOG_BOX_MARGIN,DIALOG_BOX_Y+DIALOG_BOX_MARGIN))
-        # for i in range(len(text)+1):                        #loop prints text letter by letter
-        #     screen.blit(self.font.render(text[:i],False,GOLD),(DIALOG_BOX_X+DIALOG_BOX_MARGIN,DIALOG_BOX_Y+DIALOG_BOX_MARGIN))
-            # pygame.display.update(pygame.Rect(DIALOG_BOX_X, DIALOG_BOX_Y, DIALOG_BOX_WIDTH, DIALOG_BOX_HEIGHT)) #update only dialog box area
-            # pygame.time.wait(50)
 
     def constant_display(self,screen,text):
         self.save_render['t'] = self.font.render(text,False,GOLD)

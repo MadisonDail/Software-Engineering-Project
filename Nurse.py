@@ -7,8 +7,8 @@ class Nurse(NPC):                       #inherit from NPC
     def __init__(self,id,game,layer,x,y,spriteImage,screen,player,facing_direction):
         self.facing_direction = facing_direction
         self.isEncountered = False
-        self.dialog = dialog.Dialog(game,layer+1,screen)
-        self.dialog.set_dialog_text([["Hello! How may I help you?",["Heal Pokemon","Leave"]]])
+        # self.dialog = dialog.Dialog(game,layer+1,screen)
+        # self.dialog.set_dialog_text([["Hello! How may I help you?",["Heal Pokemon","Leave"]]])
         super().__init__(id,game,layer,x,y,spriteImage,screen,player)
 
     def update(self,events):                       #check for mouse click for every update
