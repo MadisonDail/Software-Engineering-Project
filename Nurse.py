@@ -14,9 +14,8 @@ class Nurse(NPC):                       #inherit from NPC
     def update(self,events):                       #check for mouse click for every update
         # if not self.isEncountered:
         for event in events:
-            if event.type == pygame.MOUSEBUTTONUP:
-                if self.rect.collidepoint(event.pos) and abs(self.player.rect.x-self.rect.x) < 64:
-                    # self.isEncountered = True
+            if event.type == pygame.MOUSEBUTTONUP:  #set true when mouse clicks on nurse sprite and x of player and rect is less than tile_size
+                if self.rect.collidepoint(event.pos) and abs(self.player.rect.x-self.rect.x) < TILE_SIZE:
                     return True
         # else:
         #     for event in events:

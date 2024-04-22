@@ -53,7 +53,8 @@ class Game:
         self.player = Player("player", self, PLAYER_LAYER, j, i, player_image,self.screen) 
 
     def setNurse(self):
-        Nurse("nurse",self,PLAYER_LAYER,self.character_locations["nurse"][0],self.character_locations["nurse"][1],trainer_image,self.screen,self.player)
+        if len(self.character_locations["nurse"]) != 0:
+            Nurse("nurse",self,PLAYER_LAYER,self.character_locations["nurse"][0],self.character_locations["nurse"][1],trainer_image,self.screen,self.player)
 
     def changeMap(self, newtilemap):
         self.tilemap = newtilemap
@@ -61,7 +62,7 @@ class Game:
         self.blocks.empty()
         #both get emptied to account for new ones in diff map generation
         self.character_locations["trainer"] = []
-        self.character_locations["trainer"] = []
+        self.character_locations["nurse"] = []
         self.createTilemap() 
         self.setTrainers()
         self.setNurse()
