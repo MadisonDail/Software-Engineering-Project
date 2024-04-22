@@ -1,6 +1,8 @@
 import moves
 import pokemon
 
+# Default move
+NOMOVE = moves.Move("NOMOVE", 0, -10, "NONE", 0, "NRM", "ST")
 
 # Normal type moves
 
@@ -47,7 +49,7 @@ WaterGun = moves.Move("WATERGUN", 40, 0, "NONE", 100 , "WTR", "SP");
 HydroPump = moves.Move("HYDROPUMP", 110, 0, "NONE", 80, "WTR", "SP");
 Bubble = moves.Move("BUBBLE", 40, 0, "ENEMY SPD -1 10", 100 , "WTR", "SP");
 BubbleBeam = moves.Move("BUBBLEBEAM", 65, 0, "ENEMY SPD -1 10", 100 , "WTR", "SP");
-CrabHammer = moves.Moves("CRABHAMMER", 100, 0, "NONE", 90, "WTR", "PH");
+CrabHammer = moves.Move("CRABHAMMER", 100, 0, "NONE", 90, "WTR", "PH");
 Surf = moves.Move("SURF", 90, 0, "NONE", 100, "WTR", "SP");
 # Fire type moves
 

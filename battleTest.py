@@ -5,173 +5,8 @@ import pokedex
 import moves
 import random
 import math
+import moveList
 
-# Choosing the move for a battle
-def BattleMenu():
-    print("1. Move 1\n2. Move 2\n3. Move 3\n4. Move 4\n")
-    moveChoice = 0
-    while(moveChoice < 1 or moveChoice > 4):
-        moveChoice = int(input())
-        if(moveChoice < 1 or moveChoice > 4):
-            print("Invalid")
-        else:
-            return moveChoice
-        
-def SwitchMenu(party, current):
-    for i in range(len(party)):
-        print(str(i + 1) + ". " + party[i].name)
-    choice = 0
-    while((choice < 1 or choice > len(party)) or (choice == (current + 1))):
-        choice = int(input("Which pokemon would you like to send out "))
-        if(choice == current + 1):
-            print("That pokemon is already in battle")
-        if(choice < 1 or choice > len(party)):
-           print("Invalid Choice")
-    return choice
-
-# Checks if either team has all fainted pokemon, returns 1 if user party is all fainted, 2 if enemy party is all fainted, 0 if there are alive pokemon on both teams
-def CheckAliveParty(partyUser, partyEnemy):
-    counter = 0
-    for currentPokemon in partyUser:
-        if(currentPokemon.currentHp <= 0):
-            counter += 1
-    if(counter == len(partyUser)):
-        return 1
-    counter = 0
-    for currentPokemon in partyEnemy:
-        if(currentPokemon.currentHp <= 0):
-            counter += 1
-    if(counter == len(partyEnemy)):
-        return 2
-    else:
-        return 0
-        
-
-def CheckPriority(userMove, enemyMove):
-    # Checks if user's move has higher priority
-    if(userMove.priority > enemyMove.priority):
-        return userMove
-    # Checks if enemy's move has higher priority
-    elif(enemyMove.priority > userMove.priority):
-        return enemyMove
-    # If the priority of the moves are the same, returns 0 to lead to CheckSpeed() where the pokemons' speeds are checked
-    else:
-        return 0
-
-def CheckSpeed(userPokemon, enemyPokemon):
-    # Will return 0 if user's pokemon is faster, will return 1 if enemy's pokemon is faster
-    # Checks if the user's pokemon is faster
-    if(userPokemon.currentSpeed > enemyPokemon.currentSpeed):
-        return 0
-    # Checks if the enemy's pokemon is faster
-    elif(enemyPokemon.currentSpeed > userPokemon.currentSpeed):
-        return 1
-    # If the user's pokemon and enemy's pokemon have the same speed, a random one will be chosen
-    else:
-        if(random.randint(1, 2) == 1):
-            return 0
-        else:
-            return 1
-        
-def UseMove(move):
-    # Checks if the move is a status, physical, or special move
-    # If it is a status move, check effect
-    # If it is a physical or special move, check accuracy, calculate damage and apply secondary effect
-    
-    pass
-
-
-def CheckEffect(move, userPokemon, enemyPokemon):
-    splitEffect = move.secondaryEffect.split()
-    if(splitEffect[0] == "NONE"):
-        return
-    if(splitEffect[0] == "SELF"):
-        # Apply Effect to userPokemon
-        ApplyEffect(splitEffect, userPokemon)
-        pass
-    elif(splitEffect[0] == "ENEMY"):
-        # Apply Effect to enemyPokemon
-        ApplyEffect(splitEffect, enemyPokemon)
-        pass
-
-def ApplyEffect(effect, pkmn):
-    # Will apply effect on the pokemon
-    if(effect[1] == "PRZ"):
-        if(random.randint(1, 100) < int(effect[2])):
-            # Apply Paralysis to Pokemon
-            pass
-    elif(effect[1] == "BRN"):
-        if(random.randint(1, 100) < int(effect[2])):
-            # Apply Burn to Pokemon
-            pass
-    elif(effect[1] == "PSN"):
-        if(random.randint(1, 100) < int(effect[2])):
-            # Apply Poison to Pokemon
-            pass
-    elif(effect[1] == "SLP"):
-        if(random.randint(1, 100) < int(effect[2])):
-            # Apply Sleep to Pokemon
-            pass
-    elif(effect[1] == "ATK"):
-        # Will have to adjust multiplier for attack
-        # pkmn.attack += int(effect[2])
-        pass
-    elif(effect[1] == "DEF"):
-        # pkmn.defense += int(effect[2])
-        pass
-    elif(effect[1] == "SPATK"):
-        # pkmn.specAttack += int(effect[2])
-        pass
-    elif(effect[1] == "SPDEF"):
-        # pkmn.specDefense += int(effect[2])
-        pass
-    elif(effect[1] == "SPD"):
-        # pkmn.speed += int(effect[2])
-        pass
-    elif(effect[1] == "HP"):
-        # UNFININSHED
-        pass
-
-def ResetStats(currentPokemon, statStages):
-    for i in range(5):
-        statStages[i] = 0
-    currentPokemon.currentAttack = currentPokemon.attack;
-    currentPokemon.currentDefense = currentPokemon.defense
-    currentPokemon.currentSpecAttack = currentPokemon.specAttack;
-    currentPokemon.currentSpecDefense = currentPokemon.specDefense
-    currentPokemon.currentSpeed = currentPokemon.speed
-    
-
-
-
-
-
-def calculateDamage(userLvl, movePower, userAtk, enemyDef, stab, typeMult):
-    # will return the hp to be subtracted from the defending pokemon
-    
-    # level not defined yet
-
-    # critical hit chance to be defined later
-    critical = 1
-    
-    # userAtk is the attack stat for the pokemon using the move
-    # enemyDef is the defense stat for the defending pokemon
-    # stab is 1.5 if the move being used matches the user's type, 1 otherwise
-    # typeMult is the multiplier returned by the TypeMatchup() function
-
-    # Damage function from Generation 1 Pokemon 
-    # Damage = (((((2 * level * critical  /  5 ) + 2) * Power * Attack/Def)  / 50  ) + 2) * stab * typemultiplier * random
-
-
-    randomNum = random.randint(217, 255)
-
-    step1 = ((2.0 * userLvl * critical) / 5.0) + 2 
-    step2 = (step1 * movePower * (float(userAtk) / float(enemyDef)))
-    step3 = (step2 / 50) + 2
-    step4 = step3 * stab * typeMult * randomNum
-    return step4
-
-        
 
 def TypeMatchup(type1, type2, moveType):
     # Will return either: 0, 0.25, 0.5, 1, 2, 4
@@ -455,14 +290,236 @@ def TypeMatchup(type1, type2, moveType):
     return multiplier
 
 
+
+# Choosing the move for a battle
+def BattleMenu():
+    print("1. Move 1\n2. Move 2\n3. Move 3\n4. Move 4\n")
+    moveChoice = 0
+    while(moveChoice < 1 or moveChoice > 4):
+        moveChoice = int(input())
+        if(moveChoice < 1 or moveChoice > 4):
+            print("Invalid")
+        else:
+            return moveChoice
+        
+def SwitchMenu(party, current):
+    for i in range(len(party)):
+        print(str(i + 1) + ". " + party[i].name)
+    choice = 0
+    while((choice < 1 or choice > len(party)) or (choice == (current + 1))):
+        choice = int(input("Which pokemon would you like to send out "))
+        if(choice == current + 1):
+            print("That pokemon is already in battle")
+        if(choice < 1 or choice > len(party)):
+           print("Invalid Choice")
+    return choice
+
+# Checks if either team has all fainted pokemon, returns 1 if user party is all fainted, 2 if enemy party is all fainted, 0 if there are alive pokemon on both teams
+def CheckAliveParty(partyUser, partyEnemy):
+    counter = 0
+    for currentPokemon in partyUser:
+        if(currentPokemon.currentHp <= 0):
+            counter += 1
+    if(counter == len(partyUser)):
+        return 1
+    counter = 0
+    for currentPokemon in partyEnemy:
+        if(currentPokemon.currentHp <= 0):
+            counter += 1
+    if(counter == len(partyEnemy)):
+        return 2
+    else:
+        return 0
+        
+
+def CheckPriority(userMove, enemyMove):
+    # Checks if user's move has higher priority
+    if(userMove.priority > enemyMove.priority):
+        return userMove
+    # Checks if enemy's move has higher priority
+    elif(enemyMove.priority > userMove.priority):
+        return enemyMove
+    # If the priority of the moves are the same, returns 0 to lead to CheckSpeed() where the pokemons' speeds are checked
+    else:
+        return 0
+
+def CheckSpeed(userPokemon, enemyPokemon):
+    # Will return 0 if user's pokemon is faster, will return 1 if enemy's pokemon is faster
+    # Checks if the user's pokemon is faster
+    if(userPokemon.currentSpeed > enemyPokemon.currentSpeed):
+        return 0
+    # Checks if the enemy's pokemon is faster
+    elif(enemyPokemon.currentSpeed > userPokemon.currentSpeed):
+        return 1
+    # If the user's pokemon and enemy's pokemon have the same speed, a random one will be chosen
+    else:
+        if(random.randint(1, 2) == 1):
+            return 0
+        else:
+            return 1
+        
+def CheckAccuracy(move):
+    if(random.randint(0, 100) > move.accuracy):
+        return False
+    else:
+        return True
+
+def CheckStab(user, moveType):
+    if(user.type1 == moveType or user.type2 == moveType):
+        return 1.5
+    else:
+        return 1
+
+def UseMove(move, attacker, defender, attckerStats, defenderStats):
+    # Checks if the move is a status, physical, or special move
+    # If it is a status move, check effect
+    if(move.category == "ST"):
+        CheckEffect(move, attacker, defender, attckerStats, defenderStats)
+    # If it is a physical or special move, check accuracy, calculate damage and apply secondary effect
+    elif(move.category == "SP" or move.category == "PH"):
+        if(CheckAccuracy(move)):
+            # Uses special defense and special attack if the move is special, regular defense and attack for physical
+            if(move.category == "SP"):
+                defender.hp -= calculateDamage(20, move.damage, attacker.specAttack, defender.specDefense, CheckStab(attacker, move.type), TypeMatchup(attacker.type1, attacker.type2, move.type))
+            else:
+                defender.hp -= calculateDamage(20, move.damage, attacker.attack, defender.defense, CheckStab(attacker, move.type), TypeMatchup(attacker.type1, attacker.type2, move.type))
+
+
+
+    pass
+
+
+def CheckEffect(move, userPokemon, enemyPokemon, attackerStats, defenderStats):
+    splitEffect = move.secondaryEffect.split()
+    if(splitEffect[0] == "NONE"):
+        return
+    if(splitEffect[0] == "SELF"):
+        # Apply Effect to userPokemon
+        ApplyEffect(splitEffect, userPokemon, attackerStats)
+        pass
+    elif(splitEffect[0] == "ENEMY"):
+        # Apply Effect to enemyPokemon
+        ApplyEffect(splitEffect, enemyPokemon, defenderStats)
+        pass
+
+def ApplyEffect(effect, pkmn, stats):
+    # Will apply effect on the pokemon
+    if(effect[1] == "PRZ"):
+        if(random.randint(1, 100) < int(effect[2])):
+            # Apply Paralysis to Pokemon
+            pkmn.status = "PRZ"
+            pass
+    elif(effect[1] == "BRN"):
+        if(random.randint(1, 100) < int(effect[2])):
+            # Apply Burn to Pokemon
+            pkmn.status = "BRN"
+            pass
+    elif(effect[1] == "PSN"):
+        if(random.randint(1, 100) < int(effect[2])):
+            # Apply Poison to Pokemon
+            pkmn.status = "PSN"
+            pass
+    elif(effect[1] == "SLP"):
+        if(random.randint(1, 100) < int(effect[2])):
+            pkmn.status = "SLP"
+            # Apply Sleep to Pokemon
+            pass
+    elif(effect[1] == "ATK"):
+        # Will have to adjust multiplier for attack
+        # pkmn.attack += int(effect[2])
+        stats[0] += int(effect[2])
+        if(stats[0] > 6):
+            stats[0] = 6
+        elif(stats[0] < -6):
+            stats[0] = -6
+        pass
+    elif(effect[1] == "DEF"):
+        # pkmn.defense += int(effect[2])
+        if(stats[1] > 6):
+            stats[1] = 6
+        elif(stats[1] < -6):
+            stats[1] = -6
+        pass
+    elif(effect[1] == "SPATK"):
+        # pkmn.specAttack += int(effect[2])
+        if(stats[2] > 6):
+            stats[2] = 6
+        elif(stats[2] < -6):
+            stats[2] = -6
+        pass
+    elif(effect[1] == "SPDEF"):
+        # pkmn.specDefense += int(effect[2])
+        if(stats[3] > 6):
+            stats[3] = 6
+        elif(stats[3] < -6):
+            stats[3] = -6
+        pass
+    elif(effect[1] == "SPD"):
+        # pkmn.speed += int(effect[2])
+        if(stats[4] > 6):
+            stats[4] = 6
+        elif(stats[4] < -6):
+            stats[4] = -6
+        pass
+    elif(effect[1] == "HP"):
+        # UNFININSHED
+        pass
+
+def ResetStats(currentPokemon, statStages):
+    for i in range(5):
+        statStages[i] = 0
+    currentPokemon.currentAttack = currentPokemon.attack;
+    currentPokemon.currentDefense = currentPokemon.defense
+    currentPokemon.currentSpecAttack = currentPokemon.specAttack;
+    currentPokemon.currentSpecDefense = currentPokemon.specDefense
+    currentPokemon.currentSpeed = currentPokemon.speed
+    
+
+
+
+
+
+def calculateDamage(userLvl, movePower, userAtk, enemyDef, stab, typeMult):
+    # will return the hp to be subtracted from the defending pokemon
+    
+    # level not defined yet
+
+    # critical hit chance to be defined later
+    
+    # userAtk is the attack stat for the pokemon using the move
+    # enemyDef is the defense stat for the defending pokemon
+    # stab is 1.5 if the move being used matches the user's type, 1 otherwise
+    # typeMult is the multiplier returned by the TypeMatchup() function
+
+    # Damage function from Generation 1 Pokemon 
+    # Damage = (((((2 * level * critical  /  5 ) + 2) * Power * Attack/Def)  / 50  ) + 2) * stab * typemultiplier * random
+
+
+    randomNum = random.randint(217, 255)
+
+    step1 = ((2.0 * userLvl) / 5.0) + 2.0
+    step2 = (step1 * movePower * (float(userAtk) / float(enemyDef)))
+    step3 = (step2 / 50.0) + 2.0
+    step4 = step3 * stab * typeMult * randomNum
+    return step4
+
+        
+
+
         
 # Battle function that will be looped until either party reaches 0
 def Battle(userP, enemyP):
     userPokemonIndex = 0         # Index of pokemon that is sent out for the user
     enemyPokemonIndex = 0         # Index of pokemon that is sent out for the user
 
-    userStatStages = (0, 0, 0, 0, 0)    # Stat Stages go from -6 to 6, ordered as Attack, Defense, Special Attack, Special Defense, Speed
-    enemyStatStages = (0, 0, 0, 0, 0)
+    userStatStages = [0, 0, 0, 0, 0]    # Stat Stages go from -6 to 6, ordered as Attack, Defense, Special Attack, Special Defense, Speed
+    enemyStatStages = [0, 0, 0, 0, 0]
+    
+    userStatus = "None"
+    enemyStatus = "None"
+
+    userMove = moveList.NOMOVE
+    enemyMove = moveList.NOMOVE
     
     while(True):
     # Check if the battle should continue
@@ -501,7 +558,7 @@ def Battle(userP, enemyP):
                 enemyMove = userP[enemyPokemonIndex].move4
         elif(choice == 2):
             print("Switch pkmn")
-            ResetStats(userP[userPokemonIndex])     # Reset stats of the pokemon switched out
+            ResetStats(userP[userPokemonIndex], userStatStages)     # Reset stats of the pokemon switched out
             userPokemonIndex = SwitchMenu(userP, userPokemonIndex) - 1      # Switch the index of the current pokemon to the new one
             
         elif(choice ==3):
@@ -517,20 +574,20 @@ def Battle(userP, enemyP):
             # # Checks speed for the same priority
             if(CheckSpeed(userP[userPokemonIndex], userP[enemyPokemonIndex]) == 0):
                 # Use the user's move first
-                UseMove(userMove)
+                UseMove(userMove, userP, enemyP, userStatStages, enemyStatStages)
                 # if enemy is alive, use enemy move
                 if(CheckAliveParty(userP, enemyP) == 2):
                     print("User wins!")
                     break
-                UseMove(enemyMove)
+                UseMove(enemyMove, enemyP, userP, enemyStatStages, userStatStages)
             else:
                 # use enemy's move first
-                UseMove(enemyMove)
+                UseMove(enemyMove, enemyP, userP)
                 # if user is alive, use user move
                 if(CheckAliveParty(userP, enemyP) == 1):
                     print("Enemy wins!")
                     break
-                UseMove(userMove)
+                UseMove(userMove, userP, enemyP, userStatStages, enemyStatStages)
                 
     # After battle, reset stats except hp
         

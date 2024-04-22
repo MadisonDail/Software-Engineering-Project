@@ -1,7 +1,7 @@
 # Pokemon
 
 class Pokemon:
-    def __init__(self, idNum, name, type1, type2, ability1, currentHp, hp, attack, defense, specAttack, specDefense, speed, move1=None, move2=None, move3=None, move4=None):
+    def __init__(self, idNum, name, type1, type2, ability1, currentHp, hp, attack, defense, specAttack, specDefense, speed, move1=None, move2=None, move3=None, move4=None, status="None"):
         self.idNum = idNum #number in the dex
         self.name = name #pokemon name
         self.type1 = type1 #pokemon's main type
@@ -23,3 +23,4 @@ class Pokemon:
         self.move2 = move2;
         self.move3 = move3;
         self.move4 = move4;
+        self.status = status;
