@@ -60,6 +60,7 @@ class Game:
         self.tilemap = newtilemap
         self.all_sprites.empty() 
         self.blocks.empty()
+        self.enemies.empty()
         #both get emptied to account for new ones in diff map generation
         self.character_locations["trainer"] = []
         self.character_locations["nurse"] = []
