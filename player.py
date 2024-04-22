@@ -66,6 +66,23 @@ class Player(Entity):                       #inherit from entity
         # change battle screen 
 
     #accounts for what tiles you are on, changes accordingly        
+    def npc_collision(self,direction):
+        if direction == "x":
+            hits = pygame.sprite.spritecollide(self, self.game.enemies, False)   
+            if hits:
+                if self.x_change > 0:   #moving right
+                    self.rect.x = hits[0].rect.left - self.rect.width   #moves player back to point of collision instead of moving inside block
+                if self.x_change < 0:   #moving left
+                    self.rect.x = hits[0].rect.right
+        if direction == "y":
+            hits = pygame.sprite.spritecollide(self, self.game.enemies, False)
+            print(self.game.enemies)
+            if hits:
+                if self.y_change > 0:   #moving down
+                    self.rect.y = hits[0].rect.top - self.rect.height
+                if self.y_change < 0:   #moving up
+                    self.rect.y = hits[0].rect.bottom
+
     def tile_collision(self, direction):
         if direction == "x":
             hits = pygame.sprite.spritecollide(self, self.game.blocks, False)   
@@ -86,8 +103,10 @@ class Player(Entity):                       #inherit from entity
         self.movement()
         self.rect.x += self.x_change
         self.tile_collision('x')
+        self.npc_collision('x')
         self.rect.y += self.y_change
         self.tile_collision('y')
+        self.npc_collision('y')
         self.x_change = 0
         self.y_change = 0
         

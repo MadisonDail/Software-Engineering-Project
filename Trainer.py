@@ -13,6 +13,7 @@ class Trainer(NPC):                       #inherit from NPC
         self.has_encountered = False
 
         super().__init__(id,game,layer,x,y,spriteImage,screen,player)
+        self.game.enemies.add(self)     #add trainer to enemies group created in game.py
 
 
     def update(self,events):                                                       #check for mouse click for every update
