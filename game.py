@@ -15,12 +15,12 @@ class Game:
         self.tilemap = tilemap #added for collision detection 
         self.running = True     #whether the game should be running or not (set to true on new game)
         self.character_locations = {} 
+        self.character_locations["trainer"] = []
         self.terrain_spritesheet = Spritesheet('images/img/img/terrain.png')
         self.isDialogTriggered = False
         self.Dialog = Dialog(self,DIALOG_LAYER,self.screen,0)
         self.events_of_loop = []
         self.isEncountered = False
-        self.current_dialog_object = 0
 
     def createTilemap(self):
         for i, row in enumerate(self.tilemap):
@@ -29,27 +29,44 @@ class Game:
                 if column == "B":
                     Block(self, j, i)   #Creates block at position (j,i)
                 elif column == "P":
-                    self.character_locations["player"] = [j,i]
-                    # if not self.isFirstGeneration:
-                    #     self.player.set_position(j,i)
-                    # Player("player", self, PLAYER_LAYER, j, i, player_image,self.screen)        #create player at position (j,i) 
-                elif column == "T":
-                    self.character_locations["trainer"] = [j,i]
-                    # TRAINER("trainer_1",self,PLAYER_LAYER,j,i,player_image,self.screen,self.player,"up")
+                    self.setplayer(j,i) #create player at position (j,i) 
+                elif column == "U":     #store trainer locations along with facing direction(ex. U is up)
+                    temp = self.character_locations["trainer"]
+                    temp.append([j,i,"up"])
+                elif column == "R":
+                    temp = self.character_locations["trainer"]
+                    temp.append([j,i,"right"])
+                elif column == "D":
+                    temp = self.character_locations["trainer"]
+                    temp.append([j,i,"down"])
+                elif column == "L":
+                    temp = self.character_locations["trainer"]
+                    temp.append([j,i,"left"])
                 # elif column == "N":
                 #     self.character_locations["nurse"] = [j,i]
                     # NPC("npc",self,PLAYER_LAYER,j,i,player_image,self.screen,self.player)      
                 elif column == "X":
                     pass #Door(j, i, layer, nextscreen)     #creates tile that moves player to other screen/area
     #changes map
+
+    def setplayer(self,j,i):
+        self.player = Player("player", self, PLAYER_LAYER, j, i, player_image,self.screen) 
+
     def changeMap(self, newtilemap):
         self.tilemap = newtilemap
         self.all_sprites.empty() 
         self.blocks.empty()
-        self.player = Player("player", self, PLAYER_LAYER, self.character_locations["player"][0], self.character_locations["player"][1], player_image,self.screen) 
         #both get emptied to account for new ones in diff map generation
+        self.character_locations["trainer"] = []
         self.createTilemap() 
+        self.setTrainers()
+
         #displays new map on screen
+
+    def setTrainers(self):
+        list_of_trainer_locations = self.character_locations["trainer"]
+        for count,loc in enumerate(list_of_trainer_locations):
+            Trainer("trainer_"+str(count),self,PLAYER_LAYER,loc[0],loc[1],trainer_image,self.screen,self.player,loc[2])
 
     def new(self):
         #new game starts
@@ -60,8 +77,9 @@ class Game:
         self.blocks = pygame.sprite.LayeredUpdates()        #object containing all of the borders/walls
         self.enemies = pygame.sprite.LayeredUpdates()       #contains enemies
         self.createTilemap()
-        self.player = Player("player", self, PLAYER_LAYER, self.character_locations["player"][0], self.character_locations["player"][1], player_image,self.screen) 
-        self.trainer = Trainer("trainer_1",self,PLAYER_LAYER,self.character_locations["trainer"][0],self.character_locations["trainer"][1],trainer_image,self.screen,self.player,"up")
+        self.setTrainers()
+            
+        # self.trainer = Trainer("trainer_1",self,PLAYER_LAYER,self.character_locations["trainer"][0],self.character_locations["trainer"][1],trainer_image,self.screen,self.player,"up")
         # self.npc = NPC("npc",self,PLAYER_LAYER,self.character_locations["npc"][0],self.character_locations["npc"][1],nurse_image,self.screen,self.player)
 
     def events(self,events):   #any event (any key pressed events)
@@ -76,7 +94,6 @@ class Game:
         for sprite in self.all_sprites:
             return_val = sprite.update(events)
             list_of_returns.append([sprite,return_val])
-            self.current_dialog_object = sprite
 
         if not self.isDialogTriggered:   
             first_triggered = False                 #make it so only first dialog trigger is done
@@ -84,6 +101,7 @@ class Game:
                 if return_sprite[1] == True and not first_triggered:
                     print('hi')
                     self.isDialogTriggered = True
+                    print(return_sprite[0])
                     self.Dialog = Dialog(self,DIALOG_LAYER,self.screen,return_sprite[0])
                     first_triggered = True
 
