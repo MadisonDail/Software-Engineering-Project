@@ -1,8 +1,8 @@
 import pygame
 from config import *
 from player import *
-from NPC import *
-from Trainer import *
+from NPC import NPC
+from Trainer import Trainer
 from Nurse import *
 from dialog import *
 import sys
@@ -143,6 +143,7 @@ class Game:
         #game loop
         while self.playing:
             self.screen.fill(BLACK)
+            self.events_of_loop.clear()
             self.events_of_loop = pygame.event.get()
             self.events(self.events_of_loop)
             self.update(self.events_of_loop)

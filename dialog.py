@@ -1,8 +1,9 @@
 import pygame
 from entity import *
 from config import *
-# from NPC import *
-# from Trainer import *
+from NPC import *
+from Trainer import Trainer
+from Nurse import Nurse
 
 class Dialog(Entity):
     def __init__(self,game,layer,screen,object_type,x=DIALOG_BOX_X,y=DIALOG_BOX_Y):
@@ -16,9 +17,12 @@ class Dialog(Entity):
         self.events = 0
         self._layer = DIALOG_LAYER
 
+        print('in dialog init:')
         print(object_type)
-        # if isinstance(object_type,Trainer):
-        #     self.text = ["Let's battle!",["test",['y','n']]]
+        if isinstance(object_type,Trainer):
+            self.text = ["Let's battle!",["test",['y','n']]]
+        elif isinstance(object_type,Nurse):
+            self.text = ["Would you like help?",["test",['y','n']]]
         # super().__init__('dialog',game,layer,x,y,spriteImage,screen)
 
 

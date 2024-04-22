@@ -1,7 +1,6 @@
 from entity import *
 import pygame
-import dialog
-from NPC import *
+from NPC import NPC
 
 class Trainer(NPC):                       #inherit from NPC
     def __init__(self,id,game,layer,x,y,spriteImage,screen,player,facing_direction):
