@@ -76,7 +76,7 @@ class Player(Entity):                       #inherit from entity
                     self.rect.x = hits[0].rect.right
         if direction == "y":
             hits = pygame.sprite.spritecollide(self, self.game.enemies, False)
-            print(self.game.enemies)
+            # print(self.game.enemies)
             if hits:
                 if self.y_change > 0:   #moving down
                     self.rect.y = hits[0].rect.top - self.rect.height

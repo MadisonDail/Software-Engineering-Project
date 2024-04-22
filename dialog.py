@@ -1,6 +1,8 @@
 import pygame
 from entity import *
 from config import *
+# from NPC import *
+# from Trainer import *
 
 class Dialog(Entity):
     def __init__(self,game,layer,screen,object_type,x=DIALOG_BOX_X,y=DIALOG_BOX_Y):

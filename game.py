@@ -42,8 +42,8 @@ class Game:
                 elif column == "L":
                     temp = self.character_locations["trainer"]
                     temp.append([j,i,"left"])
-                # elif column == "N":
-                #     self.character_locations["nurse"] = [j,i]
+                elif column == "N":
+                    self.character_locations["nurse"] = [j,i]
                     # NPC("npc",self,PLAYER_LAYER,j,i,player_image,self.screen,self.player)      
                 elif column == "X":
                     pass #Door(j, i, layer, nextscreen)     #creates tile that moves player to other screen/area
@@ -52,14 +52,19 @@ class Game:
     def setplayer(self,j,i):
         self.player = Player("player", self, PLAYER_LAYER, j, i, player_image,self.screen) 
 
+    def setNurse(self):
+        Nurse("nurse",self,PLAYER_LAYER,self.character_locations["nurse"][0],self.character_locations["nurse"][1],trainer_image,self.screen,self.player)
+
     def changeMap(self, newtilemap):
         self.tilemap = newtilemap
         self.all_sprites.empty() 
         self.blocks.empty()
         #both get emptied to account for new ones in diff map generation
         self.character_locations["trainer"] = []
+        self.character_locations["trainer"] = []
         self.createTilemap() 
         self.setTrainers()
+        self.setNurse()
 
         #displays new map on screen
 
@@ -78,6 +83,8 @@ class Game:
         self.enemies = pygame.sprite.LayeredUpdates()       #contains enemies
         self.createTilemap()
         self.setTrainers()
+        self.setNurse()
+
             
         # self.trainer = Trainer("trainer_1",self,PLAYER_LAYER,self.character_locations["trainer"][0],self.character_locations["trainer"][1],trainer_image,self.screen,self.player,"up")
         # self.npc = NPC("npc",self,PLAYER_LAYER,self.character_locations["npc"][0],self.character_locations["npc"][1],nurse_image,self.screen,self.player)
@@ -99,7 +106,6 @@ class Game:
             first_triggered = False                 #make it so only first dialog trigger is done
             for return_sprite in list_of_returns:   #loop through list where first index is object and second index is return
                 if return_sprite[1] == True and not first_triggered:
-                    print('hi')
                     self.isDialogTriggered = True
                     print(return_sprite[0])
                     self.Dialog = Dialog(self,DIALOG_LAYER,self.screen,return_sprite[0])
