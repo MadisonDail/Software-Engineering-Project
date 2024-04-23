@@ -380,10 +380,11 @@ def UseMove(move, attacker, defender, attckerStats, defenderStats):
         if(CheckAccuracy(move)):
             # Uses special defense and special attack if the move is special, regular defense and attack for physical
             if(move.category == "SP"):
-                defender.hp -= calculateDamage(20, move.damage, attacker.specAttack, defender.specDefense, CheckStab(attacker, move.type), TypeMatchup(attacker.type1, attacker.type2, move.type))
+                defender.currentHp -= calculateDamage(20, move.damage, attacker.specAttack, defender.specDefense, CheckStab(attacker, move.type), TypeMatchup(attacker.type1, attacker.type2, move.type))
+                CheckEffect(move, attacker, defender, attckerStats, defenderStats)
             else:
-                defender.hp -= calculateDamage(20, move.damage, attacker.attack, defender.defense, CheckStab(attacker, move.type), TypeMatchup(attacker.type1, attacker.type2, move.type))
-
+                defender.currentHp -= calculateDamage(20, move.damage, attacker.attack, defender.defense, CheckStab(attacker, move.type), TypeMatchup(attacker.type1, attacker.type2, move.type))
+                CheckEffect(move, attacker, defender, attckerStats, defenderStats)
 
 
     pass
@@ -462,7 +463,9 @@ def ApplyEffect(effect, pkmn, stats):
             stats[4] = -6
         pass
     elif(effect[1] == "HP"):
-        # UNFININSHED
+        pkmn.currentHp += (pkmn.hp / 8)
+        if(pkmn.currrentHp > pkmn.hp):
+            pkmn.currentHp = pkmn.hp
         pass
 
 def ResetStats(currentPokemon, statStages):
@@ -515,8 +518,6 @@ def Battle(userP, enemyP):
     userStatStages = [0, 0, 0, 0, 0]    # Stat Stages go from -6 to 6, ordered as Attack, Defense, Special Attack, Special Defense, Speed
     enemyStatStages = [0, 0, 0, 0, 0]
     
-    userStatus = "None"
-    enemyStatus = "None"
 
     userMove = moveList.NOMOVE
     enemyMove = moveList.NOMOVE
