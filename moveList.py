@@ -31,14 +31,14 @@ SonicBoom = moves.Move("SONICBOOM", 0, 0, "ENEMY HP -20", 100, "NRM", "SP");
 Stomp = moves.Move("STOMP", 65, 0, "NONE", 100, "NRM", "PH");
 Strength = moves.Move("STRENGTH", 80, 0, "NONE", 100, "NRM", "PH");
 Swift = moves.Move("SWIFT", 60, 0, "NONE", 100, "NRM", "SP");
-SwordsDance = moves.Move("SWORDSDANCE", 0, 0, "SELF ATK 2", 100, "NRM", "ST");
+SwordsDance = moves.Move("SWORDSDANCE", 0, 0, "USER ATK 2", 100, "NRM", "ST");
 Tackle = moves.Move("TACKLE", 40, 0, "NONE", 100, "NRM", "PH");
 TailWhip = moves.Move("TAILWHIP", 0, 0, "ENEMY DEF -1", 100, "NRM", "ST");
 
 
 # Grass type moves
 
-Absorb = moves.Move("ABSORB", 20, 0, "SELF HP+", 100, "GRS", "SP");
+Absorb = moves.Move("ABSORB", 20, 0, "USER HP+", 100, "GRS", "SP");
 RazorLeaf = moves.Move("RAZORLEAF", 55, 0, "NONE", 95, "GRS", "PH");
 Spore = moves.Move("SPORE", 0, 0, "ENEMY SLP 100", 100, "GRS", "ST");
 StunSpore = moves.Move("STUNSPORE", 0, 0, "ENEMY PRZ 75", 100, "GRS", "ST");
@@ -92,7 +92,7 @@ RollingKick = moves.Move("ROLLINGKICK", 60, 0, "NONE", 85, "FGT", "PH");
 
 # Psychic type moves
 
-Agility = moves.Move("AGILITY", 0, 0, "SELF SPD 2", 100, "PSY", "ST");
+Agility = moves.Move("AGILITY", 0, 0, "USER SPD 2", 100, "PSY", "ST");
 Hypnosis = moves.Move("HYPNOSIS", 0, 0, "ENEMY SLP 100", 60, "PSY", "ST");
 Amnesia = moves.Move("AMNESIA", 0, 0, "USER SPDEF 2", 100, "PSY", "ST");
 Barrier = moves.Move("BARRIER", 0, 0, "USER DEF 2", 100, "PSY", "ST");

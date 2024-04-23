@@ -565,8 +565,6 @@ def Battle(userP, enemyP):
         elif(choice ==3):
             print("Use item")
         
-        print("CHECK PRIORITY")
-        print(CheckPriority(userMove, enemyMove))
         
         # If pokemon switches, reset stats
         # Check which move has the higher priority
