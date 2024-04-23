@@ -411,6 +411,7 @@ def CheckEffect(move, userPokemon, enemyPokemon, attackerStats, defenderStats):
         ApplyEffect(splitEffect, enemyPokemon, defenderStats)
         pass
 
+
 def ApplyEffect(effect, pkmn, stats):
     # Will apply effect on the pokemon
     if(effect[1] == "PRZ"):
@@ -605,6 +606,10 @@ def Battle(userP, enemyP):
                 # Check Paralysis or sleep
                 if(CheckSkipStatus(userP[userPokemonIndex])):
                     UseMove(userMove, userP[userPokemonIndex], enemyP[enemyPokemonIndex], userStatStages, enemyStatStages)
+                    if(CheckAlivePokemon(enemyP[enemyPokemonIndex]) == 1):
+                        enemyPokemonIndex += 1
+                        enemyMove = moveList.NOMOVE
+                        print("SWITCH ENEMY")
                     # if enemy is alive, use enemy move
                     if(CheckAliveParty(userP, enemyP) == 2):
                         print("User wins!")
@@ -614,6 +619,11 @@ def Battle(userP, enemyP):
                 # use enemy's move first
                 if(CheckSkipStatus(enemyP[enemyPokemonIndex])):
                     UseMove(enemyMove, enemyP[enemyPokemonIndex], userP[userPokemonIndex], enemyStatStages, userStatStages)
+                    if(CheckAlivePokemon(userP[userPokemonIndex]) == 1):
+                        print("SWITCH USER")
+                        ResetStats(userP[userPokemonIndex], userStatStages)     # Reset stats of the pokemon switched out
+                        userPokemonIndex = SwitchMenu(userP, userPokemonIndex) - 1      # Switch the index of the current pokemon to the new one
+                        userMove = moveList.NOMOVE
                     # if user is alive, use user move
                     if(CheckAliveParty(userP, enemyP) == 1):
                         print("Enemy wins!")
@@ -639,8 +649,11 @@ def Battle(userP, enemyP):
                         break
         print("USER HP " + str(userP[userPokemonIndex].currentHp))
 
-    ResetStats(userP[userPokemonIndex], userStatStages)
-    ResetStats(enemyP[enemyPokemonIndex], enemyStatStages)
+
+    for pkmn in userP:
+        ResetStats(pkmn, userStatStages)
+    for pkmn in enemyP:
+        ResetStats(pkmn, enemyStatStages)
                 
     # After battle, reset stats except hp
         
@@ -656,8 +669,8 @@ userParty.append(pokedex.Ivysaur)
 userParty.append(pokedex.Charizard)
 
 enemyParty.append(pokedex.Bulbasaur)
-enemyParty.append(pokedex.Charmeleon)
-enemyParty.append(pokedex.Blastoise)
+#enemyParty.append(pokedex.Charmeleon)
+#enemyParty.append(pokedex.Blastoise)
 
 # Battle(userParty, enemyParty)
 print(TypeMatchup("RCK", "STL", "NRM"))
