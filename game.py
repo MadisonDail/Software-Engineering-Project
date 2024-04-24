@@ -12,10 +12,11 @@ class Game:
         self.screen = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))      #creates window for game. parameters are tuple of map dimensions (in pixels)
         self.clock = pygame.time.Clock()    #sets framerate
         #self.font = pygame.font.Font('Arial', 32)   #in-game font
-        self.tilemap = tilemap #added for collision detection 
+        self.tilemap = tilemap[0] #added for collision detection 
         self.running = True     #whether the game should be running or not (set to true on new game)
         self.character_locations = {} 
         self.character_locations["trainer"] = []
+        self.character_locations["nurse"] = []
         self.terrain_spritesheet = Spritesheet('images/img/img/terrain.png')
         self.isDialogTriggered = False
         self.Dialog = Dialog(self,DIALOG_LAYER,self.screen,0)
@@ -25,7 +26,13 @@ class Game:
     def createTilemap(self):
         for i, row in enumerate(self.tilemap):
             for j, column in enumerate(row):
-                Ground(self, j, i)
+                #different backgrounds
+                if self.tilemap == tilemap[0] or self.tilemap == tilemap[1]:
+                    Grass(self, j, i)
+                elif self.tilemap == tilemap1[0] or self.tilemap == tilemap1[1] or self.tilemap == tilemap1[2]:
+                    Path(self, j, i)
+
+                    
                 if column == "B":
                     Block(self, j, i)   #Creates block at position (j,i)
                 elif column == "P":

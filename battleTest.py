@@ -6,6 +6,70 @@ import moves
 import random
 import math
 import moveList
+import pygame
+import battleScreen
+
+
+# # def BattleScreen():
+#     pygame.init()
+#     screen = pygame.display.set_mode((640, 480))
+
+#     # Load the Pokémon images
+#     player_pokemon_image = pygame.image.load('images/pokemon/oshawott.png').convert_alpha()
+#     opponent_pokemon_image = pygame.image.load('images/pokemon/pikachu.png').convert_alpha()
+
+#     font = pygame.font.Font('Adobe Garamond Pro Regular.ttf', 35)
+#     fsu_gold = (206, 184, 136)
+#     button_run = pygame.Rect(150, 300, 100, 50)
+#     button_ball = pygame.Rect(400, 300, 100, 50)
+#     button_fight = pygame.Rect(150, 350, 100, 50)
+#     button_pokemon = pygame.Rect(400, 350, 100, 50)
+#     def display_text(txt, font, color, x, y):
+#         text = font.render(txt, True, color)
+#         screen.blit(text, (x, y))
+    
+#         # Update display
+#     # Main game loop
+#     running = True
+#     while running:
+#         for event in pygame.event.get():
+#             if event.type == pygame.QUIT:
+#                 running = False
+#             # if event.type == pygame.MOUSEBUTTONDOWN:
+#             # Check if the mouse click is within the bounds of any button
+#             if button_run.collidepoint(event.pos):
+#                 print("Run selected")
+#                 # Implement the run logic
+#             elif button_ball.collidepoint(event.pos):
+#                 print("Ball selected")
+#                 # Implement the ball logic
+#             elif button_fight.collidepoint(event.pos):
+#                 print("Fight selected")
+#                 # Implement the fight logic
+#             elif button_pokemon.collidepoint(event.pos):
+#                 print("Pokemon selected")
+#             #need to add player clicks and stuff 
+    
+#         screen.fill((120, 47, 64))  
+
+#         # Draw Pokémon images
+#         screen.blit(player_pokemon_image, (100, 100))  
+#         screen.blit(opponent_pokemon_image, (350, 100))  
+
+#         # Draw text surfaces
+#         display_text("Oshawott", font, fsu_gold, 100, 50)
+#         display_text("Pikachu", font, fsu_gold, 400, 50)
+#         display_text("HP 87/87", font, fsu_gold, 100, 100)
+#         display_text("HP 87/87", font, fsu_gold, 400, 100)
+#         display_text("Run", font, fsu_gold, 150, 300)
+#         display_text("Ball", font, fsu_gold, 400 , 300)
+#         display_text("Fight", font, fsu_gold, 150, 350)
+#         display_text("Pokémon", font, fsu_gold, 400, 350) 
+#         # Update display
+#         pygame.display.flip()
+
+#     pygame.quit()
+
 
 
 def TypeMatchup(type1, type2, moveType):
@@ -292,8 +356,11 @@ def TypeMatchup(type1, type2, moveType):
 
 
 # Choosing the move for a battle
-def BattleMenu():
-    print("1. Move 1\n2. Move 2\n3. Move 3\n4. Move 4\n")
+def BattleMenu(pkmn):
+    print(pkmn.move1.name)
+    print(pkmn.move2.name)
+    print(pkmn.move3.name)
+    print(pkmn.move4.name)
     moveChoice = 0
     while(moveChoice < 1 or moveChoice > 4):
         moveChoice = int(input())
@@ -541,18 +608,22 @@ def CheckDamageStatus(pkmn):
         
 # Battle function that will be looped until either party reaches 0
 def Battle(userP, enemyP):
+    
     userPokemonIndex = 0         # Index of pokemon that is sent out for the user
     enemyPokemonIndex = 0         # Index of pokemon that is sent out for the user
 
     userStatStages = [0, 0, 0, 0, 0]    # Stat Stages go from -6 to 6, ordered as Attack, Defense, Special Attack, Special Defense, Speed
     enemyStatStages = [0, 0, 0, 0, 0]
     
+    
 
     userMove = moveList.NOMOVE
     enemyMove = moveList.NOMOVE
     
     while(True):
-    # Check if the battle should continue
+        # move=battleScreen.BattleScreen(userP, enemyP, userPokemonIndex, enemyPokemonIndex)
+        print(battleScreen.BattleScreen(userP, enemyP, userPokemonIndex, enemyPokemonIndex))
+        # Check if the battle should continue
         if(CheckAliveParty(userP, enemyP) == 1):
             print("Enemy wins!")
             break
@@ -561,32 +632,31 @@ def Battle(userP, enemyP):
             break
         choice = 0
         moveChoice = 0
-        while(choice < 1 or choice > 3):
-            choice = int(input("1. Use Move\n2. Switch Pokemon\n3. Use Item\n "))
+        # while(choice < 1 or choice > 3):
+        #     choice = int(input("1. Use Move\n2. Switch Pokemon\n3. Use Item\n "))
 
         # Select User's Move
-        if(choice == 1):
-            print("Use move")
-            moveIndex = BattleMenu()
-            if(moveIndex == 1):
-                userMove = userP[userPokemonIndex].move1
-            elif(moveIndex == 2):
-                userMove = userP[userPokemonIndex].move2
-            elif(moveIndex == 3):
-                userMove = userP[userPokemonIndex].move3
-            elif(moveIndex == 4):
-                userMove = userP[userPokemonIndex].move4
-
+        # if(choice == 1):
+        #     print("Use move")
+        #     moveIndex = BattleMenu(userP[userPokemonIndex])
+        #     if(moveIndex == 1):
+        #         userMove = userP[userPokemonIndex].move1
+        #     elif(moveIndex == 2):
+        #         userMove = userP[userPokemonIndex].move2
+        #     elif(moveIndex == 3):
+        #         userMove = userP[userPokemonIndex].move3
+        #     elif(moveIndex == 4):
+        #         userMove = userP[userPokemonIndex].move4
         
 
-        elif(choice == 2):
-            print("Switch pkmn")
-            ResetStats(userP[userPokemonIndex], userStatStages)     # Reset stats of the pokemon switched out
-            userPokemonIndex = SwitchMenu(userP, userPokemonIndex) - 1      # Switch the index of the current pokemon to the new one
-            userMove = moveList.NOMOVE
+        # elif(choice == 2):
+        #     print("Switch pkmn")
+        #     ResetStats(userP[userPokemonIndex], userStatStages)     # Reset stats of the pokemon switched out
+        #     userPokemonIndex = SwitchMenu(userP, userPokemonIndex) - 1      # Switch the index of the current pokemon to the new one
+        #     userMove = moveList.NOMOVE
             
-        elif(choice == 3):
-            print("Use item")
+        # elif(choice == 3):
+        #     print("Use item")
         
         eMoveIndex = random.randint(1, 4)
         if(eMoveIndex == 1):

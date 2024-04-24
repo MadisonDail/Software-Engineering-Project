@@ -42,26 +42,26 @@ class Player(Entity):                       #inherit from entity
 
         if current_tile == 'X':
             # Here you can choose which tilemap to switch to
-            self.game.changeMap(tilemap)
-
-        elif current_tile == '0':
-            self.game.changeMap(tilemap0)
-
-        elif current_tile == '1':
-            self.game.changeMap(tilemap1)
+            if self.game.tilemap == tilemap1[0] or self.game.tilemap == tilemap1[1] or self.game.tilemap == tilemap1[2]:
+                self.game.changeMap(tilemap[1])
+            
+        elif current_tile == '1':    #HCB PATH
+            if self.game.tilemap == tilemap[0] or self.game.tilemap == tilemap[1]:    #from spawn to HCB
+                self.game.changeMap(tilemap1[0])
+            elif self.game.tilemap == tilemap2:                                  #from union to HCB path
+                self.game.changeMap(tilemap1[2])
 
         elif current_tile == '2':
-            self.game.changeMap(tilemap2)
+            if self.game.tilemap == tilemap1[0] or self.game.tilemap == tilemap1[1] or self.game.tilemap == tilemap1[2]:
+                self.game.changeMap(tilemap2)
 
-        elif current_tile == '3':
-            self.game.changeMap(tilemap3)
-            
+                
         #battle schemantics 
         if (current_tile == '.' and self.facing != 'battle' and random.randint(1,100) == 1):
             self.trigger_battle()
 
     def trigger_battle(self):
-        print("A WILD POKEMON APPEARS!") #this will be on the actual game screen, just for testing purposes 
+        # print("A WILD POKEMON APPEARS!") #this will be on the actual game screen, just for testing purposes 
         self.facing = 'battle' # self facing battle lets us change 
         # change battle screen 
 
@@ -145,7 +145,7 @@ class Spritesheet:
         sprite.set_colorkey(BLACK)
         return sprite
     
-class Ground(pygame.sprite.Sprite):
+class Grass(pygame.sprite.Sprite):
     def __init__(self, game, x, y):
         self.game = game
         self._layer = GROUND_LAYER
@@ -156,8 +156,23 @@ class Ground(pygame.sprite.Sprite):
         self.y = y* TILE_SIZE
         self.width = TILE_SIZE
         self.height = TILE_SIZE
-
         self.image = self.game.terrain_spritesheet.get_sprite(64, 352, self.width, self.height)
+        self.rect = self.image.get_rect()
+        self.rect.x = self.x
+        self.rect.y = self.y
+
+class Path(pygame.sprite.Sprite):
+    def __init__(self, game, x, y):
+        self.game = game
+        self._layer = GROUND_LAYER
+        self.groups = self.game.all_sprites
+        pygame.sprite.Sprite.__init__(self, self.groups)
+
+        self.x = x * TILE_SIZE
+        self.y = y* TILE_SIZE
+        self.width = TILE_SIZE
+        self.height = TILE_SIZE
+        self.image = self.game.terrain_spritesheet.get_sprite(935, 646, self.width, self.height)
         self.rect = self.image.get_rect()
         self.rect.x = self.x
         self.rect.y = self.y
