@@ -343,10 +343,10 @@ def CheckAlivePokemon(pkmn):
 def CheckPriority(userMove, enemyMove):
     # Checks if user's move has higher priority
     if(userMove.priority > enemyMove.priority):
-        return userMove
+        return 1
     # Checks if enemy's move has higher priority
     elif(enemyMove.priority > userMove.priority):
-        return enemyMove
+        return -1
     # If the priority of the moves are the same, returns 0 to lead to CheckSpeed() where the pokemons' speeds are checked
     else:
         return 0
@@ -378,21 +378,21 @@ def CheckStab(user, moveType):
     else:
         return 1
 
-def UseMove(move, attacker, defender, attckerStats, defenderStats):
+def UseMove(move, attacker, defender, attackerStats, defenderStats):
     # Checks if the move is a status, physical, or special move
     # If it is a status move, check effect
     if(move.category == "ST"):
-        CheckEffect(move, attacker, defender, attckerStats, defenderStats)
+        CheckEffect(move, attacker, defender, attackerStats, defenderStats)
     # If it is a physical or special move, check accuracy, calculate damage and apply secondary effect
     elif(move.category == "SP" or move.category == "PH"):
         if(CheckAccuracy(move)):
             # Uses special defense and special attack if the move is special, regular defense and attack for physical
             if(move.category == "SP"):
-                defender.currentHp -= int(calculateDamage(20, move.damage, attacker.specAttack, defender.specDefense, CheckStab(attacker, move.type), TypeMatchup(defender.type1, defender.type2, move.type)))
-                CheckEffect(move, attacker, defender, attckerStats, defenderStats)
+                defender.currentHp -= int(calculateDamage(20, move.damage, attacker.specAttack + (10 * attackerStats[2]), defender.specDefense + (10 * defenderStats[3]), CheckStab(attacker, move.type), TypeMatchup(defender.type1, defender.type2, move.type)))
+                CheckEffect(move, attacker, defender, attackerStats, defenderStats)
             else:
-                defender.currentHp -= int(calculateDamage(20, move.damage, attacker.attack, defender.defense, CheckStab(attacker, move.type), TypeMatchup(defender.type1, defender.type2, move.type)))
-                CheckEffect(move, attacker, defender, attckerStats, defenderStats)
+                defender.currentHp -= int(calculateDamage(20, move.damage, attacker.attack + (10 * attackerStats[0]), defender.defense + (10 * defenderStats[1]), CheckStab(attacker, move.type), TypeMatchup(defender.type1, defender.type2, move.type)))
+                CheckEffect(move, attacker, defender, attackerStats, defenderStats)
 
 
     pass
@@ -577,15 +577,8 @@ def Battle(userP, enemyP):
             elif(moveIndex == 4):
                 userMove = userP[userPokemonIndex].move4
 
-            eMoveIndex = random.randint(1, 4)
-            if(eMoveIndex == 1):
-                enemyMove = enemyP[enemyPokemonIndex].move1
-            elif(eMoveIndex == 2):
-                enemyMove = enemyP[enemyPokemonIndex].move2
-            elif(eMoveIndex == 3):
-                enemyMove = enemyP[enemyPokemonIndex].move3
-            elif(eMoveIndex == 4):
-                enemyMove = enemyP[enemyPokemonIndex].move4
+        
+
         elif(choice == 2):
             print("Switch pkmn")
             ResetStats(userP[userPokemonIndex], userStatStages)     # Reset stats of the pokemon switched out
@@ -594,6 +587,16 @@ def Battle(userP, enemyP):
             
         elif(choice == 3):
             print("Use item")
+        
+        eMoveIndex = random.randint(1, 4)
+        if(eMoveIndex == 1):
+            enemyMove = enemyP[enemyPokemonIndex].move1
+        elif(eMoveIndex == 2):
+            enemyMove = enemyP[enemyPokemonIndex].move2
+        elif(eMoveIndex == 3):
+            enemyMove = enemyP[enemyPokemonIndex].move3
+        elif(eMoveIndex == 4):
+            enemyMove = enemyP[enemyPokemonIndex].move4
         
         
         # If pokemon switches, reset stats
@@ -629,6 +632,36 @@ def Battle(userP, enemyP):
                         print("Enemy wins!")
                         break
                     UseMove(userMove, userP[userPokemonIndex], enemyP[enemyPokemonIndex], userStatStages, enemyStatStages)
+        else:
+            if(CheckPriority(userMove, enemyMove) > 0):
+                # Use the user's move first
+                # Check Paralysis or sleep
+                if(CheckSkipStatus(userP[userPokemonIndex])):
+                    UseMove(userMove, userP[userPokemonIndex], enemyP[enemyPokemonIndex], userStatStages, enemyStatStages)
+                    if(CheckAlivePokemon(enemyP[enemyPokemonIndex]) == 1):
+                        enemyPokemonIndex += 1
+                        enemyMove = moveList.NOMOVE
+                        print("SWITCH ENEMY")
+                    # if enemy is alive, use enemy move
+                    if(CheckAliveParty(userP, enemyP) == 2):
+                        print("User wins!")
+                        break
+                UseMove(enemyMove, enemyP[enemyPokemonIndex], userP[userPokemonIndex], enemyStatStages, userStatStages)
+            else:
+                # use enemy's move first
+                if(CheckSkipStatus(enemyP[enemyPokemonIndex])):
+                    UseMove(enemyMove, enemyP[enemyPokemonIndex], userP[userPokemonIndex], enemyStatStages, userStatStages)
+                    if(CheckAlivePokemon(userP[userPokemonIndex]) == 1):
+                        print("SWITCH USER")
+                        ResetStats(userP[userPokemonIndex], userStatStages)     # Reset stats of the pokemon switched out
+                        userPokemonIndex = SwitchMenu(userP, userPokemonIndex) - 1      # Switch the index of the current pokemon to the new one
+                        userMove = moveList.NOMOVE
+                    # if user is alive, use user move
+                    if(CheckAliveParty(userP, enemyP) == 1):
+                        print("Enemy wins!")
+                        break
+                UseMove(userMove, userP[userPokemonIndex], enemyP[enemyPokemonIndex], userStatStages, enemyStatStages)
+            pass
             # Check and apply burn or poison
             CheckDamageStatus(userP[userPokemonIndex])
             CheckDamageStatus(enemyP[enemyPokemonIndex])
@@ -647,6 +680,7 @@ def Battle(userP, enemyP):
             if(CheckAliveParty(userP, enemyP) == 2):
                         print("User wins!")
                         break
+
         print("USER HP " + str(userP[userPokemonIndex].currentHp))
 
 
