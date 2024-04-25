@@ -2,12 +2,17 @@ from entity import *
 import pygame
 import random  #battle encounters 
 # import battleTest
+import pokedex 
+import pokemon
+import chooseFighter
+
 class Player(Entity):                       #inherit from entity
     def __init__(self,id,game,layer,x,y,spriteImage,screen):
         super().__init__(id,game,layer,x,y,spriteImage,screen)
         self.x_change = 0   #temp variable to be added to coordinated in update
         self.y_change = 0
         self.facing = 'down'
+        # self.starter = chooseFighter.chooseStarter() # gets first pokemon
 
     def set_position(self,x,y):
         self.rect.topleft = (x*TILE_SIZE,y*TILE_SIZE) 
@@ -76,6 +81,7 @@ class Player(Entity):                       #inherit from entity
                 self.game.changeMap(tilemap5[0])
             elif self.game.tilemap == tilemap6:
                 self.game.changeMap(tilemap5[1])
+            
 
         elif current_tile == '6':   #HWC
             if self.game.tilemap == tilemap5[0] or self.game.tilemap == tilemap5[1]:
@@ -84,6 +90,40 @@ class Player(Entity):                       #inherit from entity
         elif current_tile == '7':
             if self.game.tilemap == tilemap4[0] or self.game.tilemap == tilemap4[1] or self.game.tilemap == tilemap4[2]:
                 self.game.changeMap(tilemap7[0])
+            elif self.game.tilemap == tilemap8[0] or self.game.tilemap == tilemap8[1]:
+                self.game.changeMap(tilemap7[1])
+
+        elif current_tile == '8':
+            if self.game.tilemap == tilemap7[0] or self.game.tilemap == tilemap7[1]:
+                self.game.changeMap(tilemap8[0])
+            elif self.game.tilemap == tilemap9[0] or self.game.tilemap == tilemap9[1]:
+                self.game.changeMap(tilemap8[1])
+            elif self.game.tilemap == tilemap11[0] or self.game.tilemap == tilemap11[1]:
+                self.game.changeMap(tilemap8[2])
+
+        elif current_tile == '9':
+            if self.game.tilemap == tilemap8[0] or self.game.tilemap == tilemap8[1]:
+                self.game.changeMap(tilemap9[0])
+            elif self.game.tilemap == tilemap10:
+                self.game.changeMap(tilemap9[1])
+
+        elif current_tile == '*':   #10
+            if self.game.tilemap == tilemap9[0] or self.game.tilemap == tilemap9[1]:
+                self.game.changeMap(tilemap10)
+
+        elif current_tile == '+':   #11
+            if self.game.tilemap == tilemap8[0] or self.game.tilemap == tilemap8[1] or self.game.tilemap == tilemap8[2]:
+                self.game.changeMap(tilemap11[0])
+            elif self.game.tilemap == tilemap12[0] or self.game.tilemap == tilemap12[1]:
+                self.game.changeMap(tilemap11[1])
+
+        elif current_tile == '=':   #12
+            if self.game.tilemap == tilemap11[0] or self.game.tilemap == tilemap11[1]:
+                self.game.changeMap(tilemap12[0])
+                
+
+            
+
 
 
         
@@ -96,6 +136,8 @@ class Player(Entity):                       #inherit from entity
     def trigger_battle(self):
         print("A WILD POKEMON APPEARS!") #this will be on the actual game screen, just for testing purposes 
         self.facing = 'battle' # self facing battle lets us change 
+        pokemon_battling = random.randint(1,151)
+        print(pokemon_battling)
         # battleTest.Battle()
         # change battle screen 
 
@@ -215,6 +257,3 @@ class Grass(pygame.sprite.Sprite):
         self.rect.x = self.x
         self.rect.y = self.y
 
-class PlayerInventory():
-    def __init__(self, pokeballArr):
-        self.pokeballArr = pokeballArr

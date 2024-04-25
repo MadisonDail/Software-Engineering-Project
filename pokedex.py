@@ -1,7 +1,7 @@
 import pokemon
 import moves
 import moveList
-
+/  []
 # Types Abreviations
 # GRS: Grass,   FIR: Fire,     WTR: Water,     BUG: Bug,       NRM: Normal, 
 # PSN: Poison,  ELC: Electric, GRD: Ground,    FGT: Fighting, 
@@ -71,40 +71,40 @@ Wigglytuff = pokemon.Pokemon(40, "Wigglytuff", 'NRM', 'NONE', 'Torrent', 140, 14
 #need stats for below 
 
 Zubat = pokemon.Pokemon(41, "Zubat", 'PSN', 'FLY', 'Torrent', 40, 40, 45, 35, 30, 40, 55, moveList.HydroPump, moveList.Surf, moveList.Blizzard, moveList.TailWhip)
-Golbat = pokemon.Pokemon(42, "Golbat", 'PSN', 'FLY', "None", 45, 45, 30, 35, 20, 20, 45, moveList.Tackle, moveList.StringShot, moveList.Tackle, moveList.StringShot)
+Golbat = pokemon.Pokemon(42, "Golbat", 'PSN', 'FLY', "None", 75, 75, 80, 70, 65, 75, 90, moveList.Tackle, moveList.StringShot, moveList.Tackle, moveList.StringShot)
 
-Oddish = pokemon.Pokemon(43, "Oddish", 'GRS', 'PSN', 'Overgrow', 45, 45, 49, 49, 65, 65, 45, moveList.Tackle, moveList.Growl, moveList.Absorb, moveList.QuickAttack)
-Gloom = pokemon.Pokemon(44, "Gloom", 'GRS', 'PSN', 'Overgrow', 60, 60, 62, 63, 80, 80, 60, moveList.PoisonPowder, moveList.RazorLeaf, moveList.Tackle, moveList.Growl)
-Vileplume = pokemon.Pokemon(45, "Vileplume", 'GRS', 'PSN', 'Overgrow', 80, 80, 82, 83, 100, 100, 80, moveList.SwordsDance, moveList.RazorLeaf, moveList.PoisonPowder, moveList.Cut)
+Oddish = pokemon.Pokemon(43, "Oddish", 'GRS', 'PSN', 'Overgrow', 45, 45, 50, 55, 75, 65, 30, moveList.Tackle, moveList.Growl, moveList.Absorb, moveList.QuickAttack)
+Gloom = pokemon.Pokemon(44, "Gloom", 'GRS', 'PSN', 'Overgrow', 60, 60, 65, 70, 85, 75, 40, moveList.PoisonPowder, moveList.RazorLeaf, moveList.Tackle, moveList.Growl)
+Vileplume = pokemon.Pokemon(45, "Vileplume", 'GRS', 'PSN', 'Overgrow', 75, 75, 80, 85, 110, 90, 50, moveList.SwordsDance, moveList.RazorLeaf, moveList.PoisonPowder, moveList.Cut)
 
-Paras = pokemon.Pokemon(46, "Paras", 'BUG', 'GRS', 'Blaze', 39, 39, 52, 43, 60, 50, 65, moveList.Scratch, moveList.Growl, moveList.Ember, moveList.QuickAttack)
-Parasect = pokemon.Pokemon(47, "Parasect", 'BUG', 'GRS', 'Blaze', 58, 58, 64, 58, 80, 65, 80, moveList.DragonRage, moveList.Slash, moveList.Growl, moveList.Flamethrower)
+Paras = pokemon.Pokemon(46, "Paras", 'BUG', 'GRS', 'Blaze', 35, 35, 70, 55, 45, 55, 25, moveList.Scratch, moveList.Growl, moveList.Ember, moveList.QuickAttack)
+Parasect = pokemon.Pokemon(47, "Parasect", 'BUG', 'GRS', 'Blaze', 60, 60, 95, 80, 60, 80, 30, moveList.DragonRage, moveList.Slash, moveList.Growl, moveList.Flamethrower)
 
-Venonat = pokemon.Pokemon(48, "Venonat", 'BUG', 'PSN', 'Blaze', 78, 78, 84, 78, 109, 85, 100, moveList.Flamethrower, moveList.Earthquake, moveList.Strength, moveList.SwordsDance)
-Venomoth = pokemon.Pokemon(49, "Venomoth", 'BUG', 'PSN', 'Torrent', 44, 44, 48, 65, 50, 64, 43, moveList.Bubble, moveList.Tackle, moveList.TailWhip, moveList.QuickAttack)
+Venonat = pokemon.Pokemon(48, "Venonat", 'BUG', 'PSN', 'Blaze', 60, 60, 55, 50, 40, 55, 45, moveList.Flamethrower, moveList.Earthquake, moveList.Strength, moveList.SwordsDance)
+Venomoth = pokemon.Pokemon(49, "Venomoth", 'BUG', 'PSN', 'Torrent', 70, 70, 65, 60, 90, 75, 90, moveList.Bubble, moveList.Tackle, moveList.TailWhip, moveList.QuickAttack)
 
-Diglett = pokemon.Pokemon(50, "Diglett", 'GRD', 'NONE', 'Torrent', 59, 59, 63, 80, 65, 80, 58, moveList.WaterGun, moveList.Bite, moveList.TailWhip, moveList.BubbleBeam)
-Dugtrio = pokemon.Pokemon(51, "Dugtrio", 'GRD', 'NONE', 'Torrent', 79, 79, 83, 100, 85, 105, 78, moveList.HydroPump, moveList.Surf, moveList.Blizzard, moveList.TailWhip)
+Diglett = pokemon.Pokemon(50, "Diglett", 'GRD', 'NONE', 'Torrent', 10, 10, 55, 25, 35, 45, 95, moveList.WaterGun, moveList.Bite, moveList.TailWhip, moveList.BubbleBeam)
+Dugtrio = pokemon.Pokemon(51, "Dugtrio", 'GRD', 'NONE', 'Torrent', 35, 35, 100, 50, 50, 70, 120, moveList.HydroPump, moveList.Surf, moveList.Blizzard, moveList.TailWhip)
 
-Meowth = pokemon.Pokemon(52, "Meowth", 'NRM', 'NONE', 'Overgrow', 45, 45, 49, 49, 65, 65, 45, moveList.Tackle, moveList.Growl, moveList.Absorb, moveList.QuickAttack)
-Persian = pokemon.Pokemon(53, "Persian", 'NRM', 'NONE', 'Overgrow', 60, 60, 62, 63, 80, 80, 60, moveList.PoisonPowder, moveList.RazorLeaf, moveList.Tackle, moveList.Growl)
+Meowth = pokemon.Pokemon(52, "Meowth", 'NRM', 'NONE', 'Overgrow', 40, 40, 45, 35, 40, 40, 90, moveList.Tackle, moveList.Growl, moveList.Absorb, moveList.QuickAttack)
+Persian = pokemon.Pokemon(53, "Persian", 'NRM', 'NONE', 'Overgrow', 65, 65, 70, 60, 65, 65, 115, moveList.PoisonPowder, moveList.RazorLeaf, moveList.Tackle, moveList.Growl)
 
-Psyduck = pokemon.Pokemon(54, "Psyduck", 'WTR', 'NONE', 'Overgrow', 80, 80, 82, 83, 100, 100, 80, moveList.SwordsDance, moveList.RazorLeaf, moveList.PoisonPowder, moveList.Cut)
-Golduck = pokemon.Pokemon(55, "Golduck", 'WTR', 'NONE', 'Blaze', 39, 39, 52, 43, 60, 50, 65, moveList.Scratch, moveList.Growl, moveList.Ember, moveList.QuickAttack)
+Psyduck = pokemon.Pokemon(54, "Psyduck", 'WTR', 'NONE', 'Overgrow', 50, 50, 52, 48, 65, 50, 55, moveList.SwordsDance, moveList.RazorLeaf, moveList.PoisonPowder, moveList.Cut)
+Golduck = pokemon.Pokemon(55, "Golduck", 'WTR', 'NONE', 'Blaze', 80, 80, 82, 78, 95, 80, 85, moveList.Scratch, moveList.Growl, moveList.Ember, moveList.QuickAttack)
 
-Mankey = pokemon.Pokemon(56, "Mankey", 'FGT', 'NONE', 'Blaze', 58, 58, 64, 58, 80, 65, 80, moveList.DragonRage, moveList.Slash, moveList.Growl, moveList.Flamethrower)
-Primeape = pokemon.Pokemon(57, "Primeape", 'FGT', 'NONE', 'Blaze', 78, 78, 84, 78, 109, 85, 100, moveList.Flamethrower, moveList.Earthquake, moveList.Strength, moveList.SwordsDance)
+Mankey = pokemon.Pokemon(56, "Mankey", 'FGT', 'NONE', 'Blaze', 40, 40, 80, 35, 35, 45, 70, moveList.DragonRage, moveList.Slash, moveList.Growl, moveList.Flamethrower)
+Primeape = pokemon.Pokemon(57, "Primeape", 'FGT', 'NONE', 'Blaze', 65, 65, 105, 60, 60, 70, 95, moveList.Flamethrower, moveList.Earthquake, moveList.Strength, moveList.SwordsDance)
 
-Growlithe = pokemon.Pokemon(58, "Growlithe", 'FIR', 'NONE', 'Torrent', 44, 44, 48, 65, 50, 64, 43, moveList.Bubble, moveList.Tackle, moveList.TailWhip, moveList.QuickAttack)
-Arcanine = pokemon.Pokemon(59, "Arcanine", 'FIR', 'NONE', 'Torrent', 59, 59, 63, 80, 65, 80, 58, moveList.WaterGun, moveList.Bite, moveList.TailWhip, moveList.BubbleBeam)
+Growlithe = pokemon.Pokemon(58, "Growlithe", 'FIR', 'NONE', 'Torrent', 55, 55, 70, 45, 70, 50, 60, moveList.Bubble, moveList.Tackle, moveList.TailWhip, moveList.QuickAttack)
+Arcanine = pokemon.Pokemon(59, "Arcanine", 'FIR', 'NONE', 'Torrent', 90, 90, 110, 80, 100, 80, 95, moveList.WaterGun, moveList.Bite, moveList.TailWhip, moveList.BubbleBeam)
 
-Poliwag = pokemon.Pokemon(60, "Poliwag", 'WTR', 'NONE', 'Torrent', 79, 79, 83, 100, 85, 105, 78, moveList.HydroPump, moveList.Surf, moveList.Blizzard, moveList.TailWhip)
-Poliwhirl = pokemon.Pokemon(60, "Poliwhirl", 'WTR', 'NONE', 'Torrent', 79, 79, 83, 100, 85, 105, 78, moveList.HydroPump, moveList.Surf, moveList.Blizzard, moveList.TailWhip)
-Poliwrath = pokemon.Pokemon(62, "Poliwrath", 'WTR', 'FGT', "None", 45, 45, 30, 35, 20, 20, 45, moveList.Tackle, moveList.StringShot, moveList.Tackle, moveList.StringShot)
+Poliwag = pokemon.Pokemon(60, "Poliwag", 'WTR', 'NONE', 'Torrent', 40, 40, 50, 40, 40, 40, 90, moveList.HydroPump, moveList.Surf, moveList.Blizzard, moveList.TailWhip)
+Poliwhirl = pokemon.Pokemon(61, "Poliwhirl", 'WTR', 'NONE', 'Torrent', 65, 65, 65, 65, 50, 50, 90, moveList.HydroPump, moveList.Surf, moveList.Blizzard, moveList.TailWhip)
+Poliwrath = pokemon.Pokemon(62, "Poliwrath", 'WTR', 'FGT', "None", 90, 90, 95, 95, 70, 90, 70, moveList.Tackle, moveList.StringShot, moveList.Tackle, moveList.StringShot)
 
-Abra = pokemon.Pokemon(63, "Abra", 'PSY', 'NONE', 'Overgrow', 45, 45, 49, 49, 65, 65, 45, moveList.Harden, moveList.Harden, moveList.Harden, moveList.Harden)
-Kadabra = pokemon.Pokemon(64, "Kadabra", 'PSY', 'NONE', 'Overgrow', 60, 60, 62, 63, 80, 80, 60, moveList.PoisonPowder, moveList.StunSpore, moveList.Gust, moveList.Psybeam)
-Alakazam = pokemon.Pokemon(65, "Alakazam", 'PSY', 'NONE', 'Overgrow', 80, 80, 82, 83, 100, 100, 80, moveList.Tackle, moveList.StringShot, moveList.Tackle, moveList.StringShot)
+Abra = pokemon.Pokemon(63, "Abra", 'PSY', 'NONE', 'Overgrow', 25, 25, 20, 15, 105, 55, 90, moveList.Harden, moveList.Harden, moveList.Harden, moveList.Harden)
+Kadabra = pokemon.Pokemon(64, "Kadabra", 'PSY', 'NONE', 'Overgrow', 40, 40, 35, 30, 120, 70, 105, moveList.PoisonPowder, moveList.StunSpore, moveList.Gust, moveList.Psybeam)
+Alakazam = pokemon.Pokemon(65, "Alakazam", 'PSY', 'NONE', 'Overgrow', 55, 55, 50, 45, 135, 95, 120, moveList.Tackle, moveList.StringShot, moveList.Tackle, moveList.StringShot)
 
 Machop = pokemon.Pokemon(66, "Machop", 'FGT', 'NONE', 'Blaze', 39, 39, 52, 43, 60, 50, 65, moveList.Harden, moveList.Harden, moveList.Harden, moveList.Harden)
 Machoke = pokemon.Pokemon(67, "Machoke", 'FGT', 'NONE', 'Blaze', 58, 58, 64, 58, 80, 65, 80, moveList.PoisonPowder, moveList.StunSpore, moveList.Gust, moveList.Psybeam)

@@ -11,7 +11,7 @@ class Game:
         pygame.init()   #initializing pygame
         self.screen = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))      #creates window for game. parameters are tuple of map dimensions (in pixels)
         self.clock = pygame.time.Clock()    #sets framerate
-        #self.font = pygame.font.Font('Arial', 32)   #in-game font
+        #self.font = pygame.font.Font('Arial', 32)   #in-game font;
         self.tilemap = tilemap[0] #added for collision detection 
         self.running = True     #whether the game should be running or not (set to true on new game)
         self.character_locations = {} 
@@ -57,7 +57,7 @@ class Game:
                     Tile(self, j, i)
                     self.character_locations["nurse"] = [j,i]
                     # NPC("npc",self,PLAYER_LAYER,j,i,player_image,self.screen,self.player)      
-                elif column == "X" or column == '1' or column == '2' or column == '3' or column == '4' or column == '5' or column == '6' or column == '7' or column == '8':
+                elif column == "X" or column == '1' or column == '2' or column == '3' or column == '4' or column == '5' or column == '6' or column == '7' or column == '8' or column == '9' or column == '*' or column == '+' or column == '=' or column == '-':
                     Tile(self, j, i)
                 
     #changes map
@@ -90,6 +90,7 @@ class Game:
 
     def new(self):
         #new game starts
+
         self.playing = True
         self.isFirstGeneration = False
 

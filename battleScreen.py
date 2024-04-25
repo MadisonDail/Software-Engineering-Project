@@ -1,7 +1,7 @@
 import pygame
 import pokemon
 
-def BattleScreen(userP, enemyP, userPokemonIndex, enemyPokemonIndex):
+def BattleScreen(userP, enemyP, userPokemonIndex, enemyPokemonIndex, switchFlag):
     pygame.init()
     screen = pygame.display.set_mode((640, 480))
 
@@ -19,7 +19,7 @@ def BattleScreen(userP, enemyP, userPokemonIndex, enemyPokemonIndex):
         pygame.Rect(400, 350, 100, 50)
     ]
 
-    button_text= ["Run", "Ball", "Fight", "Pokémon"]
+    button_text= ["Run", "Catch", "Fight", "Pokémon"]
 
     fight_buttons = [
         pygame.Rect(150, 300, 100, 50),
@@ -64,60 +64,99 @@ def BattleScreen(userP, enemyP, userPokemonIndex, enemyPokemonIndex):
 
 
     running = True
-    while running:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
-                pygame.quit() #should exit the game if you click x, gives error for now but it exits the screen at least lol
-                # sys.exit()
-            elif event.type == pygame.MOUSEBUTTONDOWN:
-                for rect, index in zip(current_buttons, current_text):
-                    if rect.collidepoint(event.pos):
-                        if fight_options:
-                            if index==index:
-                                move = index
-                                running=False
-                                return "MOVE " + move
-                                # break   
-                                # fight_options=False
-                                # current_buttons = buttons
-                                # current_text = button_text
-                        elif pokemon_options:
-                            if index==index:
-                                pokemon = index
-                                running = False
-                                return "POKEMON " + pokemon
-                        else:
-                            if index=="Fight": #fight index
-                                fight_options = True
-                                current_buttons = fight_buttons
-                                current_text=fight_text
-                            if index=="Run":
-                                pygame.quit()  #doesnt work but quits so fine for rn 
-                            if index=="Pokémon":
-                                pokemon_options = True
-                                current_buttons = pokemon_buttons
-                                current_text=pokemon_text
+    if(not switchFlag):
+        while running:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    running = False
+                    pygame.quit() #should exit the game if you click x, gives error for now but it exits the screen at least lol
+                    # sys.exit()
+                elif event.type == pygame.MOUSEBUTTONDOWN:
+                    for rect, index in zip(current_buttons, current_text):
+                        if rect.collidepoint(event.pos):
+                            if fight_options:
+                                if index==index:
+                                    move = index
+                                    running=False
+                                    return "MOVE " + move
+                                    # break   
+                                    # fight_options=False
+                                    # current_buttons = buttons
+                                    # current_text = button_text
+                            elif pokemon_options:
+                                if index==index:
+                                    pokemon = index
+                                    running = False
+                                    return "POKEMON " + pokemon
                             else:
-                                print(index)
-        screen.fill((120, 47, 64))  
+                                if index=="Fight": #fight index
+                                    fight_options = True
+                                    current_buttons = fight_buttons
+                                    current_text=fight_text
+                                if index=="Run":
+                                    pygame.quit()  #doesnt work but quits so fine for rn 
+                                if index=="Pokémon":
+                                    pokemon_options = True
+                                    current_buttons = pokemon_buttons
+                                    current_text=pokemon_text
+                                if index=="Catch":
+                                    return "CATCH"
+                                else:
+                                    print(index)
+            screen.fill((120, 47, 64)) 
+ 
 
-        # Draw Pokémon images
-        screen.blit(player_pokemon_image, (100, 145))  
-        screen.blit(opponent_pokemon_image, (350, 145))  
+            # Draw Pokémon images
+            screen.blit(player_pokemon_image, (100, 145))  
+            screen.blit(opponent_pokemon_image, (350, 145))  
 
-        # Draw text surfaces
-        display_text(str(userP[userPokemonIndex].name), font, fsu_gold, 100, 50)
-        display_text(str(enemyP[enemyPokemonIndex].name), font, fsu_gold, 400, 50)
-        display_text("HP " + str(userP[userPokemonIndex].currentHp), font, fsu_gold, 110, 100)
-        display_text("HP " + str(enemyP[enemyPokemonIndex].currentHp) , font, fsu_gold, 400, 100)
-        
-        for button, text in zip(current_buttons, current_text):
-            pygame.draw.rect(screen, fsu_red, button)
-            displaytext= font.render(text, True, fsu_gold)
-            screen.blit(displaytext, (button.x, button.y))
+            # Draw text surfaces
+            display_text(str(userP[userPokemonIndex].name), font, fsu_gold, 100, 50)
+            display_text(str(enemyP[enemyPokemonIndex].name), font, fsu_gold, 400, 50)
+            display_text("HP " + str(userP[userPokemonIndex].currentHp), font, fsu_gold, 110, 100)
+            display_text("HP " + str(enemyP[enemyPokemonIndex].currentHp) , font, fsu_gold, 400, 100)
+            
+            for button, text in zip(current_buttons, current_text):
+                pygame.draw.rect(screen, fsu_red, button)
+                displaytext= font.render(text, True, fsu_gold)
+                screen.blit(displaytext, (button.x, button.y))
 
-        pygame.display.flip()
+            pygame.display.flip()
+    else:
+        print("SWITCHING POKEMON")
+        while running:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    running = False
+                    pygame.quit() #should exit the game if you click x, gives error for now but it exits the screen at least lol
+                    # sys.exit()
+                elif event.type == pygame.MOUSEBUTTONDOWN:
+                    for rect, index in zip(current_buttons, current_text):
+                        if rect.collidepoint(event.pos):
+                            if pokemon_options:
+                                if index==index:
+                                    pokemon = index
+                                    running = False
+                                    return "POKEMON " + pokemon
+            screen.fill((120, 47, 64))  
 
-    pygame.quit()
+            # Draw Pokémon images
+            screen.blit(player_pokemon_image, (100, 145))  
+            screen.blit(opponent_pokemon_image, (350, 145))  
+
+            # Draw text surfaces
+            display_text(str(userP[userPokemonIndex].name), font, fsu_gold, 100, 50)
+            display_text(str(enemyP[enemyPokemonIndex].name), font, fsu_gold, 400, 50)
+            display_text("HP " + str(userP[userPokemonIndex].currentHp), font, fsu_gold, 110, 100)
+            display_text("HP " + str(enemyP[enemyPokemonIndex].currentHp) , font, fsu_gold, 400, 100)
+            
+            for button, text in zip(current_buttons, current_text):
+                pygame.draw.rect(screen, fsu_red, button)
+                displaytext= font.render(text, True, fsu_gold)
+                screen.blit(displaytext, (button.x, button.y))
+
+            pygame.display.flip()
+    
+
+        pygame.quit()
 # BattleScreen()

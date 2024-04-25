@@ -282,7 +282,7 @@ tilemap4 = [
 ]
 ]
 
-#path to HWC
+#path to HWC and entrance to leach
 tilemap5= [
 [
     'BBBBBBBBBBBBBBBBBBBB',
@@ -322,7 +322,7 @@ tilemap5= [
 ]
 ]
 
-#HWC
+#HWC and leach
 tilemap6= [
     'BBBBBBBBBBBBBBBBBBBB',
     'BTTTTTTTTTTTTTTTTTTB',
@@ -341,8 +341,9 @@ tilemap6= [
     'BBBBBBBBBBBBBBBBBBBB'
 ]
 
+#between statue and dirac 4 route 
 tilemap7= [[
-    'BBBBBBBB555555BBBBBB',
+    'BBBBBBBBBBBBBBBBBBBB',
     'B..................B',
     'B..................B',
     'B..................B',
@@ -361,7 +362,7 @@ tilemap7= [[
 ,
 #tilemap7[1]
 [
-    'BBBBBBBB555555BBBBBB',
+    'BBBBBBBBBBBBBBBBBBBB',
     'B..................B',
     'B..................B',
     'B..................B',
@@ -376,5 +377,203 @@ tilemap7= [[
     'B..................B',
     'B..................B',
     'BBBBBBBBBBBBBBBBBBBB'
+]
+]
+
+#path near dirac
+tilemap8 = [
+[
+    'BBBBBBBB++++++BBBBBB',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'BBBBBBBBTTTTTTBBBBBB',
+    '7TTTTTTTTTTTTTTTTTT8',
+    '7PTTTTTTTTTTTTTTTTT8',
+    '7TTTTTTTTTTTTTTTTTT8',
+    'BBBBBBBBTTTTTTBBBBBB',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'BBBBBBBB999999BBBBBB'
+]
+,
+#tilemap8[1]
+[
+    'BBBBBBBB++++++BBBBBB',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'BBBBBBBBTTTTTTBBBBBB',
+    '7TTTTTTTTTTTTTTTTTT8',
+    '7TTTTTTTTTTTTTTTTTT8',
+    '7TTTTTTTTTTTTTTTTTT8',
+    'BBBBBBBBTTTTTTBBBBBB',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTPTTT.....B',
+    'BBBBBBBB999999BBBBBB'
+]
+,
+#tilemap8[2]
+[
+    'BBBBBBBB++++++BBBBBB',
+    'B.......TTPTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'BBBBBBBBTTTTTTBBBBBB',
+    '7TTTTTTTTTTTTTTTTTT8',
+    '7TTTTTTTTTTTTTTTTTT8',
+    '7TTTTTTTTTTTTTTTTTT8',
+    'BBBBBBBBTTTTTTBBBBBB',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'BBBBBBBB999999BBBBBB'
+]
+]
+
+#path into dirac
+tilemap9= [
+[
+    'BBBBBBBB888888BBBBBB',
+    'B.......TTPTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    '*TTTTTTTTTTTTT.....B',
+    '*TTTTTTTTTTTTT.....B',
+    '*TTTTTTTTTTTTT.....B',
+    'B..................B',
+    'B..................B',
+    'B..................B',
+    'B..................B',
+    'BBBBBBBBBBBBBBBBBBBB'
+]   
+,
+#tilemap9[1]
+[
+    'BBBBBBBB888888BBBBBB',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    '*TTTTTTTTTTTTT.....B',
+    '*PTTTTTTTTTTTT.....B',
+    '*TTTTTTTTTTTTT.....B',
+    'B..................B',
+    'B..................B',
+    'B..................B',
+    'B..................B',
+    'BBBBBBBBBBBBBBBBBBBB'
+]
+]
+
+#Dirac
+tilemap10 = [
+    'BBBBBBBBBBBBBBBBBBBB',
+    'BTTTTTTTTTTTTTTTTTTB',
+    'BTTTTTTTTTTTTTTTTTTB',
+    'BTTTTTTTTTTTTTTTTTTB',
+    'BTTTTTTTTTTTTTTTTTTB',
+    'BTTTTTTTTTTTTTTTTTTB',
+    'BTTTTTTTTTTTTTTTTTT9',
+    'BTTTTTTTTTNTTTTTTTP9',
+    'BTTTTTTTTTTTTTTTTTT9',
+    'BTTTTTTTTTTTTTTTTTTB',
+    'BTTTTTTTTTTTTTTTTTTB',
+    'BTTTTTTTTTTTTTTTTTTB',
+    'BTTTTTTTTTTTTTTTTTTB',
+    'BTTTTTTTTTTTTTTTTTTB',
+    'BBBBBBBBBBBBBBBBBBBB'
+]
+
+#path to leach
+tilemap11= [
+[
+    'BBBBBBBB======BBBBBB',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTPTTT.....B',
+    'BBBBBBBB888888BBBBBB'
+]
+,
+#tilemap11[1]
+[
+    'BBBBBBBB======BBBBBB',
+    'B.......TTPTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'BBBBBBBB888888BBBBBB'
+]
+]
+
+#entrance to leach (-)
+tilemap12= [
+[
+    'BBBBBBBBBBBBBBBBBBBB',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTTTTTTT-',
+    'B.......TTTTTTTTTTT-',
+    'B.......TTTTTTTTTTT-',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTPTTT.....B',
+    'BBBBBBBB++++++BBBBBB'  
+]
+,
+#tilemap12[1]
+[
+    'BBBBBBBBBBBBBBBBBBBB',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTTTTTTT-',
+    'B.......TTTTTTTTTTP-',
+    'B.......TTTTTTTTTTT-',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'BBBBBBBB++++++BBBBBB' 
 ]
 ]

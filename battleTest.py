@@ -608,9 +608,9 @@ def CheckDamageStatus(pkmn):
     if(pkmn.status == "BRN" or pkmn.status == "PSN"):
         pkmn.currentHp -= int(pkmn.hp / 16)
 
-def CatchPokemon(ball):
+def CatchPokemon():
     chance = random.randint(0, 100)
-    if(chance < ball.catchRate):
+    if(chance < 35):
         return True
     else:
         return False
@@ -633,7 +633,8 @@ def Battle(userP, enemyP, battleType):
     while(True):
         # move=battleScreen.BattleScreen(userP, enemyP, userPokemonIndex, enemyPokemonIndex)
         # print(battleScreen.BattleScreen(userP, enemyP, userPokemonIndex, enemyPokemonIndex))
-        choice = battleScreen.BattleScreen(userP, enemyP, userPokemonIndex, enemyPokemonIndex).split()
+        choice = battleScreen.BattleScreen(userP, enemyP, userPokemonIndex, enemyPokemonIndex, False).split()
+        print(choice)
         if(choice[0] == "MOVE"):
             # use move
             if(choice[1] == userP[userPokemonIndex].move1.name):
@@ -652,6 +653,15 @@ def Battle(userP, enemyP, battleType):
                     userPokemonIndex = ind
                     userMove = moveList.NOMOVE
                 ind += 1
+        elif(choice[0] == "CATCH"):
+            if(battleType == "WILD"):
+                if(CatchPokemon()):
+                    if(len(userP) < 6):
+                        userP.append(enemyP[enemyPokemonIndex])
+                        print("CAUGHT")
+                        break
+                    else:
+                        userMove = userP[userPokemonIndex].move1
 
         # Check if the battle should continue
         if(CheckAliveParty(userP, enemyP) == 1):
@@ -723,6 +733,9 @@ def Battle(userP, enemyP, battleType):
                     UseMove(enemyMove, enemyP[enemyPokemonIndex], userP[userPokemonIndex], enemyStatStages, userStatStages)
                     if(CheckAlivePokemon(userP[userPokemonIndex]) == 1):
                         print("SWITCH USER")
+                        switchFlag = True
+                        switch = battleScreen.BattleScreen(userP, enemyP, userPokemonIndex, enemyPokemonIndex, switchFlag)
+                        switchFlag = False
                         ResetStats(userP[userPokemonIndex], userStatStages)     # Reset stats of the pokemon switched out
                         userPokemonIndex = SwitchMenu(userP, userPokemonIndex) - 1      # Switch the index of the current pokemon to the new one
                         userMove = moveList.NOMOVE
@@ -757,6 +770,9 @@ def Battle(userP, enemyP, battleType):
                     if(CheckAlivePokemon(userP[userPokemonIndex]) == 1):
                         print("SWITCH USER")
                         ResetStats(userP[userPokemonIndex], userStatStages)     # Reset stats of the pokemon switched out
+                        switchFlag = True
+                        switch = battleScreen.BattleScreen(userP, enemyP, userPokemonIndex, enemyPokemonIndex, switchFlag)
+                        switchFlag = False
                         userPokemonIndex = SwitchMenu(userP, userPokemonIndex) - 1      # Switch the index of the current pokemon to the new one
                         userMove = moveList.NOMOVE
                     # if user is alive, use user move
@@ -805,11 +821,9 @@ userParty.append(pokedex.Ivysaur)
 userParty.append(pokedex.Charizard)
 userParty.append(pokedex.Venusaur)
 userParty.append(pokedex.Charmeleon)
-userParty.append(pokedex.Wartortle)
 
 
 enemyParty.append(pokedex.Bulbasaur)
-enemyParty.append(pokedex.Pikachu)
 #enemyParty.append(pokedex.Charmeleon)
 #enemyParty.append(pokedex.Blastoise)
 
@@ -817,7 +831,9 @@ enemyParty.append(pokedex.Pikachu)
 
 
 
-Battle(userParty, enemyParty)
+Battle(userParty, enemyParty, "WILD")
+for name in userParty:
+    print(name.name)
 
 
 
