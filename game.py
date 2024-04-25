@@ -27,33 +27,39 @@ class Game:
         for i, row in enumerate(self.tilemap):
             for j, column in enumerate(row):
                 #different backgrounds
-                if self.tilemap == tilemap[0] or self.tilemap == tilemap[1]:
-                    Grass(self, j, i)
-                elif self.tilemap == tilemap1[0] or self.tilemap == tilemap1[1] or self.tilemap == tilemap1[2]:
-                    Path(self, j, i)
+                Grass(self, j, i)
 
                     
                 if column == "B":
                     Block(self, j, i)   #Creates block at position (j,i)
+                elif column == "T":
+                    Tile(self, j, i)   #Creates block at position (j,i)
                 elif column == "P":
+                    Tile(self, j, i)
                     self.setplayer(j,i) #create player at position (j,i) 
                 elif column == "U":     #store trainer locations along with facing direction(ex. U is up)
+                    Tile(self, j, i)
                     temp = self.character_locations["trainer"]
                     temp.append([j,i,"up"])
                 elif column == "R":
+                    Tile(self, j, i)
                     temp = self.character_locations["trainer"]
                     temp.append([j,i,"right"])
                 elif column == "D":
+                    Tile(self, j, i)
                     temp = self.character_locations["trainer"]
                     temp.append([j,i,"down"])
                 elif column == "L":
+                    Tile(self, j, i)
                     temp = self.character_locations["trainer"]
                     temp.append([j,i,"left"])
                 elif column == "N":
+                    Tile(self, j, i)
                     self.character_locations["nurse"] = [j,i]
                     # NPC("npc",self,PLAYER_LAYER,j,i,player_image,self.screen,self.player)      
-                elif column == "X":
-                    pass #Door(j, i, layer, nextscreen)     #creates tile that moves player to other screen/area
+                elif column == "X" or column == '1' or column == '2' or column == '3' or column == '4' or column == '5' or column == '6' or column == '7' or column == '8':
+                    Tile(self, j, i)
+                
     #changes map
 
     def setplayer(self,j,i):
@@ -101,8 +107,8 @@ class Game:
     def events(self,events):   #any event (any key pressed events)
         for event in events:        #gets every event that happens in pygame
             if event.type == pygame.QUIT:
-                self.playing = False
-                self.running = False
+                pygame.quit()
+                sys.exit() #quits game so doesnt go back to the menu screen when click x 
 
     def update(self,events):   #updates image
         # self.all_sprites.update(events)       #finds update method in every sprite object 

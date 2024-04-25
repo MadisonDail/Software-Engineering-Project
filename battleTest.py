@@ -468,6 +468,7 @@ def UseMove(move, attacker, defender, attackerStats, defenderStats):
 def CheckEffect(move, userPokemon, enemyPokemon, attackerStats, defenderStats):
     splitEffect = move.secondaryEffect.split()
     if(splitEffect[0] == "NONE"):
+        
         return
     if(splitEffect[0] == "SELF"):
         # Apply Effect to userPokemon
@@ -547,9 +548,9 @@ def ApplyEffect(effect, pkmn, stats):
 def ResetStats(currentPokemon, statStages):
     for i in range(5):
         statStages[i] = 0
-    currentPokemon.currentAttack = currentPokemon.attack;
+    currentPokemon.currentAttack = currentPokemon.attack
     currentPokemon.currentDefense = currentPokemon.defense
-    currentPokemon.currentSpecAttack = currentPokemon.specAttack;
+    currentPokemon.currentSpecAttack = currentPokemon.specAttack
     currentPokemon.currentSpecDefense = currentPokemon.specDefense
     currentPokemon.currentSpeed = currentPokemon.speed
     
@@ -580,7 +581,8 @@ def calculateDamage(userLvl, movePower, userAtk, enemyDef, stab, typeMult):
     step2 = (step1 * movePower * (float(userAtk) / float(enemyDef)))
     step3 = (step2 / 50.0) + 2.0
     step4 = step3 * stab * typeMult * randomNum
-    return step4
+    print("DAMAGE " + str(step4))
+    return int(step4)
 
 def CheckSkipStatus(pkmn):
     # Checks statuses that cause a skipped turn (Paralysis and Sleep)
@@ -604,7 +606,7 @@ def CheckSkipStatus(pkmn):
 def CheckDamageStatus(pkmn):
     # Checks statuses that cause pokemon to take damage each turn, burn or poison
     if(pkmn.status == "BRN" or pkmn.status == "PSN"):
-        pkmn.currentHp -= pkmn.hp / 16
+        pkmn.currentHp -= int(pkmn.hp / 16)
         
 # Battle function that will be looped until either party reaches 0
 def Battle(userP, enemyP):
@@ -622,7 +624,27 @@ def Battle(userP, enemyP):
     
     while(True):
         # move=battleScreen.BattleScreen(userP, enemyP, userPokemonIndex, enemyPokemonIndex)
-        print(battleScreen.BattleScreen(userP, enemyP, userPokemonIndex, enemyPokemonIndex))
+        # print(battleScreen.BattleScreen(userP, enemyP, userPokemonIndex, enemyPokemonIndex))
+        choice = battleScreen.BattleScreen(userP, enemyP, userPokemonIndex, enemyPokemonIndex).split()
+        if(choice[0] == "MOVE"):
+            # use move
+            if(choice[1] == userP[userPokemonIndex].move1.name):
+                userMove = userP[userPokemonIndex].move1
+            elif(choice[1] == userP[userPokemonIndex].move2.name):
+                userMove = userP[userPokemonIndex].move2
+            elif(choice[1] == userP[userPokemonIndex].move3.name):
+                userMove = userP[userPokemonIndex].move3
+            elif(choice[1] == userP[userPokemonIndex].move4.name):
+                userMove = userP[userPokemonIndex].move4
+        elif(choice[0] == "POKEMON"):
+            # switch pokemon
+            ind = 0
+            for pokeName in userP:
+                if(choice[1] == pokeName.name):
+                    userPokemonIndex = ind
+                    userMove = moveList.NOMOVE
+                ind += 1
+
         # Check if the battle should continue
         if(CheckAliveParty(userP, enemyP) == 1):
             print("Enemy wins!")
@@ -630,8 +652,8 @@ def Battle(userP, enemyP):
         elif(CheckAliveParty(userP, enemyP) == 2):
             print("User wins!")
             break
-        choice = 0
-        moveChoice = 0
+        # choice = 0
+        # moveChoice = 0
         # while(choice < 1 or choice > 3):
         #     choice = int(input("1. Use Move\n2. Switch Pokemon\n3. Use Item\n "))
 
@@ -687,7 +709,7 @@ def Battle(userP, enemyP):
                     if(CheckAliveParty(userP, enemyP) == 2):
                         print("User wins!")
                         break
-                    UseMove(enemyMove, enemyP[enemyPokemonIndex], userP[userPokemonIndex], enemyStatStages, userStatStages)
+                UseMove(enemyMove, enemyP[enemyPokemonIndex], userP[userPokemonIndex], enemyStatStages, userStatStages)
             else:
                 # use enemy's move first
                 if(CheckSkipStatus(enemyP[enemyPokemonIndex])):
@@ -701,13 +723,17 @@ def Battle(userP, enemyP):
                     if(CheckAliveParty(userP, enemyP) == 1):
                         print("Enemy wins!")
                         break
-                    UseMove(userMove, userP[userPokemonIndex], enemyP[enemyPokemonIndex], userStatStages, enemyStatStages)
+                UseMove(userMove, userP[userPokemonIndex], enemyP[enemyPokemonIndex], userStatStages, enemyStatStages)
         else:
+            print("HIGHER PRIORITY")
             if(CheckPriority(userMove, enemyMove) > 0):
                 # Use the user's move first
                 # Check Paralysis or sleep
                 if(CheckSkipStatus(userP[userPokemonIndex])):
+                    print(enemyP[enemyPokemonIndex].name)
+                    print(enemyP[enemyPokemonIndex].currentHp)
                     UseMove(userMove, userP[userPokemonIndex], enemyP[enemyPokemonIndex], userStatStages, enemyStatStages)
+                    print(enemyP[enemyPokemonIndex].currentHp)
                     if(CheckAlivePokemon(enemyP[enemyPokemonIndex]) == 1):
                         enemyPokemonIndex += 1
                         enemyMove = moveList.NOMOVE
@@ -731,7 +757,6 @@ def Battle(userP, enemyP):
                         print("Enemy wins!")
                         break
                 UseMove(userMove, userP[userPokemonIndex], enemyP[enemyPokemonIndex], userStatStages, enemyStatStages)
-            pass
             # Check and apply burn or poison
             CheckDamageStatus(userP[userPokemonIndex])
             CheckDamageStatus(enemyP[enemyPokemonIndex])
@@ -771,17 +796,18 @@ enemyParty = []
 userParty.append(pokedex.Squirtle)
 userParty.append(pokedex.Ivysaur)
 userParty.append(pokedex.Charizard)
+userParty.append(pokedex.Venusaur)
+userParty.append(pokedex.Charmeleon)
+userParty.append(pokedex.Wartortle)
+
 
 enemyParty.append(pokedex.Bulbasaur)
+enemyParty.append(pokedex.Pikachu)
 #enemyParty.append(pokedex.Charmeleon)
 #enemyParty.append(pokedex.Blastoise)
 
 # Battle(userParty, enemyParty)
-print(TypeMatchup("RCK", "STL", "NRM"))
-for j in userParty:
-    print(j.name)
-for i in enemyParty:
-    print(i.name)
+
 
 
 Battle(userParty, enemyParty)

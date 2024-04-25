@@ -40,15 +40,11 @@ class NewGameScreen:
                         self.active = False
                     # If the user clicked on the Start Game button.
                     if start_game_btn.collidepoint(event.pos):
-                        print(f"Starting New Game: {self.game_name}")
-                        g=game.Game()
-                        g.new()
-                        while g.running:
-                            pygame.display.set_caption(f"{self.game_name}") #Updates caption for the game screen
-                            g.main()
-                            g.game_over()
+                        self.start_new_game()
                         # Will trnasition to new game 
                 elif event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_RETURN:
+                        self.start_new_game()
                     if self.active:
                         if event.key == pygame.K_BACKSPACE: #accounts for backspaces
                             self.game_name = self.game_name[:-1]
@@ -61,7 +57,15 @@ class NewGameScreen:
     def display_text(self, txt, font, color, x, y):
         text_surf = font.render(txt, True, color)
         self.screen.blit(text_surf, (x, y))
-
+    def start_new_game(self):
+        # Logic to start a new game goes here
+        print(f"Starting New Game: {self.game_name}")
+        g = game.Game()  # Create a new Game instance
+        g.new()  # Set up a new game
+        while g.running:
+            pygame.display.set_caption(f"{self.game_name}")  
+            g.main() 
+            g.game_over()  
 
 class LoadScreen:
     def __init__(self, screen):

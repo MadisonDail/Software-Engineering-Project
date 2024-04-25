@@ -52,114 +52,329 @@ tilemap_template=[
 #spawn/landis (64, 352)
 tilemap = [[         
     'BBBBBBBBBBBBBBBBBBBB',
-    'B..................B',
-    'B..................B',
-    'B..................B',
-    'B....D.............B',
-    'B..................B',
-    'B..................B',
-    'B.........P........B',
-    'B..................B',
-    'B............N.....B',
-    'B..................B',
-    'B..................B',
-    'B..................B',
-    'B..................B',
-    'BBBBBBBBB11BBBBBBBBB'
+    'BT.......T........TB',
+    'BT......T.T.......TB',
+    'BT.....T...T......TB',
+    'BT....T.....T.....TB',
+    'BT...T.......T....TB',
+    'BT..T.........T...TB',
+    'BTTTTTTTTPTTTTTTTTNB',
+    'BT..T.........T...TB',
+    'BT...T.......T....TB',
+    'BT....T.....T.....TB',
+    'BT.....T...T......TB',
+    'BT......T.T.......TB',
+    'BT.......T........TB',
+    'BBBBBBBB11111BBBBBBB'
 ]
 ,
 #tilemap[1]
 [   'BBBBBBBBBBBBBBBBBBBB',
-    'B..................B',
-    'B..................B',
-    'B..................B',
-    'B....D.............B',
-    'B..................B',
-    'B..................B',
-    'B..................B',
-    'B..................B',
-    'B............N.....B',
-    'B..................B',
-    'B..................B',
-    'B..................B',
-    'B.........P........B',
-    'BBBBBBBBB11BBBBBBBBB'
+    'BT.......T........TB',
+    'BT......T.T.......TB',
+    'BT.....T...T......TB',
+    'BT....T.....T.....TB',
+    'BT...T.......T....TB',
+    'BT..T.........T...TB',
+    'BTTTTTTTTTTTTTTTTTNB',
+    'BT..T.........T...TB',
+    'BT...T.......T....TB',
+    'BT....T.....T.....TB',
+    'BT.....T...T......TB',
+    'BT......T.T.......TB',
+    'BT.......P........TB',
+    'BBBBBBBB11111BBBBBBB'
 ]
 ]
 
 
 #Path near HCB (935, 646)
 tilemap1 = [[                   
-    'BBBBBBBBBXXBBBBBBBBB',
-    'B......B..P..B.....B',
-    'B......B.....B.....B',
-    'B......B.....B.....B',
-    'B......B.....B.....B',
-    'B......B.....BBBBBBB',
-    'B......B...........X',
-    'B..................X',
-    'B......B...........X',
-    'B......B.....BBBBBBB',
-    'B......B.....B.....B',
-    'B......B.....B.....B',
-    'B......B.....B.....B',
-    'B......B.....B.....B',
-    'BBBBBBBBB22BBBBBBBBB'
+    'BBBBBBBBXXXXXBBBBBBB',
+    'B......BTTPTTB.....B',
+    'B......BTTTTTB.....B',
+    'B......BTTTTTB.....B',
+    'B......BTTTTTB.....B',
+    'B......BTTTTTBBBBBBB',
+    'B......DTTTTTTTTTTT4',
+    'B.......TTTTTTTTTTT4',
+    'B.......TTTTTTTTTTT4',
+    'B......BTTTTTBBBBBBB',
+    'B......BTTTTTB.....B',
+    'B......BTTTTTB.....B',
+    'B......BTTTTTB.....B',
+    'B......BTTTTTB.....B',
+    'BBBBBBBB22222BBBBBBB'
 ]
 ,
 #tilemap1[1]
 [   
-    'BBBBBBBBBXXBBBBBBBBB',
-    'B......B.....B.....B',
-    'B......B.....B.....B',
-    'B......B.....B.....B',
-    'B......B.....B.....B',
-    'B......B.....BBBBBBB',
-    'B......B...........X',
-    'B.................PX',
-    'B......B...........X',
-    'B......B.....BBBBBBB',
-    'B......B.....B.....B',
-    'B......B.....B.....B',
-    'B......B.....B.....B',
-    'B......B.....B.....B',
-    'BBBBBBBBB22BBBBBBBBB'
+    'BBBBBBBBXXXXXBBBBBBB',
+    'B......BTTPTTB.....B',
+    'B......BTTTTTB.....B',
+    'B......BTTTTTB.....B',
+    'B......BTTTTTB.....B',
+    'B......BTTTTTBBBBBBB',
+    'B......DTTTTTTTTTTT4',
+    'B.......TTTTTTTTTTP4',
+    'B.......TTTTTTTTTTT4',
+    'B......BTTTTTBBBBBBB',
+    'B......BTTTTTB.....B',
+    'B......BTTTTTB.....B',
+    'B......BTTTTTB.....B',
+    'B......BTTTTTB.....B',
+    'BBBBBBBB22222BBBBBBB'
 ]
 ,
 #tilemap1[2]
 [
-    'BBBBBBBBBXXBBBBBBBBB',
-    'B......B.....B.....B',
-    'B......B.....B.....B',
-    'B......B.....B.....B',
-    'B......B.....B.....B',
-    'B......B.....BBBBBBB',
-    'B......B...........X',
-    'B..................X',
-    'B......B...........X',
-    'B......B.....BBBBBBB',
-    'B......B.....B.....B',
-    'B......B.....B.....B',
-    'B......B.....B.....B',
-    'B......B..P..B.....B',
-    'BBBBBBBBB22BBBBBBBBB'
+    'BBBBBBBBXXXXXBBBBBBB',
+    'B......BTTTTTB.....B',
+    'B......BTTTTTB.....B',
+    'B......BTTTTTB.....B',
+    'B......BTTTTTB.....B',
+    'B......BTTTTTBBBBBBB',
+    'B......DTTTTTTTTTTT4',
+    'B.......TTTTTTTTTTT4',
+    'B.......TTTTTTTTTTT4',
+    'B......BTTTTTBBBBBBB',
+    'B......BTTTTTB.....B',
+    'B......BTTTTTB.....B',
+    'B......BTTTTTB.....B',
+    'B......BTTPTTB.....B',
+    'BBBBBBBB22222BBBBBBB'
+]
+,
+#tilemap1[3]
+[
+    'BBBBBBBBXXXXXBBBBBBB',
+    'B......BTTTTTB.....B',
+    'B......BTTTTTB.....B',
+    'B......BTTTTTB.....B',
+    'B......BTTTTTB.....B',
+    'B......BTTTTTBBBBBBB',
+    'B......DTTTTTTTTTTT4',
+    'B.......TTTTTTTTTTP4',
+    'B.......TTTTTTTTTTT4',
+    'B......BTTTTTBBBBBBB',
+    'B......BTTTTTB.....B',
+    'B......BTTTTTB.....B',
+    'B......BTTTTTB.....B',
+    'B......BTTTTTB.....B',
+    'BBBBBBBB22222BBBBBBB'
 ]
 ]
 
-tilemap2=[
-    'BBBBBBBBB11BBBBBBBBB',
-    'B.........P........B',
+#area outside union
+tilemap2=[[
+    'BBBBBBBB11111BBBBBBB',
+    'B.......TTPTT......B',
+    'B.......TTTTT......B',
+    'B.......TTTTT......B',
+    'B.......TTTTT......B',
+    'B.......TTTTT......B',
+    'B.......TTTTT......B',
+    'B.......TTTTT......B',
+    'B.......TTTTT......B',
+    'B.......TTTTT......B',
+    'B.......TTTTT......B',
+    'B.......TTTTT......B',
+    '3TTTTTTTTTTTT......B',
+    '3TTTTTTTTTTTT......B',
+    'BBBBBBBBBBBBBBBBBBBB'
+]
+,
+#tilemap2[1]
+[
+    'BBBBBBBB11111BBBBBBB',
+    'B.......TTTTT......B',
+    'B.......TTTTT......B',
+    'B.......TTTTT......B',
+    'B.......TTTTT......B',
+    'B.......TTTTT......B',
+    'B.......TTTTT......B',
+    'B.......TTTTT......B',
+    'B.......TTTTT......B',
+    'B.......TTTTT......B',
+    'B.......TTTTT......B',
+    'B.......TTTTT......B',
+    '3PTTTTTTTTTTT......B',
+    '3TTTTTTTTTTTT......B',
+    'BBBBBBBBBBBBBBBBBBBB'
+]
+]
+
+#union
+tilemap3 = [
+    'BBBBBBBBBBBBBBBBBBBB',
+    'BTTTTTTTTTTTTTTTTTTB',
+    'BTTTTTTTTTTTTTTTTTTB',
+    'BTTTTTTTTTTTTTTTTTTB',
+    'BTTTTTTTTTTTTTTTTTTB',
+    'BTTTTTTTTTTTTTTTTTTB',
+    'BTTTTTTTTTTTTTTTTTTB',
+    'BTTTTTTTTTNTTTTTTTTB',
+    'BTTTTTTTTTTTTTTTTTTB',
+    'BTTTTTTTTTTTTTTTTTTB',
+    'BTTTTTTTTTTTTTTTTTTB',
+    'BTTTTTTTTTTTTTTTTTTB',
+    'BTTTTTTTTTTTTTTTTTP2',
+    'BTTTTTTTTTTTTTTTTTT2',
+    'BBBBBBBBBBBBBBBBBBBB'
+]
+
+#statue area
+tilemap4 = [
+[
+    'BBBBBBBB555555BBBBBB',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B......TTTTTTTT....B',
+    'B.....TTBBBBBBTT...B',
+    '1TTTTTTBTTTTTTBTTTT7',
+    '1PTTTTTBTTTTTTBTTTT7',
+    '1TTTTTTBTTTTTTBTTTT7',
+    'B.....TTBBBBBBTT...B',
+    'B......TTTTTTTT....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'BBBBBBBBBBBBBBBBBBBB'
+]
+,
+#tilemeap4[1]
+[
+    'BBBBBBBB555555BBBBBB',
+    'B.......TTPTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B......TTTTTTTT....B',
+    'B.....TTBBBBBBTT...B',
+    '1TTTTTTBTTTTTTBTTTT7',
+    '1TTTTTTBTTTTTTBTTTT7',
+    '1TTTTTTBTTTTTTBTTTT7',
+    'B.....TTBBBBBBTT...B',
+    'B......TTTTTTTT....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'BBBBBBBBBBBBBBBBBBBB'
+]
+,
+#tilemap4[2]
+[
+    'BBBBBBBB555555BBBBBB',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B......TTTTTTTT....B',
+    'B.....TTBBBBBBTT...B',
+    '1TTTTTTBTTTTTTBTTTT7',
+    '1TTTTTTBTTTTTTBTTTP7',
+    '1TTTTTTBTTTTTTBTTTT7',
+    'B.....TTBBBBBBTT...B',
+    'B......TTTTTTTT....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'BBBBBBBBBBBBBBBBBBBB'
+]
+]
+
+#path to HWC
+tilemap5= [
+[
+    'BBBBBBBBBBBBBBBBBBBB',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTTTTTTT6',
+    'B.......TTTTTTTTTTT6',
+    'B.......TTTTTTTTTTT6',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTPTTT.....B',
+    'BBBBBBBB444444BBBBBB'        
+]
+,
+#tilemap5[1]
+[
+    'BBBBBBBBBBBBBBBBBBBB',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTTTTTTT6',
+    'B.......TTTTTTTTTTP6',
+    'B.......TTTTTTTTTTT6',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....B',
+    'BBBBBBBB444444BBBBBB' 
+]
+]
+
+#HWC
+tilemap6= [
+    'BBBBBBBBBBBBBBBBBBBB',
+    'BTTTTTTTTTTTTTTTTTTB',
+    '5TTTTTTTTTTTTTTTTTTB',
+    '5PTTTTTTTTTTTTTTTTTB',
+    '5TTTTTTTTTTTTTTTTTTB',
+    'BTTTTTTTTTTTTTTTTTTB',
+    'BTTTTTTTTTTTTTTTTTTB',
+    'BTTTTTTTTTNTTTTTTTTB',
+    'BTTTTTTTTTTTTTTTTTTB',
+    'BTTTTTTTTTTTTTTTTTTB',
+    'BTTTTTTTTTTTTTTTTTTB',
+    'BTTTTTTTTTTTTTTTTTTB',
+    'BTTTTTTTTTTTTTTTTTTB',
+    'BTTTTTTTTTTTTTTTTTTB',
+    'BBBBBBBBBBBBBBBBBBBB'
+]
+
+tilemap7= [[
+    'BBBBBBBB555555BBBBBB',
     'B..................B',
     'B..................B',
     'B..................B',
     'B..................B',
-    'B..................B',
-    'B..................B',
-    'B..................B',
-    'B..................B',
+    'BBBBBBBBBBBBBBBBBBBB',
+    '4TTTTTTTTTTTTTTTTTT8',
+    '4PTTTTTTTTTTTTTTTTT8',
+    '4TTTTTTTTTTTTTTTTTT8',
+    'BBBBBBBBBBBBBBBBBBBB',
     'B..................B',
     'B..................B',
     'B..................B',
     'B..................B',
     'BBBBBBBBBBBBBBBBBBBB'
+]
+,
+#tilemap7[1]
+[
+    'BBBBBBBB555555BBBBBB',
+    'B..................B',
+    'B..................B',
+    'B..................B',
+    'B..................B',
+    'BBBBBBBBBBBBBBBBBBBB',
+    '4TTTTTTTTTTTTTTTTTT8',
+    '4TTTTTTTTTTTTTTTTTP8',
+    '4TTTTTTTTTTTTTTTTTT8',
+    'BBBBBBBBBBBBBBBBBBBB',
+    'B..................B',
+    'B..................B',
+    'B..................B',
+    'B..................B',
+    'BBBBBBBBBBBBBBBBBBBB'
+]
 ]

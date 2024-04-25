@@ -19,8 +19,8 @@ class Pokemon:
         self.currentSpecDefense = specDefense #pokemon's current special defense (in battle)
         self.speed = speed #pokemon's speed
         self.currentSpeed = speed #pokemon's current speed (in battle)
-        self.move1 = move1;
-        self.move2 = move2;
-        self.move3 = move3;
-        self.move4 = move4;
-        self.status = status;
+        self.move1 = move1
+        self.move2 = move2
+        self.move3 = move3
+        self.move4 = move4
+        self.status = status
