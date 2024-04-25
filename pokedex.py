@@ -204,27 +204,30 @@ Magikarp = pokemon.Pokemon(129, "Magikarp", "WTR", "NONE", "None", 20, 20, 10, 5
 Gyarados = pokemon.Pokemon(130, "Gyarados", 'WTR', 'DRG', 'Overgrow', 95, 95, 125, 79, 60, 100, 81, moveList.Harden, moveList.Harden, moveList.Harden, moveList.Harden)
 Lapras = pokemon.Pokemon(131, "Lapras", 'WTR', 'ICE', 'Overgrow', 130, 130, 85, 80, 85, 95, 60, moveList.PoisonPowder, moveList.StunSpore, moveList.Gust, moveList.Psybeam)
 
-Ditto = pokemon.Pokemon(135, "Ditto", 'NRM', 'NONE', 'Overgrow', 48, 48, 48, 48, 48, 48, 48, moveList.Tackle, moveList.StringShot, moveList.Tackle, moveList.StringShot)
-Eevee = pokemon.Pokemon(136, "Eevee", 'NRM', 'NONE', 'Blaze', 55, 55, 55, 50, 45, 65, 55, moveList.Harden, moveList.Harden, moveList.Harden, moveList.Harden)
+Ditto = pokemon.Pokemon(132, "Ditto", 'NRM', 'NONE', 'Overgrow', 48, 48, 48, 48, 48, 48, 48, moveList.Tackle, moveList.StringShot, moveList.Tackle, moveList.StringShot)
+Eevee = pokemon.Pokemon(133, "Eevee", 'NRM', 'NONE', 'Blaze', 55, 55, 55, 50, 45, 65, 55, moveList.Harden, moveList.Harden, moveList.Harden, moveList.Harden)
 
-Vaporeon = pokemon.Pokemon(137, "Vaporeon", 'WTR', 'NONE', 'Blaze', 130, 130, 65, 60, 110, 95, 65, moveList.PoisonPowder, moveList.StunSpore, moveList.Gust, moveList.Psybeam)
-Ninetales = pokemon.Pokemon(138, "Ninetales", 'FIR', 'NONE', 'Blaze', 78, 78, 84, 78, 109, 85, 100, moveList.Flamethrower, moveList.Earthquake, moveList.Strength, moveList.SwordsDance)
+Vaporeon = pokemon.Pokemon(134, "Vaporeon", 'WTR', 'NONE', 'Blaze', 130, 130, 65, 60, 110, 95, 65, moveList.PoisonPowder, moveList.StunSpore, moveList.Gust, moveList.Psybeam)
+Jolteon = pokemon.Pokemon(135, "Jolteon", 'ELC', 'NONE', 'Blaze', 65, 65, 65, 60, 110, 95, 130, moveList.PoisonPowder, moveList.StunSpore, moveList.Gust, moveList.Psybeam)
+Flareon = pokemon.Pokemon(136, "Flareon", 'FIR', 'NONE', 'Blaze', 65, 65, 130, 60, 95, 110, 65, moveList.PoisonPowder, moveList.StunSpore, moveList.Gust, moveList.Psybeam)
+Porygon = pokemon.Pokemon(137, "Porygon", 'NRM', 'NONE', 'Blaze', 65, 65, 60, 70, 85, 75, 40, moveList.PoisonPowder, moveList.StunSpore, moveList.Gust, moveList.Psybeam)
+Omanyte = pokemon.Pokemon(138, "Omanyte", 'RCK', 'WTR', 'Blaze', 35, 35, 40, 100, 90, 55, 35, moveList.Flamethrower, moveList.Earthquake, moveList.Strength, moveList.SwordsDance)
 
-Jigglypuff = pokemon.Pokemon(139, "Jigglypuff", 'NRM', 'NONE', 'Torrent', 44, 44, 48, 65, 50, 64, 43, moveList.Bubble, moveList.Tackle, moveList.TailWhip, moveList.QuickAttack)
-Wigglytuff = pokemon.Pokemon(140, "Wigglytuff", 'NRM', 'NONE', 'Torrent', 59, 59, 63, 80, 65, 80, 58, moveList.WaterGun, moveList.Bite, moveList.TailWhip, moveList.BubbleBeam)
+Omastar = pokemon.Pokemon(139, "Omastar", 'RCK', 'WTR', 'Torrent', 70, 70, 60, 125, 115, 70, 55, moveList.Bubble, moveList.Tackle, moveList.TailWhip, moveList.QuickAttack)
+Kabuto = pokemon.Pokemon(140, "Kabuto", 'RCK', 'WTR', 'Torrent', 30, 30, 80, 90, 55, 45, 55, moveList.WaterGun, moveList.Bite, moveList.TailWhip, moveList.BubbleBeam)
 
-Zubat = pokemon.Pokemon(141, "Zubat", 'PSN', 'FLY', 'Torrent', 79, 79, 83, 100, 85, 105, 78, moveList.HydroPump, moveList.Surf, moveList.Blizzard, moveList.TailWhip)
-Golbat = pokemon.Pokemon(142, "Golbat", 'PSN', 'FLY', "None", 45, 45, 30, 35, 20, 20, 45, moveList.Tackle, moveList.StringShot, moveList.Tackle, moveList.StringShot)
+Kabutops = pokemon.Pokemon(141, "Kabutops", 'RCK', 'WTR', 'Torrent', 60, 60, 115, 105, 65, 70, 80, moveList.HydroPump, moveList.Surf, moveList.Blizzard, moveList.TailWhip)
+Aerodactyl = pokemon.Pokemon(142, "Aerodactyl", 'RCK', 'FLY', "None", 80, 80, 105, 65, 60, 75, 130, moveList.Tackle, moveList.StringShot, moveList.Tackle, moveList.StringShot)
 
-Oddish = pokemon.Pokemon(143, "Oddish", 'GRS', 'PSN', 'Overgrow', 45, 45, 49, 49, 65, 65, 45, moveList.Tackle, moveList.Growl, moveList.Absorb, moveList.QuickAttack)
-Gloom = pokemon.Pokemon(144, "Gloom", 'GRS', 'PSN', 'Overgrow', 60, 60, 62, 63, 80, 80, 60, moveList.PoisonPowder, moveList.RazorLeaf, moveList.Tackle, moveList.Growl)
-Vileplume = pokemon.Pokemon(145, "Vileplume", 'GRS', 'PSN', 'Overgrow', 80, 80, 82, 83, 100, 100, 80, moveList.SwordsDance, moveList.RazorLeaf, moveList.PoisonPowder, moveList.Cut)
+Snorlax = pokemon.Pokemon(143, "Snorlax", 'NRM', 'NONE', 'Overgrow', 160, 160, 110, 65, 65, 110, 30, moveList.Tackle, moveList.Growl, moveList.Absorb, moveList.QuickAttack)
+Articuno = pokemon.Pokemon(144, "Articuno", 'ICE', 'FLY', 'Overgrow', 90, 90, 85, 100, 95, 125, 85, moveList.PoisonPowder, moveList.RazorLeaf, moveList.Tackle, moveList.Growl)
+Zapdos = pokemon.Pokemon(145, "Zapdos", 'ELC', 'FLY', 'Overgrow', 90, 90, 90, 85, 125, 85, 90, moveList.SwordsDance, moveList.RazorLeaf, moveList.PoisonPowder, moveList.Cut)
 
-Paras = pokemon.Pokemon(146, "Paras", 'BUG', 'GRS', 'Blaze', 39, 39, 52, 43, 60, 50, 65, moveList.Scratch, moveList.Growl, moveList.Ember, moveList.QuickAttack)
-Parasect = pokemon.Pokemon(147, "Parasect", 'BUG', 'GRS', 'Blaze', 58, 58, 64, 58, 80, 65, 80, moveList.DragonRage, moveList.Slash, moveList.Growl, moveList.Flamethrower)
+Moltres = pokemon.Pokemon(146, "Moltres", 'FIR', 'FLY', 'Blaze', 90, 90, 100, 90, 125, 85, 90, moveList.Scratch, moveList.Growl, moveList.Ember, moveList.QuickAttack)
+Dratini = pokemon.Pokemon(147, "Dratini", 'DRG', 'NONE', 'Blaze', 41, 41, 64, 45, 50, 50, 50, moveList.DragonRage, moveList.Slash, moveList.Growl, moveList.Flamethrower)
 
-Venonat = pokemon.Pokemon(148, "Venonat", 'BUG', 'PSN', 'Blaze', 78, 78, 84, 78, 109, 85, 100, moveList.Flamethrower, moveList.Earthquake, moveList.Strength, moveList.SwordsDance)
-Venomoth = pokemon.Pokemon(149, "Venomoth", 'BUG', 'PSN', 'Torrent', 44, 44, 48, 65, 50, 64, 43, moveList.Bubble, moveList.Tackle, moveList.TailWhip, moveList.QuickAttack)
+Dragonair = pokemon.Pokemon(148, "Dragonair", 'DRG', 'NONE', 'Blaze', 61, 61, 84, 65, 70, 70, 70, moveList.Flamethrower, moveList.Earthquake, moveList.Strength, moveList.SwordsDance)
+Dragonite = pokemon.Pokemon(149, "Dragonite", 'DRG', 'FLY', 'Torrent', 91, 91, 134, 95, 100, 100, 80, moveList.Bubble, moveList.Tackle, moveList.TailWhip, moveList.QuickAttack)
 
-Diglett = pokemon.Pokemon(150, "Diglett", 'GRD', 'NONE', 'Torrent', 59, 59, 63, 80, 65, 80, 58, moveList.WaterGun, moveList.Bite, moveList.TailWhip, moveList.BubbleBeam)
-Dugtrio = pokemon.Pokemon(151, "Dugtrio", 'GRD', 'NONE', 'Torrent', 79, 79, 83, 100, 85, 105, 78, moveList.HydroPump, moveList.Surf, moveList.Blizzard, moveList.TailWhip)
+Mewtwo = pokemon.Pokemon(150, "Mewtwo", 'PSY', 'NONE', 'Torrent', 106, 106, 110, 90, 154, 90, 130, moveList.WaterGun, moveList.Bite, moveList.TailWhip, moveList.BubbleBeam)
+Mew = pokemon.Pokemon(151, "Mew", 'PSY', 'NONE', 'Torrent', 100, 100, 100, 100, 100, 100, 100, moveList.HydroPump, moveList.Surf, moveList.Blizzard, moveList.TailWhip)
