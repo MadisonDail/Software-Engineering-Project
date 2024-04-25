@@ -194,17 +194,17 @@ Mr_Mime = pokemon.Pokemon(122, "Mr. Mime", 'PSY', 'NRM', 'Blaze', 40, 40, 45, 65
 Scyther = pokemon.Pokemon(123, "Scyther", 'BUG', 'FLY', 'Blaze', 70, 70, 110, 80, 55, 80, 105, moveList.Flamethrower, moveList.Earthquake, moveList.Strength, moveList.SwordsDance)
 Jynx = pokemon.Pokemon(124, "Jynx", 'ICE', 'PSY', 'Torrent', 65, 65, 50, 35, 115, 95, 95, moveList.Bubble, moveList.Tackle, moveList.TailWhip, moveList.QuickAttack)
 
-Pikachu = pokemon.Pokemon(125, "Pikachu", 'ELC', 'NONE', 'Torrent', 35, 35, 55, 30, 50, 40, 90, moveList.ThunderShock, moveList.Agility, moveList.TailWhip, moveList.ThunderWave)
-Raichu = pokemon.Pokemon(126, "Raichu", 'ELC', 'NONE', 'Torrent', 60, 60, 90, 55, 90, 80, 100, moveList.Thunder, moveList.QuickAttack, moveList.ThunderWave, moveList.TailWhip)
+Electabuzz = pokemon.Pokemon(125, "Electabuzz", 'ELC', 'NONE', 'Torrent', 65, 65, 83, 57, 95, 85, 105, moveList.ThunderShock, moveList.Agility, moveList.TailWhip, moveList.ThunderWave)
+Magmar = pokemon.Pokemon(126, "Magmar", 'FIR', 'NONE', 'Torrent', 65, 65, 95, 57, 100, 85, 93, moveList.Thunder, moveList.QuickAttack, moveList.ThunderWave, moveList.TailWhip)
 
-Sandshrew = pokemon.Pokemon(127, "Sandshrew", 'GRD', 'NONE', 'Torrent', 59, 59, 63, 80, 65, 80, 58, moveList.WaterGun, moveList.Bite, moveList.TailWhip, moveList.BubbleBeam)
-Sandslash = pokemon.Pokemon(128, "Sandslash", 'GRD', 'NONE', 'Torrent', 79, 79, 83, 100, 85, 105, 78, moveList.HydroPump, moveList.Surf, moveList.Blizzard, moveList.TailWhip)
+Pinsir = pokemon.Pokemon(127, "Pinsir", 'BUG', 'NONE', 'Torrent', 65, 65, 125, 100, 55, 70, 75, moveList.WaterGun, moveList.Bite, moveList.TailWhip, moveList.BubbleBeam)
+Tauros = pokemon.Pokemon(128, "Tauros", 'NRM', 'NONE', 'Torrent', 75, 75, 100, 95, 40, 70, 110, moveList.HydroPump, moveList.Surf, moveList.Blizzard, moveList.TailWhip)
 
-Nidoran = pokemon.Pokemon(129, "Nidoran", "PSN", "NONE", "None", 45, 45, 30, 35, 20, 20, 45, moveList.Tackle, moveList.StringShot, moveList.Tackle, moveList.StringShot)
-Nidorina = pokemon.Pokemon(130, "Nidorina", 'PSN', 'NONE', 'Overgrow', 45, 45, 49, 49, 65, 65, 45, moveList.Harden, moveList.Harden, moveList.Harden, moveList.Harden)
-Nidoqueen = pokemon.Pokemon(131, "Nidoqueen", 'PSN', 'GRD', 'Overgrow', 60, 60, 62, 63, 80, 80, 60, moveList.PoisonPowder, moveList.StunSpore, moveList.Gust, moveList.Psybeam)
+Magikarp = pokemon.Pokemon(129, "Magikarp", "WTR", "NONE", "None", 20, 20, 10, 55, 15, 20, 80, moveList.Tackle, moveList.StringShot, moveList.Tackle, moveList.StringShot)
+Gyarados = pokemon.Pokemon(130, "Gyarados", 'WTR', 'DRG', 'Overgrow', 95, 95, 125, 79, 60, 100, 81, moveList.Harden, moveList.Harden, moveList.Harden, moveList.Harden)
+Lapras = pokemon.Pokemon(131, "Lapras", 'WTR', 'ICE', 'Overgrow', 130, 130, 85, 80, 85, 95, 60, moveList.PoisonPowder, moveList.StunSpore, moveList.Gust, moveList.Psybeam)
 
-Clefairy = pokemon.Pokemon(135, "Clefairy", 'NRM', 'NONE', 'Overgrow', 80, 80, 82, 83, 100, 100, 80, moveList.Tackle, moveList.StringShot, moveList.Tackle, moveList.StringShot)
+Ditto = pokemon.Pokemon(135, "Ditto", 'NRM', 'NONE', 'Overgrow', 48, 48, 48, 48, 48, 48, 48, moveList.Tackle, moveList.StringShot, moveList.Tackle, moveList.StringShot)
 Clefable = pokemon.Pokemon(136, "Clefable", 'NRM', 'NONE', 'Blaze', 39, 39, 52, 43, 60, 50, 65, moveList.Harden, moveList.Harden, moveList.Harden, moveList.Harden)
 
 Vulpix = pokemon.Pokemon(137, "Vulpix", 'FIR', 'NONE', 'Blaze', 58, 58, 64, 58, 80, 65, 80, moveList.PoisonPowder, moveList.StunSpore, moveList.Gust, moveList.Psybeam)
