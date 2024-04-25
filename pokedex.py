@@ -189,7 +189,7 @@ Seaking = pokemon.Pokemon(119, "Seaking", 'WTR', 'NONE', 'Torrent', 80, 80, 92, 
 Staryu = pokemon.Pokemon(120, "Staryu", "WTR", "NONE", "None", 30, 30, 45, 55, 70, 55, 85, moveList.Tackle, moveList.StringShot, moveList.Tackle, moveList.StringShot)
 
 Starmie = pokemon.Pokemon(121, "Starmie", 'WTR', 'PSY', 'Blaze', 60, 60, 75, 85, 100, 85, 115, moveList.Scratch, moveList.Growl, moveList.Ember, moveList.QuickAttack)
-Mr_Mime = pokemon.Pokemon(122, "Mr. Mime", 'PSY', 'NRM', 'Blaze', 40, 40, 45, 65, 100, 120, 90, moveList.DragonRage, moveList.Slash, moveList.Growl, moveList.Flamethrower)
+MrMime = pokemon.Pokemon(122, "MrMime", 'PSY', 'NRM', 'Blaze', 40, 40, 45, 65, 100, 120, 90, moveList.DragonRage, moveList.Slash, moveList.Growl, moveList.Flamethrower)
 
 Scyther = pokemon.Pokemon(123, "Scyther", 'BUG', 'FLY', 'Blaze', 70, 70, 110, 80, 55, 80, 105, moveList.Flamethrower, moveList.Earthquake, moveList.Strength, moveList.SwordsDance)
 Jynx = pokemon.Pokemon(124, "Jynx", 'ICE', 'PSY', 'Torrent', 65, 65, 50, 35, 115, 95, 95, moveList.Bubble, moveList.Tackle, moveList.TailWhip, moveList.QuickAttack)
@@ -205,9 +205,9 @@ Gyarados = pokemon.Pokemon(130, "Gyarados", 'WTR', 'DRG', 'Overgrow', 95, 95, 12
 Lapras = pokemon.Pokemon(131, "Lapras", 'WTR', 'ICE', 'Overgrow', 130, 130, 85, 80, 85, 95, 60, moveList.PoisonPowder, moveList.StunSpore, moveList.Gust, moveList.Psybeam)
 
 Ditto = pokemon.Pokemon(135, "Ditto", 'NRM', 'NONE', 'Overgrow', 48, 48, 48, 48, 48, 48, 48, moveList.Tackle, moveList.StringShot, moveList.Tackle, moveList.StringShot)
-Clefable = pokemon.Pokemon(136, "Clefable", 'NRM', 'NONE', 'Blaze', 39, 39, 52, 43, 60, 50, 65, moveList.Harden, moveList.Harden, moveList.Harden, moveList.Harden)
+Eevee = pokemon.Pokemon(136, "Eevee", 'NRM', 'NONE', 'Blaze', 55, 55, 55, 50, 45, 65, 55, moveList.Harden, moveList.Harden, moveList.Harden, moveList.Harden)
 
-Vulpix = pokemon.Pokemon(137, "Vulpix", 'FIR', 'NONE', 'Blaze', 58, 58, 64, 58, 80, 65, 80, moveList.PoisonPowder, moveList.StunSpore, moveList.Gust, moveList.Psybeam)
+Vaporeon = pokemon.Pokemon(137, "Vaporeon", 'WTR', 'NONE', 'Blaze', 130, 130, 65, 60, 110, 95, 65, moveList.PoisonPowder, moveList.StunSpore, moveList.Gust, moveList.Psybeam)
 Ninetales = pokemon.Pokemon(138, "Ninetales", 'FIR', 'NONE', 'Blaze', 78, 78, 84, 78, 109, 85, 100, moveList.Flamethrower, moveList.Earthquake, moveList.Strength, moveList.SwordsDance)
 
 Jigglypuff = pokemon.Pokemon(139, "Jigglypuff", 'NRM', 'NONE', 'Torrent', 44, 44, 48, 65, 50, 64, 43, moveList.Bubble, moveList.Tackle, moveList.TailWhip, moveList.QuickAttack)
