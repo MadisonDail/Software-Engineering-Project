@@ -214,3 +214,7 @@ class Grass(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = self.x
         self.rect.y = self.y
+
+class PlayerInventory():
+    def __init__(self, pokeballArr):
+        self.pokeballArr = pokeballArr

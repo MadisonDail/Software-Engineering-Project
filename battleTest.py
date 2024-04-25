@@ -607,9 +607,17 @@ def CheckDamageStatus(pkmn):
     # Checks statuses that cause pokemon to take damage each turn, burn or poison
     if(pkmn.status == "BRN" or pkmn.status == "PSN"):
         pkmn.currentHp -= int(pkmn.hp / 16)
+
+def CatchPokemon(ball):
+    chance = random.randint(0, 100)
+    if(chance < ball.catchRate):
+        return True
+    else:
+        return False
+
         
 # Battle function that will be looped until either party reaches 0
-def Battle(userP, enemyP):
+def Battle(userP, enemyP, battleType):
     
     userPokemonIndex = 0         # Index of pokemon that is sent out for the user
     enemyPokemonIndex = 0         # Index of pokemon that is sent out for the user
@@ -689,7 +697,6 @@ def Battle(userP, enemyP):
             enemyMove = enemyP[enemyPokemonIndex].move3
         elif(eMoveIndex == 4):
             enemyMove = enemyP[enemyPokemonIndex].move4
-        
         
         # If pokemon switches, reset stats
         # Check which move has the higher priority
