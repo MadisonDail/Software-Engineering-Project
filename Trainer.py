@@ -5,13 +5,13 @@ import random
 import pokedex
 
 class Trainer(NPC):                       #inherit from NPC
-    def __init__(self,id,game,layer,x,y,spriteImage,screen,player,facing_direction, party=[]):
+    def __init__(self,id,game,layer,x,y,spriteImage,screen,player,facing_direction):
         self.facing_direction = facing_direction
         self.isEncountered = False
         self.isDefeated = False
         self.has_encountered = False
         partyLen = random.randint(1,6)
-        self.party = party
+        self.party = []
         if len(self.party) < partyLen:
             temp = abs(len(self.party)-partyLen)
             print(f'adding! {temp}')
