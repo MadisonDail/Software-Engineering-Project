@@ -386,6 +386,8 @@ def CheckSpeed(userPokemon, enemyPokemon):
             return 1
         
 def CheckAccuracy(move):
+    # print(move.accuracy)
+    # print(type(move.accuracy))
     if(random.randint(0, 100) > move.accuracy):
         return False
     else:
@@ -607,11 +609,12 @@ def Battle(userP, enemyP, battleType):
         # print("CHECK6")
         if(CheckAliveParty(userP, enemyP) == 1):
             print("Enemy wins!")
-            # return 1
+            # print('HERE')
+            return 1
             break
         elif(CheckAliveParty(userP, enemyP) == 2):
             print("User wins!")
-            # return 2
+            return 2
             break
 
         if(CheckAlivePokemon(enemyP[enemyPokemonIndex]) == 1):
@@ -682,6 +685,7 @@ def Battle(userP, enemyP, battleType):
                     # if enemy is alive, use enemy move
                     if(CheckAliveParty(userP, enemyP) == 2):
                         print("User wins!")
+                        return 2
                         break
                 UseMove(enemyMove, enemyP[enemyPokemonIndex], userP[userPokemonIndex], enemyStatStages, userStatStages)
             else:
@@ -706,11 +710,13 @@ def Battle(userP, enemyP, battleType):
                     # if user is alive, use user move
                     if(CheckAliveParty(userP, enemyP) == 1):
                         print("Enemy wins!")
+                        return 1
                         break
                 UseMove(userMove, userP[userPokemonIndex], enemyP[enemyPokemonIndex], userStatStages, enemyStatStages)
                 if(CheckAlivePokemon(enemyP[enemyPokemonIndex]) == 1):
                     if(CheckAliveParty(userP, enemyP) == 2):
                         print("User wins!")
+                        return 2
                         break
                     enemyPokemonIndex += 1
                     enemyMove = moveList.NOMOVE
@@ -729,6 +735,7 @@ def Battle(userP, enemyP, battleType):
                     # if enemy is alive, use enemy move
                     if(CheckAliveParty(userP, enemyP) == 2):
                         print("User wins!")
+                        return 2
                         break
                 UseMove(enemyMove, enemyP[enemyPokemonIndex], userP[userPokemonIndex], enemyStatStages, userStatStages)
             else:
@@ -752,11 +759,13 @@ def Battle(userP, enemyP, battleType):
                     # if user is alive, use user move
                     if(CheckAliveParty(userP, enemyP) == 1):
                         print("Enemy wins!")
+                        return 1
                         break
                 UseMove(userMove, userP[userPokemonIndex], enemyP[enemyPokemonIndex], userStatStages, enemyStatStages)
                 if(CheckAlivePokemon(enemyP[enemyPokemonIndex]) == 1):
                     if(CheckAliveParty(userP, enemyP) == 2):
                         print("User wins!")
+                        return 2
                         break
                     # print("CHECK2")
                     enemyPokemonIndex += 1
@@ -775,9 +784,11 @@ def Battle(userP, enemyP, battleType):
                 enemyMove = moveList.NOMOVE
             if(CheckAliveParty(userP, enemyP) == 1):
                         print("Enemy wins!")
+                        return 1
                         break
             if(CheckAliveParty(userP, enemyP) == 2):
                         print("User wins!")
+                        return 2
                         break 
     for pkmn in userP:
         ResetStats(pkmn, userStatStages)

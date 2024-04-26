@@ -12,8 +12,12 @@ class Trainer(NPC):                       #inherit from NPC
         self.has_encountered = False
         partyLen = random.randint(1,6)
         self.party = party
-        for i in range(partyLen):
-            party.append(pokedex.Pokedex[random.randint(1, 151) - 1])
+        if len(self.party) < partyLen:
+            temp = abs(len(self.party)-partyLen)
+            print(f'adding! {temp}')
+            for i in range(temp):
+                self.party.append(pokedex.Pokedex[random.randint(1, 151) - 1])
+        print(self.party)
 
         super().__init__(id,game,layer,x,y,spriteImage,screen,player)
         self.game.enemies.add(self)     #add trainer to enemies group created in game.py
@@ -47,21 +51,6 @@ class Trainer(NPC):                       #inherit from NPC
                     self.isEncountered = True
                     self.has_encountered = True
                     return True
-        # else:
-        #     for event in events:
-        #         if event.type == pygame.MOUSEBUTTONUP:    #if user clicks on dialog box      
-        #             if self.dialog.get_rect().collidepoint(event.pos):
-        #                 self.isEncountered = self.dialog.next_dialog()
-        #                 if(self.isEncountered):
-        #                     self.dialog.draw(self.screen)
-                   
-                        
-            # if self.isEncountered:
-            #     self.dialog.getevents(events)                       
-            #     self.dialog.draw(self.screen)
-            #     self.player.stop_movement()
-            # else:
-            #     self.player.resume_movement()
 
                 
                 

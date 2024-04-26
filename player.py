@@ -182,6 +182,7 @@ class Player(Entity):                       #inherit from entity
 
     def trigger_battle(self, battleType, enemyParty=[]):
         # print("A WILD POKEMON APPEARS!") #this will be on the actual game screen, just for testing purposes 
+        self.battleVal = 0
         self.facing = 'battle' # self facing battle lets us change 
         if battleType=="WILD":
             pokemon_battling = random.randint(1,151)
@@ -191,7 +192,7 @@ class Player(Entity):                       #inherit from entity
             self.battleVal = battleTest.Battle(self.playerPokemon, wild_pokemon, battleType)
         elif battleType == "TRAINER":
             self.battleVal = battleTest.Battle(self.playerPokemon, enemyParty, "TRAINER")
-        print(f'battleval {self.battleVal}')
+        # print(f'battleval {self.battleVal}')
         
         # battleTest.Battle()
         # change battle screen 

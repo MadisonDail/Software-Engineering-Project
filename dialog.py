@@ -8,10 +8,10 @@ import player
 import battleTest
 
 class Dialog():
-    def __init__(self,game,layer,screen,object_type,x=DIALOG_BOX_X,y=DIALOG_BOX_Y):
+    def __init__(self,game,layer,screen,object_type,x=DIALOG_BOX_X,y=DIALOG_BOX_Y,text=["test",["check",["lol","no"]]]):
         self.dialog_index = 0
         self.font = pygame.font.SysFont('Comic Sans', 20)
-        self.text = ["test",["check",["lol","no"]]]
+        self.text = text
         self.count = 0
         self.is_rendered = False
         self.save_render = {}
@@ -22,18 +22,22 @@ class Dialog():
         self.option_func_trigger = []
         self.is_option = False              #set to True in instance check if first item in list is an dialog that has options
         self.object_type = object_type
+        self.multiple_paths_select = -1
 
         print('in dialog init:')
         # print(object_type)
         if isinstance(object_type,Trainer):
-            self.text = ["Let's battle!",["Come on!",['Fine.','No!']],"You've won!","Haha! You lost!"]
+            self.text = ['Let\'s battle!',['Come on!',['Fine.','No!']],{1:'Haha! You lost!',2:'You\'ve won!'}]
+            # self.text = ['Let\'s battle!',['Come on!',['Fine.','No!']]]
+            self.is_multiple_paths = True
             self.option_func_trigger = [[],['battle','exitdialog'],[],[]]
             object_type.player.isInBattle = True
         elif isinstance(object_type,Nurse):
             self.is_option = True
-            self.text = [["Would you like me to heal your pokemon?",['Yeah!','No thanks']],"I have healed your pokemon!"]
+            self.text = [['Would you like me to heal your pokemon?',['Yeah!','No thanks']],'I have healed your pokemon!']
             self.option_func_trigger = [['healallpoke','exitdialog'],[]]            #length of func_triggers should be equal to length of self.text
             object_type.player.isInBattle = True
+        
 
     def trigger_option_func(self,index_of_trigger):
         temp = self.option_func_trigger[self.count]
@@ -50,18 +54,20 @@ class Dialog():
                 # print(self.object_type.party)
                 self.object_type.player.trigger_battle("TRAINER", self.object_type.party)
                 temp = self.object_type.player.battleVal
-                self.object_type.player.isInBattle = False  #remove this once battle check is implemented
+                print(self.object_type.id)
+                print('in dia')
+                print(temp)
+                # self.object_type.player.isInBattle = False  #remove this once battle check is implemented
                 # print(temp)
-                # if temp == 1:
-                #     self.next_dialog()
-                # elif temp == 2:
-                #     self.count +=1
-                #     self.next_dialog()
-                return False            #set to true when return is done
+                self.multiple_paths_select = temp
+                self.next_dialog()
+
+                return True          #set to true when return is done
             elif func_triggered == 'healallpoke':
                 battleTest.HealParty(self.object_type.player.playerPokemon)
                 # print('attempted to heal')
                 self.next_dialog()
+                self.object_type.player.isInBattle = False 
                 return True
             #elif .... add more checks here
 
@@ -74,14 +80,29 @@ class Dialog():
         if self.is_rendered == False:           #when dialog is first trigger, render with text animation
             self.render_dialog_box(screen)
             if isinstance(self.text[self.count],list):
+                print('list')
                 text,self.currentoptions = self.detect_options()
                 self.render_text(screen,text)
                 self.is_rendered = True             #once dialog and text are rendered
                 self.display_options(screen,self.currentoptions,True)
                 self.constant_display(screen,text)
+            elif isinstance(self.text[self.count],dict):
+                print('AYYY')
+                print(self.text[self.count])
+                temp = self.text[self.count]
+                text = temp[self.multiple_paths_select]
+                print(text)
+                print(type(text))
+                self.is_option = False
+                self.render_text(screen,text)
+                self.is_rendered = True             #once dialog and text are rendered
+                self.constant_display(screen,text)
             else:
                 self.is_option = False
                 self.render_text(screen,self.text[self.count])
+                print('STUFF')
+                print(type(self.text[self.count]))
+                print(self.text[self.count])
                 self.is_rendered = True             #once dialog and text are rendered
                 self.constant_display(screen,self.text[self.count])
             # print(self.text[self.count])
@@ -98,6 +119,10 @@ class Dialog():
         
 
     def render_text(self,screen,text):                      #draw text onto location
+        # print('in render')
+        # print(text)
+        # print(type(text))
+        # text = str(text)
         screen.blit(self.font.render(text,False,GOLD),(DIALOG_BOX_X+DIALOG_BOX_MARGIN,DIALOG_BOX_Y+DIALOG_BOX_MARGIN))
 
     def constant_display(self,screen,text):
@@ -116,6 +141,7 @@ class Dialog():
     def next_dialog(self):          #return true if there is more dialog, else false
         # print(self.count+1)
         # print(len(self.text))
+
         if self.count+1 == len(self.text):
             self.object_type.player.isInBattle = False
             return False            #if all dialog in text list is gone through
