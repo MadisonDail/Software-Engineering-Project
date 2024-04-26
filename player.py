@@ -16,6 +16,8 @@ class Player(Entity):                       #inherit from entity
         self.starter = chooseFighter.chooseStarter() # gets first pokemon
         self.playerPokemon = []
         self.playerPokemon.append(self.starter)
+        self.isInBattle = False
+        self.battleVal = 0
 
     def set_position(self,x,y):
         self.rect.topleft = (x*TILE_SIZE,y*TILE_SIZE) 
@@ -170,10 +172,13 @@ class Player(Entity):                       #inherit from entity
                 self.game.changeMap(tilemap_hide1[1])
                 pygame.display.set_caption("Easter Egg!!!")
             
-            
+        # print(self.isInBattle)
         #battle schemantics 
-        if (current_tile == '.' and self.facing != 'battle' and random.randint(1,200) == 1):
+        if (current_tile == '.' and self.facing != 'battle' and random.randint(1,200) == 1 and not self.isInBattle):
             self.trigger_battle("WILD")
+            print('YES')
+        # else:
+        #     print('NO')
 
     def trigger_battle(self, battleType, enemyParty=[]):
         # print("A WILD POKEMON APPEARS!") #this will be on the actual game screen, just for testing purposes 
@@ -183,9 +188,10 @@ class Player(Entity):                       #inherit from entity
             # print(pokemon_battling)
             wild_pokemon = []
             wild_pokemon.append((copy.copy(pokedex.Pokedex[pokemon_battling-1])))
-            battleTest.Battle(self.playerPokemon, wild_pokemon, battleType)
+            self.battleVal = battleTest.Battle(self.playerPokemon, wild_pokemon, battleType)
         elif battleType == "TRAINER":
-            battleTest.Battle(self.playerPokemon, enemyParty, "TRAINER")
+            self.battleVal = battleTest.Battle(self.playerPokemon, enemyParty, "TRAINER")
+        print(f'battleval {self.battleVal}')
         
         # battleTest.Battle()
         # change battle screen 

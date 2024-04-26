@@ -607,9 +607,11 @@ def Battle(userP, enemyP, battleType):
         # print("CHECK6")
         if(CheckAliveParty(userP, enemyP) == 1):
             print("Enemy wins!")
+            # return 1
             break
         elif(CheckAliveParty(userP, enemyP) == 2):
             print("User wins!")
+            # return 2
             break
 
         if(CheckAlivePokemon(enemyP[enemyPokemonIndex]) == 1):

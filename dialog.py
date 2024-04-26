@@ -26,39 +26,51 @@ class Dialog():
         print('in dialog init:')
         # print(object_type)
         if isinstance(object_type,Trainer):
-            self.text = ["Let's battle!",["Come on!",['Fine.','No!']]]
-            self.option_func_trigger = [[],['battle','exitdialog']]
+            self.text = ["Let's battle!",["Come on!",['Fine.','No!']],"You've won!","Haha! You lost!"]
+            self.option_func_trigger = [[],['battle','exitdialog'],[],[]]
+            object_type.player.isInBattle = True
         elif isinstance(object_type,Nurse):
             self.is_option = True
-            self.text = [["Would you like me to heal your pokemon?",['Yeah!','No thanks']]]
-            self.option_func_trigger = [['healallpoke','exitdialog']]            #length of func_triggers should be equal to length of self.text
-
+            self.text = [["Would you like me to heal your pokemon?",['Yeah!','No thanks']],"I have healed your pokemon!"]
+            self.option_func_trigger = [['healallpoke','exitdialog'],[]]            #length of func_triggers should be equal to length of self.text
+            object_type.player.isInBattle = True
 
     def trigger_option_func(self,index_of_trigger):
         temp = self.option_func_trigger[self.count]
 
         if not len(temp) == 0:                              #if the list is empty
             func_triggered = temp[index_of_trigger]
-            # print('hi')
-            # print(func_triggered)
             if func_triggered == 'exitdialog':
-                self.count = len(self.text)-1             #exit dialog will make it so dialog quits
-                return False                              #set count to largest index and return False to end dialog
+                # self.count = len(self.text)-1             #exit dialog will make it so dialog quits
+                self.object_type.player.isInBattle = False 
+                self.next_dialog()
+                return False                             #set count to largest index and return False to end dialog
             elif func_triggered == 'battle':              #trigger trainer battle
-                print(self.object_type)
-                print(self.object_type.party)
+                # print(self.object_type)
+                # print(self.object_type.party)
                 self.object_type.player.trigger_battle("TRAINER", self.object_type.party)
-                return False
+                temp = self.object_type.player.battleVal
+                self.object_type.player.isInBattle = False  #remove this once battle check is implemented
+                # print(temp)
+                # if temp == 1:
+                #     self.next_dialog()
+                # elif temp == 2:
+                #     self.count +=1
+                #     self.next_dialog()
+                return False            #set to true when return is done
             elif func_triggered == 'healallpoke':
                 battleTest.HealParty(self.object_type.player.playerPokemon)
-                print('attempted to heal')
-                return False
+                # print('attempted to heal')
+                self.next_dialog()
+                return True
             #elif .... add more checks here
 
         return True                                   
 
 
     def draw(self,screen):
+        # print('loop')
+        # print(self.count)
         if self.is_rendered == False:           #when dialog is first trigger, render with text animation
             self.render_dialog_box(screen)
             if isinstance(self.text[self.count],list):
@@ -102,8 +114,10 @@ class Dialog():
         # print(self.text)
 
     def next_dialog(self):          #return true if there is more dialog, else false
-        self.currentoptions = []
+        # print(self.count+1)
+        # print(len(self.text))
         if self.count+1 == len(self.text):
+            self.object_type.player.isInBattle = False
             return False            #if all dialog in text list is gone through
         else:
             self.is_rendered = False

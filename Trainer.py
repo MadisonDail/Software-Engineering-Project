@@ -9,8 +9,6 @@ class Trainer(NPC):                       #inherit from NPC
         self.facing_direction = facing_direction
         self.isEncountered = False
         self.isDefeated = False
-        # self.dialog = dialog.Dialog(game,layer+1,screen)
-        # self.dialog.set_dialog_text(["You seem strong!",["Here we go!",["Yeah!","No thanks.","WHAR",'hi']], "Let's battle!"])
         self.has_encountered = False
         partyLen = random.randint(1,6)
         self.party = party
