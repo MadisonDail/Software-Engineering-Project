@@ -27,8 +27,8 @@ DIALOG_OPTION_X = DIALOG_BOX_X+DIALOG_BOX_WIDTH-DIALOG_OPTION_WIDTH
 DIALOG_OPTION_Y = DIALOG_BOX_Y-DIALOG_OPTION_HEIGHT-DIALOG_BOX_MARGIN
 
 player_image = "images/ash.png"
-nurse_image = "images/player_stand.png"
-trainer_image = "images/player_stand.png"
+nurse_image = "images/NurseJoy.png"
+trainer_image = "images/ash.png"
 
 #Map Layouts
 tilemap_template=[

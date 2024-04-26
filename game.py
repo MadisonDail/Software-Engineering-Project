@@ -95,7 +95,7 @@ class Game:
 
     def setNurse(self):
         if len(self.character_locations["nurse"]) != 0:
-            Nurse("nurse",self,PLAYER_LAYER,self.character_locations["nurse"][0],self.character_locations["nurse"][1],trainer_image,self.screen,self.player)
+            Nurse("nurse",self,PLAYER_LAYER,self.character_locations["nurse"][0],self.character_locations["nurse"][1],nurse_image,self.screen,self.player)
 
     def changeMap(self, newtilemap):
         # self.tilemap = newtilemap
