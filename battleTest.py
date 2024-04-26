@@ -614,6 +614,9 @@ def Battle(userP, enemyP, battleType):
             break
         elif(CheckAliveParty(userP, enemyP) == 2):
             print("User wins!")
+            print("ADDING EXP")
+            AddExp(userP)
+            CheckEvolution(userP)
             return 2
             break
 
@@ -685,6 +688,9 @@ def Battle(userP, enemyP, battleType):
                     # if enemy is alive, use enemy move
                     if(CheckAliveParty(userP, enemyP) == 2):
                         print("User wins!")
+                        print("ADDING EXP")
+                        AddExp(userP)
+                        CheckEvolution(userP)
                         return 2
                         break
                 UseMove(enemyMove, enemyP[enemyPokemonIndex], userP[userPokemonIndex], enemyStatStages, userStatStages)
@@ -716,6 +722,9 @@ def Battle(userP, enemyP, battleType):
                 if(CheckAlivePokemon(enemyP[enemyPokemonIndex]) == 1):
                     if(CheckAliveParty(userP, enemyP) == 2):
                         print("User wins!")
+                        print("ADDING EXP")
+                        AddExp(userP)
+                        CheckEvolution(userP)
                         return 2
                         break
                     enemyPokemonIndex += 1
@@ -735,6 +744,9 @@ def Battle(userP, enemyP, battleType):
                     # if enemy is alive, use enemy move
                     if(CheckAliveParty(userP, enemyP) == 2):
                         print("User wins!")
+                        print("ADDING EXP")
+                        AddExp(userP)
+                        CheckEvolution(userP)
                         return 2
                         break
                 UseMove(enemyMove, enemyP[enemyPokemonIndex], userP[userPokemonIndex], enemyStatStages, userStatStages)
@@ -765,6 +777,9 @@ def Battle(userP, enemyP, battleType):
                 if(CheckAlivePokemon(enemyP[enemyPokemonIndex]) == 1):
                     if(CheckAliveParty(userP, enemyP) == 2):
                         print("User wins!")
+                        print("ADDING EXP")
+                        AddExp(userP)
+                        CheckEvolution(userP)
                         return 2
                         break
                     # print("CHECK2")
@@ -788,16 +803,16 @@ def Battle(userP, enemyP, battleType):
                         break
             if(CheckAliveParty(userP, enemyP) == 2):
                         print("User wins!")
+                        print("ADDING EXP")
+                        AddExp(userP)
+                        CheckEvolution(userP)
                         return 2
                         break 
     for pkmn in userP:
         ResetStats(pkmn, userStatStages)
     for pkmn in enemyP:
         ResetStats(pkmn, enemyStatStages)
-    if(choice[0] != "RUN"):
-        print("ADDING EXP")
-        AddExp(userP)
-        CheckEvolution(userP)
+    
                 
     # After battle, reset stats except hp
 

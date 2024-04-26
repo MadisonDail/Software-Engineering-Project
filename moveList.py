@@ -81,7 +81,7 @@ Barrier = moves.Move("Barrier", 0, 0, "USER DEF 2", 100, "PSY", "ST")
 Confusion = moves.Move("Confusion", 50, 0, "NONE", 100, "PSY", "SP")
 Meditate = moves.Move("Meditate", 0, 0, "USER ATK 1", 100, "PSY", "ST")
 Psybeam = moves.Move("Psybeam", 65, 0, "NONE", 100, "PSY", "SP")
-Psychic = moves.Move("Psychic", 90, 0, "ENEMY SPDEF -1 10", 100, "PSY", "SP")
+Psychic = moves.Move("Psychic", 90, 0, "ENEMY SPDEF -1", 100, "PSY", "SP")
 # Rock type move
 RockSlide = moves.Move("Rockslide", 75, 0, "NONE", 90, "RCK", "PH")
 # Ghost type move

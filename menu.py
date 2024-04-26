@@ -110,7 +110,7 @@ class MenuScreen:
         # Button information
         self.buttons = {
             "NEW GAME": {"x": 225, "y": 150, "width": 200, "height": 50},
-            "LOAD GAME": {"x": 225, "y": 225, "width": 200, "height": 50},
+            " ": {"x": 225, "y": 225, "width": 200, "height": 50},
             "QUIT GAME": {"x": 225, "y": 300, "width": 200, "height": 50}
         }
 
