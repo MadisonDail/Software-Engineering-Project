@@ -8,7 +8,7 @@ import moveList
 # PSY: Psychic, RCK: Rock,     GHT: Ghost,     ICE: Ice,       DRG: Dragon, 
 # DRK: Dark,    STL: Steel,    FLY: Flying.
 
-# idNum, name, type1, type2, ability1, currentHp, hp, attack, defense, specAttack, specDefense, speed, move1=None, move2=None, move3=None, move4=None, status="None"):
+# idNum, name, type1, type2, xp, currentHp, hp, attack, defense, specAttack, specDefense, speed, move1=None, move2=None, move3=None, move4=None, status="None"):
 
 Bulbasaur = pokemon.Pokemon(1, "Bulbasaur", 'GRS', 'PSN', 0, 45, 45, 49, 49, 65, 65, 45, moveList.Tackle, moveList.Growl, moveList.Absorb, moveList.QuickAttack)
 Ivysaur = pokemon.Pokemon(2, "Ivysaur", 'GRS', 'PSN', 0, 60, 60, 62, 63, 80, 80, 60, moveList.PoisonPowder, moveList.RazorLeaf, moveList.Tackle, moveList.Growl)
@@ -24,54 +24,46 @@ Blastoise = pokemon.Pokemon(9, "Blastoise", 'WTR', 'NONE', 0, 79, 79, 83, 100, 8
 
 Caterpie = pokemon.Pokemon(10, "Caterpie", "BUG", "NONE", "None", 45, 45, 30, 35, 20, 20, 45, moveList.Tackle, moveList.StringShot, moveList.Tackle, moveList.StringShot)
 Metapod = pokemon.Pokemon(11, "Metapod", 'BUG', 'NONE', 0, 50, 50, 20, 55, 25, 25, 30, moveList.StringShot, moveList.BodySlam, moveList.Strength, moveList.Harden)
-Butterfree = pokemon.Pokemon(12, "Butterfree", 'BUG', 'FLY', 0, 60, 60, 45, 50, 80, 80, 70, moveList.PoisonPowder, moveList.StunSpore, moveList.Gust, moveList.Psybeam)
+Butterfree = pokemon.Pokemon(12, "Butterfree", 'BUG', 'FLY', 0, 60, 60, 45, 50, 80, 80, 70, moveList.StringShot, moveList.QuickAttack, moveList.Gust, moveList.Swift)
 
-Weedle = pokemon.Pokemon(13, "Weedle", 'BUG', 'PSN', 0, 40, 40, 35, 20, 20, 20, 50, moveList.Tackle, moveList.StringShot, moveList.Tackle, moveList.StringShot)
-Kakuna = pokemon.Pokemon(14, "Kakuna", 'BUG', 'PSN', 0, 45, 45, 25, 50, 25, 25, 35, moveList.Harden, moveList.Harden, moveList.Harden, moveList.Harden)
-Beedrill = pokemon.Pokemon(15, "Beedrill", 'BUG', 'PSN', 0, 65, 65, 80, 40, 45, 80, 75, moveList.PoisonPowder, moveList.StunSpore, moveList.Gust, moveList.Psybeam)
+Weedle = pokemon.Pokemon(13, "Weedle", 'BUG', 'PSN', 0, 40, 40, 35, 20, 20, 20, 50, moveList.Tackle, moveList.PoisonPowder, moveList.StringShot, moveList.Sludge)
+Kakuna = pokemon.Pokemon(14, "Kakuna", 'BUG', 'PSN', 0, 45, 45, 25, 50, 25, 25, 35, moveList.BodySlam, moveList.PoisonGas, moveList.StringShot, moveList.Harden)
+Beedrill = pokemon.Pokemon(15, "Beedrill", 'BUG', 'PSN', 0, 65, 65, 80, 40, 45, 80, 75, moveList.StringShot, moveList.PoisonGas, moveList.Smog, moveList.PoisonSting)
 
-Pidgey = pokemon.Pokemon(16, "Pidgey", 'NRM', 'FLY', 0, 40, 40, 45, 40, 35, 35, 56, moveList.Flamethrower, moveList.Earthquake, moveList.Strength, moveList.SwordsDance)
-Pidgeotto = pokemon.Pokemon(17, "Pidgeotto", 'NRM', 'FLY', 0, 63, 63, 60, 55, 50, 50, 71, moveList.Bubble, moveList.Tackle, moveList.TailWhip, moveList.QuickAttack)
-Pidgeot = pokemon.Pokemon(18, "Pidgeot", 'NRM', 'FLY', 0, 83, 83, 80, 75, 70, 70, 91, moveList.WaterGun, moveList.Bite, moveList.TailWhip, moveList.BubbleBeam)
+Pidgey = pokemon.Pokemon(16, "Pidgey", 'NRM', 'FLY', 0, 40, 40, 45, 40, 35, 35, 56, moveList.Peck, moveList.Gust, moveList.QuickAttack, moveList.Tackle)
+Pidgeotto = pokemon.Pokemon(17, "Pidgeotto", 'NRM', 'FLY', 0, 63, 63, 60, 55, 50, 50, 71, moveList.DrillPeck, moveList.Gust, moveList.QuickAttack, moveList.BodySlam)
+Pidgeot = pokemon.Pokemon(18, "Pidgeot", 'NRM', 'FLY', 0, 83, 83, 80, 75, 70, 70, 91, moveList.DrillPeck, moveList.Gust, moveList.Scratch, moveList.BodySlam)
 
-Rattata = pokemon.Pokemon(19, "Rattata", 'NRM', 'NONE', 0, 30, 30, 56, 35, 25, 35, 72, moveList.HydroPump, moveList.Surf, moveList.Blizzard, moveList.TailWhip)
-Raticate = pokemon.Pokemon(20, "Raticate", "NRM", "NONE", "None", 55, 55, 81, 60, 50, 70, 97, moveList.Tackle, moveList.StringShot, moveList.Tackle, moveList.StringShot)
+Rattata = pokemon.Pokemon(19, "Rattata", 'NRM', 'NONE', 0, 30, 30, 56, 35, 25, 35, 72, moveList.Tackle, moveList.QuickAttack, moveList.TailWhip, moveList.Growl)
+Raticate = pokemon.Pokemon(20, "Raticate", "NRM", "NONE", "None", 55, 55, 81, 60, 50, 70, 97, moveList.Tackle, moveList.Pound, moveList.BodySlam, moveList.Screech)
 
-Spearow = pokemon.Pokemon(21, "Spearow", 'NRM', 'FLY', 0, 40, 40, 60, 30, 31, 31, 70, moveList.Scratch, moveList.Growl, moveList.Ember, moveList.QuickAttack)
-Fearow = pokemon.Pokemon(22, "Fearow", 'NRM', 'FLY', 0, 65, 65, 90, 65, 61, 61, 100, moveList.DragonRage, moveList.Slash, moveList.Growl, moveList.Flamethrower)
+Spearow = pokemon.Pokemon(21, "Spearow", 'NRM', 'FLY', 0, 40, 40, 60, 30, 31, 31, 70, moveList.Scratch, moveList.Growl, moveList.Peck, moveList.QuickAttack)
+Fearow = pokemon.Pokemon(22, "Fearow", 'NRM', 'FLY', 0, 65, 65, 90, 65, 61, 61, 100, moveList.QuickAttack, moveList.Slash, moveList.Growl, moveList.DrillPeck)
 
-Ekans = pokemon.Pokemon(23, "Ekans", 'PSN', 'NONE', 0, 35, 35, 60, 44, 40, 54, 55, moveList.Flamethrower, moveList.Earthquake, moveList.Strength, moveList.SwordsDance)
-Arbok = pokemon.Pokemon(24, "Arbok", 'PSN', 'NONE', 0, 60, 60, 85, 69, 65, 79, 80, moveList.Bubble, moveList.Tackle, moveList.TailWhip, moveList.QuickAttack)
+Ekans = pokemon.Pokemon(23, "Ekans", 'PSN', 'NONE', 0, 35, 35, 60, 44, 40, 54, 55, moveList.PoisonSting, moveList.PoisonGas, moveList.Smog, moveList.Tackle)
+Arbok = pokemon.Pokemon(24, "Arbok", 'PSN', 'NONE', 0, 60, 60, 85, 69, 65, 79, 80, moveList.PoisonSting, moveList.PoisonGas, moveList.Smog, moveList.AcidArmor)
 
 Pikachu = pokemon.Pokemon(25, "Pikachu", 'ELC', 'NONE', 0, 35, 35, 55, 30, 50, 40, 90, moveList.ThunderShock, moveList.Agility, moveList.TailWhip, moveList.ThunderWave)
 Raichu = pokemon.Pokemon(26, "Raichu", 'ELC', 'NONE', 0, 60, 60, 90, 55, 90, 80, 100, moveList.Thunder, moveList.QuickAttack, moveList.ThunderWave, moveList.TailWhip)
 
-Sandshrew = pokemon.Pokemon(27, "Sandshrew", 'GRD', 'NONE', 0, 50, 50, 75, 85, 20, 30, 40, moveList.WaterGun, moveList.Bite, moveList.TailWhip, moveList.BubbleBeam)
-Sandslash = pokemon.Pokemon(28, "Sandslash", 'GRD', 'NONE', 0, 75, 75, 100, 110, 45, 55, 65, moveList.HydroPump, moveList.Surf, moveList.Blizzard, moveList.TailWhip)
+Sandshrew = pokemon.Pokemon(27, "Sandshrew", 'GRD', 'NONE', 0, 50, 50, 75, 85, 20, 30, 40, moveList.BoneClub, moveList.Tackle, moveList.TailWhip, moveList.Scratch)
+Sandslash = pokemon.Pokemon(28, "Sandslash", 'GRD', 'NONE', 0, 75, 75, 100, 110, 45, 55, 65, moveList.BoneClub, moveList.Earthquake, moveList.BodySlam, moveList.TailWhip)
 
-Nidoran = pokemon.Pokemon(29, "Nidoran", "PSN", "NONE", "None", 55, 55, 47, 52, 40, 40, 41, moveList.Tackle, moveList.StringShot, moveList.Tackle, moveList.StringShot)
-Nidorina = pokemon.Pokemon(30, "Nidorina", 'PSN', 'NONE', 0, 70, 70, 62, 67, 55, 55, 56, moveList.Harden, moveList.Harden, moveList.Harden, moveList.Harden)
-Nidoqueen = pokemon.Pokemon(31, "Nidoqueen", 'PSN', 'GRD', 0, 90, 90, 82, 87, 75, 85, 76, moveList.PoisonPowder, moveList.StunSpore, moveList.Gust, moveList.Psybeam)
+Nidoran = pokemon.Pokemon(29, "Nidoran", "PSN", "NONE", "None", 55, 55, 47, 52, 40, 40, 41, moveList.Tackle, moveList.PoisonPowder, moveList.TailWhip, moveList.Scratch)
+Nidorina = pokemon.Pokemon(30, "Nidorina", 'PSN', 'NONE', 0, 70, 70, 62, 67, 55, 55, 56, moveList.PoisonSting, moveList.PoisonPowder, moveList.TailWhip, moveList.Scratch)
+Nidoqueen = pokemon.Pokemon(31, "Nidoqueen", 'PSN', 'GRD', 0, 90, 90, 82, 87, 75, 85, 76, moveList.PoisonPowder, moveList.PoisonSting, moveList.BoneClub, moveList.Earthquake)
+#32, 33, 34
+Clefairy = pokemon.Pokemon(35, "Clefairy", 'NRM', 'NONE', 0, 70, 70, 45, 48, 60, 65, 35, moveList.Tackle, moveList.Pound, moveList.Screech, moveList.Headbutt)
+Clefable = pokemon.Pokemon(36, "Clefable", 'NRM', 'NONE', 0, 95, 95, 70, 73, 85, 90, 60, moveList.Tackle, moveList.Pound, moveList.Harden, moveList.BodySlam)
 
-Clefairy = pokemon.Pokemon(35, "Clefairy", 'NRM', 'NONE', 0, 70, 70, 45, 48, 60, 65, 35, moveList.Tackle, moveList.StringShot, moveList.Tackle, moveList.StringShot)
-Clefable = pokemon.Pokemon(36, "Clefable", 'NRM', 'NONE', 0, 95, 95, 70, 73, 85, 90, 60, moveList.Harden, moveList.Harden, moveList.Harden, moveList.Harden)
+Vulpix = pokemon.Pokemon(37, "Vulpix", 'FIR', 'NONE', 0, 38, 38, 41, 40, 50, 65, 65, moveList.Tackle, moveList.TailWhip, moveList.Ember, moveList.Flamethrower)
+Ninetales = pokemon.Pokemon(38, "Ninetales", 'FIR', 'NONE', 0, 73, 73, 76, 75, 81, 100, 100, moveList.FirePunch, moveList.BodySlam, moveList.Flamethrower, moveList.FireBlast)
 
-Vulpix = pokemon.Pokemon(37, "Vulpix", 'FIR', 'NONE', 0, 38, 38, 41, 40, 50, 65, 65, moveList.PoisonPowder, moveList.StunSpore, moveList.Gust, moveList.Psybeam)
-Ninetales = pokemon.Pokemon(38, "Ninetales", 'FIR', 'NONE', 0, 73, 73, 76, 75, 81, 100, 100, moveList.Flamethrower, moveList.Earthquake, moveList.Strength, moveList.SwordsDance)
+Jigglypuff = pokemon.Pokemon(39, "Jigglypuff", 'NRM', 'NONE', 0, 115, 115, 45, 20, 45, 25, 20, moveList.Tackle, moveList.Pound, moveList.TailWhip, moveList.Headbutt)
+Wigglytuff = pokemon.Pokemon(40, "Wigglytuff", 'NRM', 'NONE', 0, 140, 140, 70, 45, 75, 50, 45, moveList.Tackle, moveList.Pound, moveList.Harden, moveList.BodySlam)
 
-Jigglypuff = pokemon.Pokemon(39, "Jigglypuff", 'NRM', 'NONE', 0, 115, 115, 45, 20, 45, 25, 20, moveList.Bubble, moveList.Tackle, moveList.TailWhip, moveList.QuickAttack)
-Wigglytuff = pokemon.Pokemon(40, "Wigglytuff", 'NRM', 'NONE', 0, 140, 140, 70, 45, 75, 50, 45, moveList.WaterGun, moveList.Bite, moveList.TailWhip, moveList.BubbleBeam)
-
-
-
-
-
-
-
-#need stats for below 
-
-Zubat = pokemon.Pokemon(41, "Zubat", 'PSN', 'FLY', 0, 40, 40, 45, 35, 30, 40, 55, moveList.HydroPump, moveList.Surf, moveList.Blizzard, moveList.TailWhip)
-Golbat = pokemon.Pokemon(42, "Golbat", 'PSN', 'FLY', "None", 75, 75, 80, 70, 65, 75, 90, moveList.Tackle, moveList.StringShot, moveList.Tackle, moveList.StringShot)
+Zubat = pokemon.Pokemon(41, "Zubat", 'PSN', 'FLY', 0, 40, 40, 45, 35, 30, 40, 55, moveList.PoisonPowder, moveList.Sludge, moveList.Gust, moveList.TailWhip)
+Golbat = pokemon.Pokemon(42, "Golbat", 'PSN', 'FLY', "None", 75, 75, 80, 70, 65, 75, 90, moveList.PoisonGas, moveList.Smog, moveList.DrillPeck, moveList.Gust)
 
 Oddish = pokemon.Pokemon(43, "Oddish", 'GRS', 'PSN', 0, 45, 45, 50, 55, 75, 65, 30, moveList.Tackle, moveList.Growl, moveList.Absorb, moveList.QuickAttack)
 Gloom = pokemon.Pokemon(44, "Gloom", 'GRS', 'PSN', 0, 60, 60, 65, 70, 85, 75, 40, moveList.PoisonPowder, moveList.RazorLeaf, moveList.Tackle, moveList.Growl)
@@ -133,6 +125,7 @@ Magneton = pokemon.Pokemon(82, "Magneton", 'ELC', 'STL', 0, 50, 50, 60, 95, 120,
 Farfetchd = pokemon.Pokemon(83, "Farfetchd", 'NRM', 'FLY', 0, 52, 52, 90, 55, 58, 62, 60, moveList.PoisonPowder, moveList.StunSpore, moveList.Gust, moveList.Psybeam)
 
 Doduo = pokemon.Pokemon(84, "Doduo", 'NRM', 'FLY', 0, 35, 35, 85, 45, 35, 35, 75, moveList.Tackle, moveList.StringShot, moveList.Tackle, moveList.StringShot)
+
 Dodrio = pokemon.Pokemon(85, "Dodrio", 'NRM', 'FLY', 0, 60, 60, 110, 70, 60, 60, 110, moveList.Harden, moveList.Harden, moveList.Harden, moveList.Harden)
 
 Seel = pokemon.Pokemon(86, "Seel", 'WTR', 'NONE', 0, 65, 65, 45, 55, 45, 70, 45, moveList.PoisonPowder, moveList.StunSpore, moveList.Gust, moveList.Psybeam)
@@ -155,9 +148,6 @@ Hypno = pokemon.Pokemon(97, "Hypno", 'PSY', 'NONE', 0, 85, 85, 73, 70, 73, 115, 
 
 Krabby = pokemon.Pokemon(98, "Krabby", 'WTR', 'NONE', 0, 30, 30, 105, 90, 25, 25, 50, moveList.WaterGun, moveList.Bite, moveList.TailWhip, moveList.BubbleBeam)
 Kingler = pokemon.Pokemon(99, "Kingler", 'WTR', 'NONE', 0, 55, 55, 130, 115, 50, 50, 75, moveList.HydroPump, moveList.Surf, moveList.Blizzard, moveList.TailWhip)
-
-
-
 
 Voltorb = pokemon.Pokemon(100, "Voltorb", 'ELC', 'NONE', 0, 40, 40, 30, 50, 55, 55, 100, moveList.Tackle, moveList.Growl, moveList.Absorb, moveList.QuickAttack)
 Electrode = pokemon.Pokemon(101, "Electrode", 'ELC', 'NONE', 0, 60, 60, 50, 70, 80, 80, 150, moveList.Tackle, moveList.Growl, moveList.Absorb, moveList.QuickAttack)
@@ -242,7 +232,60 @@ Dragonair = pokemon.Pokemon(148, "Dragonair", 'DRG', 'NONE', 0, 61, 61, 84, 65, 
 Dragonite = pokemon.Pokemon(149, "Dragonite", 'DRG', 'FLY', 0, 91, 91, 134, 95, 100, 100, 80, moveList.Bubble, moveList.Tackle, moveList.TailWhip, moveList.QuickAttack)
 
 Mewtwo = pokemon.Pokemon(150, "Mewtwo", 'PSY', 'NONE', 0, 106, 106, 110, 90, 154, 90, 130, moveList.WaterGun, moveList.Bite, moveList.TailWhip, moveList.BubbleBeam)
+
 Mew = pokemon.Pokemon(151, "Mew", 'PSY', 'NONE', 0, 100, 100, 100, 100, 100, 100, 100, moveList.HydroPump, moveList.Surf, moveList.Blizzard, moveList.TailWhip)
 
 Pokedex = [Bulbasaur, Ivysaur, Venusaur, Charmander, Charmeleon, Charizard, Squirtle, Wartortle, Blastoise, Caterpie, Metapod, Butterfree, Weedle, Kakuna, Beedrill, Pidgey, Pidgeotto, Pidgeot, Rattata, Raticate, Spearow, Fearow, Ekans, Arbok, Pikachu, Raichu, Sandshrew, Sandslash, Nidoran, Nidorina, Nidoqueen, Clefairy, Clefable, Vulpix, Ninetales, Jigglypuff, Wigglytuff, Zubat, Golbat, Oddish, Gloom, Vileplume, Paras, Parasect, Venonat, Venomoth, Diglett, Dugtrio, Meowth, Persian, Psyduck, Golduck, Mankey, Primeape, Growlithe, Arcanine, Poliwag, Poliwhirl, Poliwrath, Abra, Kadabra, Alakazam, Machop, Machoke, Machamp, Bellsprout, Weepinbell, Victreebel, Tentacool, Tentacruel, Geodude, Graveler, Golem, Ponyta, Rapidash, Slowpoke, Slowbro, Magnemite, Magneton, Farfetchd, Doduo, Dodrio, Seel, Dewgong, Grimer, Muk, Shellder, Cloyster, Gastly, Haunter, Gengar, Onix, Drowzee, Hypno, Krabby, Kingler, Voltorb, Electrode, Exeggcute, Exeggutor, Cubone, Marowak, Hitmonlee, Hitmonchan, Lickitung, Koffing, Weezing, Rhyhorn, Rhydon, Chansey, Tangela, Kangaskhan, Horsea, Seadra, Goldeen, Seaking, Staryu, Starmie, MrMime, Scyther, Jynx, Electabuzz, Magmar, Pinsir, Tauros, Magikarp, Gyarados, Lapras, Ditto, Eevee, Vaporeon, Jolteon, Flareon, Porygon, Omanyte, Omastar, Kabuto, Kabutops, Aerodactyl, Snorlax, Articuno, Zapdos, Moltres, Dratini, Dragonair, Dragonite, Mewtwo, Mew]
 
+first_gen = [Bulbasaur, Charmander, Squirtle, 
+            Caterpie, Weedle, Pidgey, Rattata,
+            Spearow, Ekans, Pikachu, Sandshrew, 
+            Nidoran, Clefairy, Vulpix, Jigglypuff,
+            Zubat, Oddish, Paras, Venonat, Diglett, 
+            Meowth, Psyduck, Mankey, Growlithe, 
+            Poliwag, Abra, Machop, Bellsprout, 
+            Tentacool, Geodude, Ponyta, Slowpoke,
+            Magnemite, Seel, Grimer, Shellder,
+            Gastly, Drowzee, Krabby, Voltorb,
+            Exeggcute, Cubone, Hitmonlee, 
+            Koffing, Rhyhorn, Horsea, Goldeen,
+            Staryu, Scyther, Magikarp, Eevee, 
+            Omanyte, Kabuto, Dratini, Doduo
+]
+second_gen = [Ivysaur, Charmeleon, Wartortle,
+              Metapod, Kakuna, Pidgeotto, 
+              Nidorina, Gloom, Poliwhirl, 
+              Machoke, Weepinbell, Graveler,
+              Haunter, Dragonair
+]
+
+third_gen = [Venusaur, Charizard, Blastoise,
+            Butterfree, Beedrill, Nidoqueen, 
+            Vileplume, Poliwrath, Alakazam, 
+            Machamp, Victreebel, Golem, 
+            Gengar, Dragonite
+]
+
+second_final_gen = [Raticate, Fearow, Arbok,
+                    Raichu, Sandslash, Clefable,
+                    Ninetales, Wigglytuff, Golbat,
+                    Parasect, Venomoth, Dugtrio,
+                    Persian, Golduck, Primeape,
+                    Slowbro, Magneton, Dewgong,
+                    Muk, Cloyster, Hypno, Kingler,
+                    Electrode, Exeggutor, Marowak, 
+                    Hitmonchan, Weezing, Rhydon, 
+                    Seadra, Seaking, Starmie, 
+                    Jynx, Gyarados, Omastar, 
+                    Kabutops, Dodrio
+]
+
+only_gen = [Farfetchd, Onix, Lickitung, Chansey, 
+            Tangela, Kangaskhan, MrMime,
+            Electabuzz, Magmar, Pinsir, 
+            Tauros, Lapras, Ditto, Porygon, 
+            Aerodactyl, Snorlax, Articuno, 
+            Zapdos, Moltres, Mewtwo, Mew
+]
+
+eevee_evol = [Vaporeon, Jolteon, Flareon]

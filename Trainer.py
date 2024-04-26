@@ -1,15 +1,21 @@
 from entity import *
 import pygame
 from NPC import NPC
+import random
+import pokedex
 
 class Trainer(NPC):                       #inherit from NPC
-    def __init__(self,id,game,layer,x,y,spriteImage,screen,player,facing_direction):
+    def __init__(self,id,game,layer,x,y,spriteImage,screen,player,facing_direction, party=[]):
         self.facing_direction = facing_direction
         self.isEncountered = False
         self.isDefeated = False
         # self.dialog = dialog.Dialog(game,layer+1,screen)
         # self.dialog.set_dialog_text(["You seem strong!",["Here we go!",["Yeah!","No thanks.","WHAR",'hi']], "Let's battle!"])
         self.has_encountered = False
+        partyLen = random.randint(1,6)
+        self.party = party
+        for i in range(partyLen):
+            party.append(pokedex.Pokedex[random.randint(1, 151) - 1])
 
         super().__init__(id,game,layer,x,y,spriteImage,screen,player)
         self.game.enemies.add(self)     #add trainer to enemies group created in game.py

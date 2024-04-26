@@ -4,6 +4,8 @@ from config import *
 from NPC import *
 from Trainer import Trainer
 from Nurse import Nurse
+import player
+import battleTest
 
 class Dialog():
     def __init__(self,game,layer,screen,object_type,x=DIALOG_BOX_X,y=DIALOG_BOX_Y):
@@ -19,12 +21,13 @@ class Dialog():
         self.option_rects = []
         self.option_func_trigger = []
         self.is_option = False              #set to True in instance check if first item in list is an dialog that has options
+        self.object_type = object_type
 
         print('in dialog init:')
         # print(object_type)
         if isinstance(object_type,Trainer):
-            self.text = ["Let's battle!",["test",['y','n']]]
-            self.option_func_trigger = [[0,'exitdialog']]
+            self.text = ["Let's battle!",["Come on!",['Fine.','No!']]]
+            self.option_func_trigger = [[],['battle','exitdialog']]
         elif isinstance(object_type,Nurse):
             self.is_option = True
             self.text = [["Would you like me to heal your pokemon?",['Yeah!','No thanks']]]
@@ -33,13 +36,23 @@ class Dialog():
 
     def trigger_option_func(self,index_of_trigger):
         temp = self.option_func_trigger[self.count]
-        func_triggered = temp[index_of_trigger]
-        # print('hi')
-        # print(func_triggered)
-        if func_triggered == 'exitdialog':
-            self.count = len(self.text)-1             #exit dialog will make it so dialog quits
-            return False                              #set count to largest index and return False to end dialog
-        #elif .... add more checks here
+
+        if not len(temp) == 0:                              #if the list is empty
+            func_triggered = temp[index_of_trigger]
+            # print('hi')
+            # print(func_triggered)
+            if func_triggered == 'exitdialog':
+                self.count = len(self.text)-1             #exit dialog will make it so dialog quits
+                return False                              #set count to largest index and return False to end dialog
+            elif func_triggered == 'battle':              #trigger trainer battle
+                print(self.object_type)
+                print(self.object_type.party)
+                self.object_type.player.trigger_battle("TRAINER", self.object_type.party)
+                return False
+            elif func_triggered == 'healallpoke':
+                battleTest.HealParty(self.object_type.player.playerPokemon)
+                print('attempted to heal')
+            #elif .... add more checks here
 
         return True                                   
 

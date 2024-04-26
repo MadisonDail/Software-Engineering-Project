@@ -94,7 +94,7 @@ def BattleScreen(userP, enemyP, userPokemonIndex, enemyPokemonIndex, switchFlag)
                                     current_buttons = fight_buttons
                                     current_text=fight_text
                                 if index=="Run":
-                                    pygame.quit()  #doesnt work but quits so fine for rn 
+                                    return "RUN"  #doesnt work but quits so fine for rn 
                                 if index=="Pokémon":
                                     pokemon_options = True
                                     current_buttons = pokemon_buttons

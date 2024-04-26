@@ -35,13 +35,25 @@ class Game:
                     Block(self, j, i)   #Creates block at position (j,i)
                 elif column == "W":
                     Wall(self, j, i)
+                elif column == "S":
+                    Stop(self, j, i)
                 elif column == "T":
                     Tile(self, j, i)   #Creates block at position (j,i)
                 elif column == "F":
                     Floor(self, j, i)
+                elif column == "w":
+                    Water(self, j, i)
                 elif column == "P":
                     Tile(self, j, i)
                     self.setplayer(j,i) #create player at position (j,i) 
+                elif column == "L":
+                    Lava(self, j, i)
+                elif column == "Z":
+                    Zapdos(self, j, i)
+                elif column == "A":
+                    Articuno(self, j, i)
+                elif column == "M":
+                    Moltres(self, j, i)
                 elif column == "U":     #store trainer locations along with facing direction(ex. U is up)
                     Tile(self, j, i)
                     temp = self.character_locations["trainer"]
@@ -177,7 +189,7 @@ class Game:
                             #=====
                             else:
                                 for count,option in enumerate(self.Dialog.option_rects):     #loop through all options
-                                    print(option,count)
+                                    # print(option,count)
                                     if option.collidepoint(event.pos):
                                         self.isEncountered = self.Dialog.trigger_option_func(count)
                             #=====

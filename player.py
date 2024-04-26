@@ -51,7 +51,7 @@ class Player(Entity):                       #inherit from entity
         if current_tile == 'X':
             # Here you can choose which tilemap to switch to
             if self.game.tilemap == tilemap1[0] or self.game.tilemap == tilemap1[1] or self.game.tilemap == tilemap1[2] or self.game.tilemap == tilemap1[3]:
-                self.game.changeMap(tilemap[1])
+                self.game.changeMap(tilemap[1]) 
             
         elif current_tile == '1':    #HCB PATH
             if self.game.tilemap == tilemap[0] or self.game.tilemap == tilemap[1]:    #from spawn to HCB
@@ -93,15 +93,17 @@ class Player(Entity):                       #inherit from entity
         elif current_tile == '7':
             if self.game.tilemap == tilemap4[0] or self.game.tilemap == tilemap4[1] or self.game.tilemap == tilemap4[2]:
                 self.game.changeMap(tilemap7[0])
-            elif self.game.tilemap == tilemap8[0] or self.game.tilemap == tilemap8[1]:
+            elif self.game.tilemap == tilemap8[0] or self.game.tilemap == tilemap8[1] or self.game.tilemap == tilemap8[2]:
                 self.game.changeMap(tilemap7[1])
+            elif self.game.tilemap == tilemap_hide1[0] or self.game.tilemap == tilemap_hide1[1]:
+                self.game.changeMap(tilemap7[2])
 
         elif current_tile == '8':
             if self.game.tilemap == tilemap7[0] or self.game.tilemap == tilemap7[1]:
                 self.game.changeMap(tilemap8[0])
             elif self.game.tilemap == tilemap9[0] or self.game.tilemap == tilemap9[1]:
                 self.game.changeMap(tilemap8[1])
-            elif self.game.tilemap == tilemap11[0] or self.game.tilemap == tilemap11[1]:
+            elif self.game.tilemap == tilemap11[0] or self.game.tilemap == tilemap11[1] or self.game.tilemap == tilemap11[2]:
                 self.game.changeMap(tilemap8[2])
 
         elif current_tile == '9':
@@ -119,9 +121,11 @@ class Player(Entity):                       #inherit from entity
                 self.game.changeMap(tilemap11[0])
             elif self.game.tilemap == tilemap12[0] or self.game.tilemap == tilemap12[1]:
                 self.game.changeMap(tilemap11[1])
+            elif self.game.tilemap == tilemap_hide1[0] or self.game.tilemap == tilemap_hide1[1]:
+                self.game.changeMap(tilemap11[2])
 
         elif current_tile == '=':   #12
-            if self.game.tilemap == tilemap11[0] or self.game.tilemap == tilemap11[1]:
+            if self.game.tilemap == tilemap11[0] or self.game.tilemap == tilemap11[1] or self.game.tilemap == tilemap11[2]:
                 self.game.changeMap(tilemap12[0])
             elif self.game.tilemap == tilemap13:
                 self.game.changeMap(tilemap12[1])
@@ -129,19 +133,30 @@ class Player(Entity):                       #inherit from entity
         elif current_tile == '-':
             if self.game.tilemap == tilemap12[0] or self.game.tilemap == tilemap12[1]:
                 self.game.changeMap(tilemap13)
+
+        elif current_tile == 'h':
+            if self.game.tilemap == tilemap11[0] or self.game.tilemap == tilemap11[1] or self.game.tilemap == tilemap11[2]:
+                self.game.changeMap(tilemap_hide1[0])
+            elif self.game.tilemap == tilemap7[2]:
+                self.game.changeMap(tilemap_hide1[1])
+            
             
         #battle schemantics 
-        if (current_tile == '.' and self.facing != 'battle' and random.randint(1,500) == 1):
-            self.trigger_battle()
+        if (current_tile == '.' and self.facing != 'battle' and random.randint(1,300) == 1):
+            self.trigger_battle("WILD")
 
-    def trigger_battle(self):
+    def trigger_battle(self, battleType, enemyParty=[]):
         print("A WILD POKEMON APPEARS!") #this will be on the actual game screen, just for testing purposes 
         self.facing = 'battle' # self facing battle lets us change 
-        pokemon_battling = random.randint(1,151)
-        print(pokemon_battling)
-        wild_pokemon = []
-        wild_pokemon.append((copy.copy(pokedex.Pokedex[pokemon_battling-1])))
-        battleTest.Battle(self.playerPokemon, wild_pokemon, "WILD")
+        if battleType=="WILD":
+            pokemon_battling = random.randint(1,148)
+            print(pokemon_battling)
+            wild_pokemon = []
+            wild_pokemon.append((copy.copy(pokedex.Pokedex[pokemon_battling-1])))
+            battleTest.Battle(self.playerPokemon, wild_pokemon, battleType)
+        elif battleType == "TRAINER":
+            battleTest.Battle(self.playerPokemon, enemyParty, "TRAINER")
+        
         # battleTest.Battle()
         # change battle screen 
 
@@ -244,6 +259,26 @@ class Wall(pygame.sprite.Sprite):
         self.rect.y = self.y
         self.rect.width = self.width
         self.rect.height = self.height
+
+class Stop(pygame.sprite.Sprite):
+    def __init__(self, game, x, y):
+        self.game = game
+        self._layer = BLOCK_LAYER
+        self.groups = self.game.all_sprites, self.game.blocks
+        
+        pygame.sprite.Sprite.__init__(self, self.groups)
+        #block is square 32x32 pixels
+        self.x = x * TILE_SIZE
+        self.y = y * TILE_SIZE
+        self.width = TILE_SIZE 
+        self.height = TILE_SIZE
+        self.image = pygame.transform.scale(pygame.image.load("images/do_not_enter.png"),(TILE_SIZE,TILE_SIZE))   #scale image size to a tile
+        #self.image = self.game.terrain_spritesheet.get_sprite(960, 448, self.width, self.height)        #rocks
+        self.rect = self.image.get_rect()
+        self.rect.x = self.x
+        self.rect.y = self.y
+        self.rect.width = self.width
+        self.rect.height = self.height
         
 class Tile(pygame.sprite.Sprite):
     def __init__(self, game, x, y):
@@ -259,6 +294,106 @@ class Tile(pygame.sprite.Sprite):
         self.height = TILE_SIZE
         #self.image = pygame.transform.scale(pygame.image.load("images/boulder.png"),(TILE_SIZE,TILE_SIZE))   #scale image size to a tile
         self.image = self.game.terrain_spritesheet.get_sprite(935, 646, self.width, self.height)    #stone pathway
+        self.rect = self.image.get_rect()
+        self.rect.x = self.x
+        self.rect.y = self.y
+        self.rect.width = self.width
+        self.rect.height = self.height
+
+class Lava(pygame.sprite.Sprite):
+    def __init__(self, game, x, y):
+        self.game = game
+        self._layer = BLOCK_LAYER
+        self.groups = self.game.all_sprites
+        
+        pygame.sprite.Sprite.__init__(self, self.groups)
+        #block is square 32x32 pixels
+        self.x = x * TILE_SIZE
+        self.y = y * TILE_SIZE
+        self.width = TILE_SIZE 
+        self.height = TILE_SIZE
+        #self.image = pygame.transform.scale(pygame.image.load("images/boulder.png"),(TILE_SIZE,TILE_SIZE))   #scale image size to a tile
+        self.image = self.game.terrain_spritesheet.get_sprite(511, 96, self.width, self.height)    #stone pathway
+        self.rect = self.image.get_rect()
+        self.rect.x = self.x
+        self.rect.y = self.y
+        self.rect.width = self.width
+        self.rect.height = self.height
+
+class Water(pygame.sprite.Sprite):
+    def __init__(self, game, x, y):
+        self.game = game
+        self._layer = BLOCK_LAYER
+        self.groups = self.game.all_sprites
+        
+        pygame.sprite.Sprite.__init__(self, self.groups)
+        #block is square 32x32 pixels
+        self.x = x * TILE_SIZE
+        self.y = y * TILE_SIZE
+        self.width = TILE_SIZE 
+        self.height = TILE_SIZE
+        #self.image = pygame.transform.scale(pygame.image.load("images/boulder.png"),(TILE_SIZE,TILE_SIZE))   #scale image size to a tile
+        self.image = self.game.terrain_spritesheet.get_sprite(899, 98, self.width, self.height)    #stone pathway
+        self.rect = self.image.get_rect()
+        self.rect.x = self.x
+        self.rect.y = self.y
+        self.rect.width = self.width
+        self.rect.height = self.height
+
+class Zapdos(pygame.sprite.Sprite):
+    def __init__(self, game, x, y):
+        self.game = game
+        self._layer = BLOCK_LAYER
+        self.groups = self.game.all_sprites
+        
+        pygame.sprite.Sprite.__init__(self, self.groups)
+        #block is square 32x32 pixels
+        self.x = x * TILE_SIZE
+        self.y = y * TILE_SIZE
+        self.width = TILE_SIZE 
+        self.height = TILE_SIZE
+        self.image = pygame.transform.scale(pygame.image.load("images/zapdos.png"),(TILE_SIZE,TILE_SIZE))   #scale image size to a tile
+        #self.image = self.game.terrain_spritesheet.get_sprite(935, 646, self.width, self.height)    #stone pathway
+        self.rect = self.image.get_rect()
+        self.rect.x = self.x
+        self.rect.y = self.y
+        self.rect.width = self.width
+        self.rect.height = self.height
+
+class Articuno(pygame.sprite.Sprite):
+    def __init__(self, game, x, y):
+        self.game = game
+        self._layer = BLOCK_LAYER
+        self.groups = self.game.all_sprites
+        
+        pygame.sprite.Sprite.__init__(self, self.groups)
+        #block is square 32x32 pixels
+        self.x = x * TILE_SIZE
+        self.y = y * TILE_SIZE
+        self.width = TILE_SIZE 
+        self.height = TILE_SIZE
+        self.image = pygame.transform.scale(pygame.image.load("images/articuno.png"),(TILE_SIZE,TILE_SIZE))   #scale image size to a tile
+        #self.image = self.game.terrain_spritesheet.get_sprite(935, 646, self.width, self.height)    #stone pathway
+        self.rect = self.image.get_rect()
+        self.rect.x = self.x
+        self.rect.y = self.y
+        self.rect.width = self.width
+        self.rect.height = self.height
+
+class Moltres(pygame.sprite.Sprite):
+    def __init__(self, game, x, y):
+        self.game = game
+        self._layer = BLOCK_LAYER
+        self.groups = self.game.all_sprites
+        
+        pygame.sprite.Sprite.__init__(self, self.groups)
+        #block is square 32x32 pixels
+        self.x = x * TILE_SIZE
+        self.y = y * TILE_SIZE
+        self.width = TILE_SIZE 
+        self.height = TILE_SIZE
+        self.image = pygame.transform.scale(pygame.image.load("images/moltres.png"),(TILE_SIZE,TILE_SIZE))   #scale image size to a tile
+        #self.image = self.game.terrain_spritesheet.get_sprite(935, 646, self.width, self.height)    #stone pathway
         self.rect = self.image.get_rect()
         self.rect.x = self.x
         self.rect.y = self.y
@@ -288,7 +423,6 @@ class Floor(pygame.sprite.Sprite):
         self._layer = GROUND_LAYER
         self.groups = self.game.all_sprites
         pygame.sprite.Sprite.__init__(self, self.groups)
-
         self.x = x * TILE_SIZE
         self.y = y* TILE_SIZE
         self.width = TILE_SIZE

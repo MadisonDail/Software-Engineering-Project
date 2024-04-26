@@ -9,6 +9,7 @@ class Nurse(NPC):                       #inherit from NPC
         # self.dialog = dialog.Dialog(game,layer+1,screen)
         # self.dialog.set_dialog_text([["Hello! How may I help you?",["Heal Pokemon","Leave"]]])
         super().__init__(id,game,layer,x,y,spriteImage,screen,player)
+        self.game.enemies.add(self)     #add trainer to enemies group created in game.py
 
     def update(self,events):                       #check for mouse click for every update
         # if not self.isEncountered:
