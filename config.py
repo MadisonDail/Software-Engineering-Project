@@ -51,7 +51,7 @@ tilemap_template=[
 
 #spawn/landis (64, 352)
 tilemap = [[         
-    'BBBBBBBBBBBBBBBBBBBB',
+    'WWWWWWWWWWWWWWWWWWWW',
     'BT.......T........TB',
     'BT......T.T.......TB',
     'BT.....T...T......TB',
@@ -206,21 +206,21 @@ tilemap2=[[
 
 #union
 tilemap3 = [
-    'BBBBBBBBBBBBBBBBBBBB',
-    'BFFFFFFFFFFFFFFFFFFB',
-    'BFFFFFFFFFFFFFFFFFFB',
-    'BFFFFFFFFFFFFFFFFFFB',
-    'BFFFFFFFFFFFFFFFFFFB',
-    'BFFFFFFFFFFFFFFFFFFB',
-    'BFFFFFFFFFNFFFFFFFFB',
-    'BFFFFFFFFFFFFFFFFFFB',
-    'BFFFFFFFFFFFFFFFFFFB',
-    'BFFFFFFFFFFFFFFFFFFB',
-    'BFFFFFFFFFFFFFFFFFFB',
-    'BFFFFFFFFFFFFFFFFFFB',
-    'BFFFFFFFFFFFFFFFFFP2',
-    'BFFFFFFFFFFFFFFFFFF2',
-    'BBBBBBBBBBBBBBBBBBBB'
+    'WWWWWWWWWWWWWWWWWWWW',
+    'WFFFFFFFFFFFFFFFFFFW',
+    'WFFFFFFFFFFFFFFFFFFW',
+    'WFFFFFFFFFFFFFFFFFFW',
+    'WFFFFFFFFFFFFFFFFFFW',
+    'WFFFFFFFFFFFFFFFFFFW',
+    'WFFFFFFFFFNFFFFFFFFW',
+    'WFFFFFFFFFFFFFFFFFFW',
+    'WFFFFFFFFFFFFFFFFFFW',
+    'WFFFFFFFFFFFFFFFFFFW',
+    'WFFFFFFFFFFFFFFFFFFW',
+    'WFFFFFFFFFFFFFFFFFFW',
+    'WFFFFFFFFFFFFFFFFFP2',
+    'WFFFFFFFFFFFFFFFFFF2',
+    'WWWWWWWWWWWWWWWWWWWW'
 ]
 
 #statue area
@@ -282,63 +282,63 @@ tilemap4 = [
 ]
 ]
 
-#path to HWC and entrance to leach
+#path to HWC
 tilemap5= [
 [
-    'BBBBBBBBBBBBBBBBBBBB',
-    'B.......TTTTTT.....B',
-    'B.......TTTTTT.....B',
+    'BBBBBBBBBBBBBBBBBBBW',
+    'B.......TTTTTT.....W',
+    'B.......TTTTTT.....W',
     'B.......TTTTTTTTTTT6',
     'B.......TTTTTTTTTTT6',
     'B.......TTTTTTTTTTT6',
-    'B.......TTTTTT.....B',
-    'B.......TTTTTT.....B',
-    'B.......TTTTTT.....B',
-    'B.......TTTTTT.....B',
-    'B.......TTTTTT.....B',
-    'B.......TTTTTT.....B',
-    'B.......TTTTTT.....B',
-    'B.......TTPTTT.....B',
+    'B.......TTTTTT.....W',
+    'B.......TTTTTT.....W',
+    'B.......TTTTTT.....W',
+    'B.......TTTTTT.....W',
+    'B.......TTTTTT.....W',
+    'B.......TTTTTT.....W',
+    'B.......TTTTTT.....W',
+    'B.......TTPTTT.....W',
     'BBBBBBBB444444BBBBBB'        
 ]
 ,
 #tilemap5[1]
 [
-    'BBBBBBBBBBBBBBBBBBBB',
-    'B.......TTTTTT.....B',
-    'B.......TTTTTT.....B',
+    'BBBBBBBBBBBBBBBBBBBW',
+    'B.......TTTTTT.....W',
+    'B.......TTTTTT.....W',
     'B.......TTTTTTTTTTT6',
     'B.......TTTTTTTTTTP6',
     'B.......TTTTTTTTTTT6',
-    'B.......TTTTTT.....B',
-    'B.......TTTTTT.....B',
-    'B.......TTTTTT.....B',
-    'B.......TTTTTT.....B',
-    'B.......TTTTTT.....B',
-    'B.......TTTTTT.....B',
-    'B.......TTTTTT.....B',
-    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....W',
+    'B.......TTTTTT.....W',
+    'B.......TTTTTT.....W',
+    'B.......TTTTTT.....W',
+    'B.......TTTTTT.....W',
+    'B.......TTTTTT.....W',
+    'B.......TTTTTT.....W',
+    'B.......TTTTTT.....W',
     'BBBBBBBB444444BBBBBB' 
 ]
 ]
 
 #HWC
 tilemap6= [
-    'BBBBBBBBBBBBBBBBBBBB',
-    'BFFFFFFFFFFFFFFFFFFB',
-    '5FFFFFFFFFFFFFFFFFFB',
-    '5PFFFFFFFFFFFFFFFFFB',
-    '5FFFFFFFFFFFFFFFFFFB',
-    'BFFFFFFFFFFFFFFFFFFB',
-    'BFFFFFFFFFNFFFFFFFFB',
-    'BFFFFFFFFFFFFFFFFFFB',
-    'BFFFFFFFFFFFFFFFFFFB',
-    'BFFFFFFFFFFFFFFFFFFB',
-    'BFFFFFFFFFFFFFFFFFFB',
-    'BFFFFFFFFFFFFFFFFFFB',
-    'BFFFFFFFFFFFFFFFFFFB',
-    'BFFFFFFFFFFFFFFFFFFB',
-    'BBBBBBBBBBBBBBBBBBBB'
+    'WWWWWWWWWWWWWWWWWWWW',
+    'WFFFFFFFFFFFFFFFFFFW',
+    '5FFFFFFFFFFFFFFFFFFW',
+    '5PFFFFFFFFFFFFFFFFFW',
+    '5FFFFFFFFFFFFFFFFFFW',
+    'WFFFFFFFFFFFFFFFFFFW',
+    'WFFFFFFFFFNFFFFFFFFW',
+    'WFFFFFFFFFFFFFFFFFFW',
+    'WFFFFFFFFFFFFFFFFFFW',
+    'WFFFFFFFFFFFFFFFFFFW',
+    'WFFFFFFFFFFFFFFFFFFW',
+    'WFFFFFFFFFFFFFFFFFFW',
+    'WFFFFFFFFFFFFFFFFFFW',
+    'WFFFFFFFFFFFFFFFFFFW',
+    'WWWWWWWWWWWWWWWWWWWW'
 ]
 
 #between statue and dirac 4 route 
@@ -443,59 +443,59 @@ tilemap8 = [
 tilemap9= [
 [
     'BBBBBBBB888888BBBBBB',
-    'B.......TTPTTT.....B',
-    'B.......TTTTTT.....B',
-    'B.......TTTTTT.....B',
-    'B.......TTTTTT.....B',
-    'B.......TTTTTT.....B',
-    'B.......TTTTTT.....B',
+    'W.......TTPTTT.....B',
+    'W.......TTTTTT.....B',
+    'W.......TTTTTT.....B',
+    'W.......TTTTTT.....B',
+    'W.......TTTTTT.....B',
+    'W.......TTTTTT.....B',
     '*TTTTTTTTTTTTT.....B',
     '*TTTTTTTTTTTTT.....B',
     '*TTTTTTTTTTTTT.....B',
-    'B..................B',
-    'B..................B',
-    'B..................B',
-    'B..................B',
-    'BBBBBBBBBBBBBBBBBBBB'
+    'W..................B',
+    'W..................B',
+    'W..................B',
+    'W..................B',
+    'WBBBBBBBBBBBBBBBBBBB'
 ]   
 ,
 #tilemap9[1]
 [
     'BBBBBBBB888888BBBBBB',
-    'B.......TTTTTT.....B',
-    'B.......TTTTTT.....B',
-    'B.......TTTTTT.....B',
-    'B.......TTTTTT.....B',
-    'B.......TTTTTT.....B',
-    'B.......TTTTTT.....B',
+    'W.......TTTTTT.....B',
+    'W.......TTTTTT.....B',
+    'W.......TTTTTT.....B',
+    'W.......TTTTTT.....B',
+    'W.......TTTTTT.....B',
+    'W.......TTTTTT.....B',
     '*TTTTTTTTTTTTT.....B',
     '*PTTTTTTTTTTTT.....B',
     '*TTTTTTTTTTTTT.....B',
-    'B..................B',
-    'B..................B',
-    'B..................B',
-    'B..................B',
-    'BBBBBBBBBBBBBBBBBBBB'
+    'W..................B',
+    'W..................B',
+    'W..................B',
+    'W..................B',
+    'WBBBBBBBBBBBBBBBBBBB'
 ]
 ]
 
 #Dirac
 tilemap10 = [
-    'BBBBBBBBBBBBBBBBBBBB',
-    'BTTTTTTTTTTTTTTTTTTB',
-    'BTTTTTTTTTTTTTTTTTTB',
-    'BTTTTTTTTTTTTTTTTTTB',
-    'BTTTTTTTTTTTTTTTTTTB',
-    'BTTTTTTTTTTTTTTTTTTB',
-    'BTTTTTTTTTTTTTTTTTT9',
-    'BTTTTTTTTTNTTTTTTTP9',
-    'BTTTTTTTTTTTTTTTTTT9',
-    'BTTTTTTTTTTTTTTTTTTB',
-    'BTTTTTTTTTTTTTTTTTTB',
-    'BTTTTTTTTTTTTTTTTTTB',
-    'BTTTTTTTTTTTTTTTTTTB',
-    'BTTTTTTTTTTTTTTTTTTB',
-    'BBBBBBBBBBBBBBBBBBBB'
+    'WWWWWWWWWWWWWWWWWWWW',
+    'WTTTTTTTTTTTTTTTTTTW',
+    'WTTTTTTTTTTTTTTTTTTW',
+    'WTTTTTTTTTTTTTTTTTTW',
+    'WTTTTTTTTTTTTTTTTTTW',
+    'WTTTTTTTTTTTTTTTTTTW',
+    'WTTTTTTTTTTTTTTTTTT9',
+    'WTTTTTTTTTNTTTTTTTP9',
+    'WTTTTTTTTTTTTTTTTTT9',
+    'WTTTTTTTTTTTTTTTTTTW',
+    'WTTTTTTTTTTTTTTTTTTW',
+    'WTTTTTTTTTTTTTTTTTTW',
+    'WTTTTTTTTTTTTTTTTTTW',
+    'WTTTTTTTTTTTTTTTTTTW',
+    'WWWWWWWWWWWWWWWWWWWW'
 ]
 
 #path to leach
@@ -541,58 +541,58 @@ tilemap11= [
 #entrance to leach (-)
 tilemap12= [
 [
-    'BBBBBBBBBBBBBBBBBBBB',
-    'B.......TTTTTT.....B',
-    'B.......TTTTTT.....B',
+    'BBBBBBBBBBBBBBBBBBBW',
+    'B.......TTTTTT.....W',
+    'B.......TTTTTT.....W',
     'B.......TTTTTTTTTTT-',
     'B.......TTTTTTTTTTT-',
     'B.......TTTTTTTTTTT-',
-    'B.......TTTTTT.....B',
-    'B.......TTTTTT.....B',
-    'B.......TTTTTT.....B',
-    'B.......TTTTTT.....B',
-    'B.......TTTTTT.....B',
-    'B.......TTTTTT.....B',
-    'B.......TTTTTT.....B',
-    'B.......TTPTTT.....B',
+    'B.......TTTTTT.....W',
+    'B.......TTTTTT.....W',
+    'B.......TTTTTT.....W',
+    'B.......TTTTTT.....W',
+    'B.......TTTTTT.....W',
+    'B.......TTTTTT.....W',
+    'B.......TTTTTT.....W',
+    'B.......TTPTTT.....W',
     'BBBBBBBB++++++BBBBBB'  
 ]
 ,
 #tilemap12[1]
 [
-    'BBBBBBBBBBBBBBBBBBBB',
-    'B.......TTTTTT.....B',
-    'B.......TTTTTT.....B',
+    'BBBBBBBBBBBBBBBBBBBW',
+    'B.......TTTTTT.....W',
+    'B.......TTTTTT.....W',
     'B.......TTTTTTTTTTT-',
     'B.......TTTTTTTTTTP-',
     'B.......TTTTTTTTTTT-',
-    'B.......TTTTTT.....B',
-    'B.......TTTTTT.....B',
-    'B.......TTTTTT.....B',
-    'B.......TTTTTT.....B',
-    'B.......TTTTTT.....B',
-    'B.......TTTTTT.....B',
-    'B.......TTTTTT.....B',
-    'B.......TTTTTT.....B',
+    'B.......TTTTTT.....W',
+    'B.......TTTTTT.....W',
+    'B.......TTTTTT.....W',
+    'B.......TTTTTT.....W',
+    'B.......TTTTTT.....W',
+    'B.......TTTTTT.....W',
+    'B.......TTTTTT.....W',
+    'B.......TTTTTT.....W',
     'BBBBBBBB++++++BBBBBB' 
 ]
 ]
 
 #leach
 tilemap13= [
-    'BBBBBBBBBBBBBBBBBBBB',
-    'BFFFFFFFFFFFFFFFFFFB',
-    '=FFFFFFFFFFFFFFFFFFB',
-    '=PFFFFFFFFFFFFFFFFFB',
-    '=FFFFFFFFFFFFFFFFFFB',
-    'BFFFFFFFFFFFFFFFFFFB',
-    'BFFFFFFFFFFFFFFFFFFB',
-    'BFFFFFFFFFFFFFFFFFFB',
-    'BFFFFFFFFFFFFFFFFFFB',
-    'BFFFFFFFFFFFFFFFFFFB',
-    'BFFFFFFFFFFFFFFFFFFB',
-    'BFFFFFFFFFFFFFFFFFFB',
-    'BFFFFFFFFFFFFFFFFFFB',
-    'BFFFFFFFFFFFFFFFFFFB',
-    'BBBBBBBBBBBBBBBBBBBB'
+    'WWWWWWWWWWWWWWWWWWWW',
+    'BFFFFFFFFFFFFFFFFFFW',
+    '=FFFFFFFFFFFFFFFFFFW',
+    '=PFFFFFFFFFFFFFFFFFW',
+    '=FFFFFFFFFFFFFFFFFFW',
+    'WFFFFFFFFFFFFFFFFFFW',
+    'WFFFFFFFFFFFFFFFFFFW',
+    'WFFFFFFFFFFFFFFFFFFW',
+    'WFFFFFFFFFFFFFFFFFFW',
+    'WFFFFFFFFFFFFFFFFFFW',
+    'WFFFFFFFFFFFFFFFFFFW',
+    'WFFFFFFFFFFFFFFFFFFW',
+    'WFFFFFFFFFFFFFFFFFFW',
+    'WFFFFFFFFFFFFFFFFFFW',
+    'WWWWWWWWWWWWWWWWWWWW'
 ]

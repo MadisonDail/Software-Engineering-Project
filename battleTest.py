@@ -760,7 +760,7 @@ enemyParty.append(pokedex.Charizard)
 
 # Battle(userParty, enemyParty)
 
-Battle(userParty, enemyParty, "WILD")
+# Battle(userParty, enemyParty, "WILD")
 
 
 

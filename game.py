@@ -38,7 +38,7 @@ class Game:
                 elif column == "T":
                     Tile(self, j, i)   #Creates block at position (j,i)
                 elif column == "F":
-                    Floor(self, j, )
+                    Floor(self, j, i)
                 elif column == "P":
                     Tile(self, j, i)
                     self.setplayer(j,i) #create player at position (j,i) 
@@ -93,6 +93,8 @@ class Game:
         # self.createTilemap() 
         # self.setTrainers()
         # self.setNurse()
+        self.character_locations["trainer"] = []
+        self.character_locations["nurse"] = []
     
         self.tilemap = newtilemap
         # Clear all non-player sprites

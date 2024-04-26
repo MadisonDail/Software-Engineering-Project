@@ -24,10 +24,10 @@ class Dialog():
         # print(object_type)
         if isinstance(object_type,Trainer):
             self.text = ["Let's battle!",["test",['y','n']]]
-            # self.option_func_trigger = [[0,'exitdialog']]
+            self.option_func_trigger = [[0,'exitdialog']]
         elif isinstance(object_type,Nurse):
             self.is_option = True
-            self.text = [["Would you like me to heal you pokemon?",['y','n']]]
+            self.text = [["Would you like me to heal your pokemon?",['Yeah!','No thanks']]]
             self.option_func_trigger = [['healallpoke','exitdialog']]            #length of func_triggers should be equal to length of self.text
 
 
