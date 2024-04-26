@@ -18,7 +18,7 @@ Charmander = pokemon.Pokemon(4, "Charmander", 'FIR', 'NONE', 0, 39, 39, 52, 43, 
 Charmeleon = pokemon.Pokemon(5, "Charmeleon", 'FIR', 'NONE', 0, 58, 58, 64, 58, 80, 65, 80, moveList.DragonRage, moveList.Slash, moveList.Growl, moveList.Flamethrower)
 Charizard = pokemon.Pokemon(6, "Charizard", 'FIR', 'FLY', 0, 78, 78, 84, 78, 109, 85, 100, moveList.Flamethrower, moveList.Earthquake, moveList.Strength, moveList.SwordsDance)
 
-Squirtle = pokemon.Pokemon(7, "Squirtle", 'WTR', 'NONE', 0, 4400, 4400, 48, 65, 50, 64, 43, moveList.Bubble, moveList.Tackle, moveList.TailWhip, moveList.QuickAttack)
+Squirtle = pokemon.Pokemon(7, "Squirtle", 'WTR', 'NONE', 0, 44, 44, 48, 65, 50, 64, 43, moveList.Bubble, moveList.Tackle, moveList.TailWhip, moveList.QuickAttack)
 Wartortle = pokemon.Pokemon(8, "Wartortle", 'WTR', 'NONE', 0, 59, 59, 63, 80, 65, 80, 58, moveList.WaterGun, moveList.Bite, moveList.TailWhip, moveList.BubbleBeam)
 Blastoise = pokemon.Pokemon(9, "Blastoise", 'WTR', 'NONE', 0, 79, 79, 83, 100, 85, 105, 78, moveList.HydroPump, moveList.Surf, moveList.Blizzard, moveList.TailWhip)
 
@@ -207,7 +207,7 @@ Lapras = pokemon.Pokemon(131, "Lapras", 'WTR', 'ICE', 0, 130, 130, 85, 80, 85, 9
 
 Ditto = pokemon.Pokemon(132, "Ditto", 'NRM', 'NONE', 0, 48, 48, 48, 48, 48, 48, 48, moveList.Tackle, moveList.QuickAttack, moveList.Headbutt, moveList.DefenseCurl)
 
-Eevee = pokemon.Pokemon(133, "Eevee", 'NRM', 'NONE', 0, 550, 550, 55, 50, 45, 65, 55, moveList.Pound, moveList.Harden, moveList.SwordsDance, moveList.Growl)
+Eevee = pokemon.Pokemon(133, "Eevee", 'NRM', 'NONE', 0, 55, 55, 55, 50, 45, 65, 55, moveList.Pound, moveList.Harden, moveList.SwordsDance, moveList.Growl)
 Vaporeon = pokemon.Pokemon(134, "Vaporeon", 'WTR', 'NONE', 0, 130, 130, 65, 60, 110, 95, 65, moveList.BubbleBeam, moveList.WaterGun, moveList.Headbutt, moveList.QuickAttack)
 Jolteon = pokemon.Pokemon(135, "Jolteon", 'ELC', 'NONE', 0, 65, 65, 65, 60, 110, 95, 130, moveList.SwordsDance, moveList.LovelyKiss, moveList.Thunder, moveList.ThunderShock)
 Flareon = pokemon.Pokemon(136, "Flareon", 'FIR', 'NONE', 0, 65, 65, 130, 60, 95, 110, 65, moveList.Swift, moveList.FireBlast, moveList.FirePunch, moveList.Slash)
