@@ -1,5 +1,8 @@
 import pygame
 import sys
+import copy
+import pokedex
+
 
 # Initialize Pygame
 def chooseStarter():
@@ -46,6 +49,12 @@ def chooseStarter():
                 for i, btn_rect in enumerate(button_rects):
                     if btn_rect.collidepoint(mouse_pos):
                         print(f"{pokemon_names[i]} button clicked!")
+                        if(pokemon_names[i] == "Bulbasaur"):
+                            return copy.copy(pokedex.Pokedex[0])
+                        elif(pokemon_names[i] == "Charmander"):
+                            return copy.copy(pokedex.Pokedex[3])
+                        elif(pokemon_names[i] == "Squirtle"):
+                            return copy.copy(pokedex.Pokedex[6])
                         return pokemon_names[i]
 
         # Fill the screen with the background color

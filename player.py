@@ -1,10 +1,11 @@
 from entity import *
 import pygame
 import random  #battle encounters 
-# import battleTest
+import battleTest
 import pokedex 
 import pokemon
 import chooseFighter
+import copy
 
 class Player(Entity):                       #inherit from entity
     def __init__(self,id,game,layer,x,y,spriteImage,screen):
@@ -12,12 +13,14 @@ class Player(Entity):                       #inherit from entity
         self.x_change = 0   #temp variable to be added to coordinated in update
         self.y_change = 0
         self.facing = 'down'
-        # self.starter = chooseFighter.chooseStarter() # gets first pokemon
+        self.starter = chooseFighter.chooseStarter() # gets first pokemon
+        self.playerPokemon = []
+        self.playerPokemon.append(self.starter)
 
     def set_position(self,x,y):
         self.rect.topleft = (x*TILE_SIZE,y*TILE_SIZE) 
     
-    def stop_movement(self):                #don't allow player sprite to move
+    def stop_movement(self):                #don't allow player sprite to move 
         self.velocity = 0
     
     def resume_movement(self, vel=DEFAULT_SPEED):
@@ -102,7 +105,7 @@ class Player(Entity):                       #inherit from entity
                 self.game.changeMap(tilemap8[2])
 
         elif current_tile == '9':
-            if self.game.tilemap == tilemap8[0] or self.game.tilemap == tilemap8[1]:
+            if self.game.tilemap == tilemap8[0] or self.game.tilemap == tilemap8[1]or self.game.tilemap == tilemap8[2]:
                 self.game.changeMap(tilemap9[0])
             elif self.game.tilemap == tilemap10:
                 self.game.changeMap(tilemap9[1])
@@ -120,15 +123,13 @@ class Player(Entity):                       #inherit from entity
         elif current_tile == '=':   #12
             if self.game.tilemap == tilemap11[0] or self.game.tilemap == tilemap11[1]:
                 self.game.changeMap(tilemap12[0])
+            elif self.game.tilemap == tilemap13:
+                self.game.changeMap(tilemap12[1])
                 
-
+        elif current_tile == '-':
+            if self.game.tilemap == tilemap12[0] or self.game.tilemap == tilemap12[1]:
+                self.game.changeMap(tilemap13)
             
-
-
-
-        
-
-                
         #battle schemantics 
         if (current_tile == '.' and self.facing != 'battle' and random.randint(1,500) == 1):
             self.trigger_battle()
@@ -138,6 +139,9 @@ class Player(Entity):                       #inherit from entity
         self.facing = 'battle' # self facing battle lets us change 
         pokemon_battling = random.randint(1,151)
         print(pokemon_battling)
+        wild_pokemon = []
+        wild_pokemon.append((copy.copy(pokedex.Pokedex[pokemon_battling-1])))
+        battleTest.Battle(self.playerPokemon, wild_pokemon, "WILD")
         # battleTest.Battle()
         # change battle screen 
 
@@ -191,6 +195,16 @@ class Player(Entity):                       #inherit from entity
             # battleTest.Battle()
             self.facing = 'down'
 
+class Spritesheet:
+    def __init__(self, file):
+        self.sheet = pygame.image.load(file).convert()
+
+    def get_sprite(self, x, y, width, height):
+        sprite = pygame.Surface([width, height])
+        sprite.blit(self.sheet, (0, 0), (x, y, width, height))  #third parameter is tuple to select certain snippet of sprite from image file
+        sprite.set_colorkey(BLACK)
+        return sprite
+    
 class Block(pygame.sprite.Sprite):
     def __init__(self, game, x, y):
         self.game = game
@@ -205,6 +219,26 @@ class Block(pygame.sprite.Sprite):
         self.height = TILE_SIZE
         #self.image = pygame.transform.scale(pygame.image.load("images/boulder.png"),(TILE_SIZE,TILE_SIZE))   #scale image size to a tile
         self.image = self.game.terrain_spritesheet.get_sprite(960, 448, self.width, self.height)        #rocks
+        self.rect = self.image.get_rect()
+        self.rect.x = self.x
+        self.rect.y = self.y
+        self.rect.width = self.width
+        self.rect.height = self.height
+
+class Wall(pygame.sprite.Sprite):
+    def __init__(self, game, x, y):
+        self.game = game
+        self._layer = BLOCK_LAYER
+        self.groups = self.game.all_sprites, self.game.blocks
+        
+        pygame.sprite.Sprite.__init__(self, self.groups)
+        #block is square 32x32 pixels
+        self.x = x * TILE_SIZE
+        self.y = y * TILE_SIZE
+        self.width = TILE_SIZE 
+        self.height = TILE_SIZE
+        self.image = pygame.transform.scale(pygame.image.load("images/wall.png"),(TILE_SIZE,TILE_SIZE))   #scale image size to a tile
+        #self.image = self.game.terrain_spritesheet.get_sprite(960, 448, self.width, self.height)        #rocks
         self.rect = self.image.get_rect()
         self.rect.x = self.x
         self.rect.y = self.y
@@ -231,15 +265,6 @@ class Tile(pygame.sprite.Sprite):
         self.rect.width = self.width
         self.rect.height = self.height
 
-class Spritesheet:
-    def __init__(self, file):
-        self.sheet = pygame.image.load(file).convert()
-
-    def get_sprite(self, x, y, width, height):
-        sprite = pygame.Surface([width, height])
-        sprite.blit(self.sheet, (0, 0), (x, y, width, height))  #third parameter is tuple to select certain snippet of sprite from image file
-        sprite.set_colorkey(BLACK)
-        return sprite
     
 class Grass(pygame.sprite.Sprite):
     def __init__(self, game, x, y):
@@ -253,6 +278,22 @@ class Grass(pygame.sprite.Sprite):
         self.width = TILE_SIZE
         self.height = TILE_SIZE
         self.image = self.game.terrain_spritesheet.get_sprite(64, 352, self.width, self.height)
+        self.rect = self.image.get_rect()
+        self.rect.x = self.x
+        self.rect.y = self.y
+
+class Floor(pygame.sprite.Sprite):
+    def __init__(self, game, x, y):
+        self.game = game
+        self._layer = GROUND_LAYER
+        self.groups = self.game.all_sprites
+        pygame.sprite.Sprite.__init__(self, self.groups)
+
+        self.x = x * TILE_SIZE
+        self.y = y* TILE_SIZE
+        self.width = TILE_SIZE
+        self.height = TILE_SIZE
+        self.image = self.game.terrain_spritesheet.get_sprite(117, 453, self.width, self.height)
         self.rect = self.image.get_rect()
         self.rect.x = self.x
         self.rect.y = self.y

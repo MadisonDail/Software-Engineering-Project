@@ -8,69 +8,7 @@ import math
 import moveList
 import pygame
 import battleScreen
-
-
-# # def BattleScreen():
-#     pygame.init()
-#     screen = pygame.display.set_mode((640, 480))
-
-#     # Load the Pokémon images
-#     player_pokemon_image = pygame.image.load('images/pokemon/oshawott.png').convert_alpha()
-#     opponent_pokemon_image = pygame.image.load('images/pokemon/pikachu.png').convert_alpha()
-
-#     font = pygame.font.Font('Adobe Garamond Pro Regular.ttf', 35)
-#     fsu_gold = (206, 184, 136)
-#     button_run = pygame.Rect(150, 300, 100, 50)
-#     button_ball = pygame.Rect(400, 300, 100, 50)
-#     button_fight = pygame.Rect(150, 350, 100, 50)
-#     button_pokemon = pygame.Rect(400, 350, 100, 50)
-#     def display_text(txt, font, color, x, y):
-#         text = font.render(txt, True, color)
-#         screen.blit(text, (x, y))
-    
-#         # Update display
-#     # Main game loop
-#     running = True
-#     while running:
-#         for event in pygame.event.get():
-#             if event.type == pygame.QUIT:
-#                 running = False
-#             # if event.type == pygame.MOUSEBUTTONDOWN:
-#             # Check if the mouse click is within the bounds of any button
-#             if button_run.collidepoint(event.pos):
-#                 print("Run selected")
-#                 # Implement the run logic
-#             elif button_ball.collidepoint(event.pos):
-#                 print("Ball selected")
-#                 # Implement the ball logic
-#             elif button_fight.collidepoint(event.pos):
-#                 print("Fight selected")
-#                 # Implement the fight logic
-#             elif button_pokemon.collidepoint(event.pos):
-#                 print("Pokemon selected")
-#             #need to add player clicks and stuff 
-    
-#         screen.fill((120, 47, 64))  
-
-#         # Draw Pokémon images
-#         screen.blit(player_pokemon_image, (100, 100))  
-#         screen.blit(opponent_pokemon_image, (350, 100))  
-
-#         # Draw text surfaces
-#         display_text("Oshawott", font, fsu_gold, 100, 50)
-#         display_text("Pikachu", font, fsu_gold, 400, 50)
-#         display_text("HP 87/87", font, fsu_gold, 100, 100)
-#         display_text("HP 87/87", font, fsu_gold, 400, 100)
-#         display_text("Run", font, fsu_gold, 150, 300)
-#         display_text("Ball", font, fsu_gold, 400 , 300)
-#         display_text("Fight", font, fsu_gold, 150, 350)
-#         display_text("Pokémon", font, fsu_gold, 400, 350) 
-#         # Update display
-#         pygame.display.flip()
-
-#     pygame.quit()
-
-
+import copy
 
 def TypeMatchup(type1, type2, moveType):
     # Will return either: 0, 0.25, 0.5, 1, 2, 4
@@ -369,6 +307,10 @@ def BattleMenu(pkmn):
         else:
             return moveChoice
         
+def HealParty(party):
+    for pkmn in party:
+        pkmn.currentHp = pkmn.hp
+        
 def SwitchMenu(party, current):
     for i in range(len(party)):
         print(str(i + 1) + ". " + party[i].name)
@@ -405,7 +347,6 @@ def CheckAlivePokemon(pkmn):
     else:
         return 0
     
-        
 
 def CheckPriority(userMove, enemyMove):
     # Checks if user's move has higher priority
@@ -555,10 +496,6 @@ def ResetStats(currentPokemon, statStages):
     currentPokemon.currentSpeed = currentPokemon.speed
     
 
-
-
-
-
 def calculateDamage(userLvl, movePower, userAtk, enemyDef, stab, typeMult):
     # will return the hp to be subtracted from the defending pokemon
     
@@ -670,33 +607,7 @@ def Battle(userP, enemyP, battleType):
         elif(CheckAliveParty(userP, enemyP) == 2):
             print("User wins!")
             break
-        # choice = 0
-        # moveChoice = 0
-        # while(choice < 1 or choice > 3):
-        #     choice = int(input("1. Use Move\n2. Switch Pokemon\n3. Use Item\n "))
-
-        # Select User's Move
-        # if(choice == 1):
-        #     print("Use move")
-        #     moveIndex = BattleMenu(userP[userPokemonIndex])
-        #     if(moveIndex == 1):
-        #         userMove = userP[userPokemonIndex].move1
-        #     elif(moveIndex == 2):
-        #         userMove = userP[userPokemonIndex].move2
-        #     elif(moveIndex == 3):
-        #         userMove = userP[userPokemonIndex].move3
-        #     elif(moveIndex == 4):
-        #         userMove = userP[userPokemonIndex].move4
-        
-
-        # elif(choice == 2):
-        #     print("Switch pkmn")
-        #     ResetStats(userP[userPokemonIndex], userStatStages)     # Reset stats of the pokemon switched out
-        #     userPokemonIndex = SwitchMenu(userP, userPokemonIndex) - 1      # Switch the index of the current pokemon to the new one
-        #     userMove = moveList.NOMOVE
-            
-        # elif(choice == 3):
-        #     print("Use item")
+       
         
         eMoveIndex = random.randint(1, 4)
         if(eMoveIndex == 1):
@@ -731,13 +642,22 @@ def Battle(userP, enemyP, battleType):
                 # use enemy's move first
                 if(CheckSkipStatus(enemyP[enemyPokemonIndex])):
                     UseMove(enemyMove, enemyP[enemyPokemonIndex], userP[userPokemonIndex], enemyStatStages, userStatStages)
-                    if(CheckAlivePokemon(userP[userPokemonIndex]) == 1):
+                    if(CheckAlivePokemon(userP[userPokemonIndex]) == 1): #if dead
                         print("SWITCH USER")
                         switchFlag = True
-                        switch = battleScreen.BattleScreen(userP, enemyP, userPokemonIndex, enemyPokemonIndex, switchFlag)
+                        switch = battleScreen.BattleScreen(userP, enemyP, userPokemonIndex, enemyPokemonIndex, switchFlag).split()
+                        print("SWITCH")
+                        print(switch)
+                        print(choice)
+                        ind = 0
+                        for pkmn in userP:
+                            if(switch[1] == pkmn.name):
+                                userPokemonIndex = ind
+                                print("SWITCH INTO " + userP[ind].name)
+                            ind += 1
                         switchFlag = False
                         ResetStats(userP[userPokemonIndex], userStatStages)     # Reset stats of the pokemon switched out
-                        userPokemonIndex = SwitchMenu(userP, userPokemonIndex) - 1      # Switch the index of the current pokemon to the new one
+                        # userPokemonIndex = SwitchMenu(userP, userPokemonIndex) - 1      # Switch the index of the current pokemon to the new one
                         userMove = moveList.NOMOVE
                     # if user is alive, use user move
                     if(CheckAliveParty(userP, enemyP) == 1):
@@ -768,12 +688,21 @@ def Battle(userP, enemyP, battleType):
                 if(CheckSkipStatus(enemyP[enemyPokemonIndex])):
                     UseMove(enemyMove, enemyP[enemyPokemonIndex], userP[userPokemonIndex], enemyStatStages, userStatStages)
                     if(CheckAlivePokemon(userP[userPokemonIndex]) == 1):
-                        print("SWITCH USER")
+                        print("SWITCH USER !!!")
                         ResetStats(userP[userPokemonIndex], userStatStages)     # Reset stats of the pokemon switched out
                         switchFlag = True
-                        switch = battleScreen.BattleScreen(userP, enemyP, userPokemonIndex, enemyPokemonIndex, switchFlag)
+                        switch = battleScreen.BattleScreen(userP, enemyP, userPokemonIndex, enemyPokemonIndex, switchFlag).split()
+                        print("SWITCH")
+                        print(switch)
+                        print(choice)
+                        ind = 0
+                        for pkmn in userP:
+                            if(switch[1] == pkmn.name):
+                                userPokemonIndex = ind
+                                print("SWITCH INTO " + userP[ind].name)
+                            ind += 1
                         switchFlag = False
-                        userPokemonIndex = SwitchMenu(userP, userPokemonIndex) - 1      # Switch the index of the current pokemon to the new one
+                        # userPokemonIndex = SwitchMenu(userP, userPokemonIndex) - 1      # Switch the index of the current pokemon to the new one
                         userMove = moveList.NOMOVE
                     # if user is alive, use user move
                     if(CheckAliveParty(userP, enemyP) == 1):
@@ -786,7 +715,7 @@ def Battle(userP, enemyP, battleType):
             if(CheckAlivePokemon(userP[userPokemonIndex]) == 1):
                 print("SWITCH USER")
                 ResetStats(userP[userPokemonIndex], userStatStages)     # Reset stats of the pokemon switched out
-                userPokemonIndex = SwitchMenu(userP, userPokemonIndex) - 1      # Switch the index of the current pokemon to the new one
+                # userPokemonIndex = SwitchMenu(userP, userPokemonIndex) - 1      # Switch the index of the current pokemon to the new one
                 userMove = moveList.NOMOVE
             elif(CheckAlivePokemon(enemyP[enemyPokemonIndex]) == 1):
                 enemyPokemonIndex += 1
@@ -808,32 +737,30 @@ def Battle(userP, enemyP, battleType):
         ResetStats(pkmn, enemyStatStages)
                 
     # After battle, reset stats except hp
-        
-
-
 
 # Hardcoded Parties for testing purposes
 userParty = []
 enemyParty = []
 
-userParty.append(pokedex.Squirtle)
-userParty.append(pokedex.Ivysaur)
-userParty.append(pokedex.Charizard)
-userParty.append(pokedex.Venusaur)
-userParty.append(pokedex.Charmeleon)
+temp = copy.copy(pokedex.Bulbasaur)
+
+userParty.append(temp)
+# userParty.append(pokedex.Squirtle)
+# userParty.append(pokedex.Ivysaur)
+# userParty.append(pokedex.Charizard)
+# userParty.append(pokedex.Venusaur)
+# userParty.append(pokedex.Charmeleon)
 
 
-enemyParty.append(pokedex.Bulbasaur)
+
+
+enemyParty.append(pokedex.Charizard)
 #enemyParty.append(pokedex.Charmeleon)
 #enemyParty.append(pokedex.Blastoise)
 
 # Battle(userParty, enemyParty)
 
-
-
 Battle(userParty, enemyParty, "WILD")
-for name in userParty:
-    print(name.name)
 
 
 

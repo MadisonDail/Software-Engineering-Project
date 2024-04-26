@@ -66,6 +66,8 @@ def BattleScreen(userP, enemyP, userPokemonIndex, enemyPokemonIndex, switchFlag)
     running = True
     if(not switchFlag):
         while running:
+            if(userP[userPokemonIndex].currentHp <= 0):
+                return "POKEMON " + userP[userPokemonIndex].name
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
@@ -75,19 +77,17 @@ def BattleScreen(userP, enemyP, userPokemonIndex, enemyPokemonIndex, switchFlag)
                     for rect, index in zip(current_buttons, current_text):
                         if rect.collidepoint(event.pos):
                             if fight_options:
-                                if index==index:
-                                    move = index
-                                    running=False
-                                    return "MOVE " + move
+                                move = index
+                                running=False
+                                return "MOVE " + move
                                     # break   
                                     # fight_options=False
                                     # current_buttons = buttons
                                     # current_text = button_text
                             elif pokemon_options:
-                                if index==index:
-                                    pokemon = index
-                                    running = False
-                                    return "POKEMON " + pokemon
+                                pokemon = index
+                                running = False
+                                return "POKEMON " + pokemon
                             else:
                                 if index=="Fight": #fight index
                                     fight_options = True
@@ -124,6 +124,8 @@ def BattleScreen(userP, enemyP, userPokemonIndex, enemyPokemonIndex, switchFlag)
             pygame.display.flip()
     else:
         print("SWITCHING POKEMON")
+        current_buttons = pokemon_buttons
+        current_text = pokemon_text
         while running:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -131,13 +133,17 @@ def BattleScreen(userP, enemyP, userPokemonIndex, enemyPokemonIndex, switchFlag)
                     pygame.quit() #should exit the game if you click x, gives error for now but it exits the screen at least lol
                     # sys.exit()
                 elif event.type == pygame.MOUSEBUTTONDOWN:
-                    for rect, index in zip(current_buttons, current_text):
+                    print(f"Mouse clicked at: {event.pos}")  # Check the mouse click position
+                    for rect, pokemon_name in zip(current_buttons, current_text):
+                        print(f"Checking button {rect} for {pokemon_name}")  # Debug which button is being checked
                         if rect.collidepoint(event.pos):
-                            if pokemon_options:
-                                if index==index:
-                                    pokemon = index
-                                    running = False
-                                    return "POKEMON " + pokemon
+                            print(f"Pokemon selected: {pokemon_name}")
+                            running = False
+                            return "POKEMON " + pokemon_name
+
+
+                            
+            # if(userP[userPokemonIndex].currentHp <= 0):
             screen.fill((120, 47, 64))  
 
             # Draw Pokémon images
@@ -148,6 +154,7 @@ def BattleScreen(userP, enemyP, userPokemonIndex, enemyPokemonIndex, switchFlag)
             display_text(str(userP[userPokemonIndex].name), font, fsu_gold, 100, 50)
             display_text(str(enemyP[enemyPokemonIndex].name), font, fsu_gold, 400, 50)
             display_text("HP " + str(userP[userPokemonIndex].currentHp), font, fsu_gold, 110, 100)
+                
             display_text("HP " + str(enemyP[enemyPokemonIndex].currentHp) , font, fsu_gold, 400, 100)
             
             for button, text in zip(current_buttons, current_text):

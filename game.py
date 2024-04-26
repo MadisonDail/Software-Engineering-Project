@@ -8,7 +8,7 @@ from dialog import *
 import sys
 class Game:
     def __init__(self):
-        pygame.init()   #initializing pygame
+        pygame.init()   #initializing pygame 
         self.screen = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))      #creates window for game. parameters are tuple of map dimensions (in pixels)
         self.clock = pygame.time.Clock()    #sets framerate
         #self.font = pygame.font.Font('Arial', 32)   #in-game font;
@@ -22,6 +22,7 @@ class Game:
         self.Dialog = Dialog(self,DIALOG_LAYER,self.screen,0)
         self.events_of_loop = []
         self.isEncountered = False
+        self.player = None
 
     def createTilemap(self):
         for i, row in enumerate(self.tilemap):
@@ -32,8 +33,12 @@ class Game:
                     
                 if column == "B":
                     Block(self, j, i)   #Creates block at position (j,i)
+                elif column == "W":
+                    Wall(self, j, i)
                 elif column == "T":
                     Tile(self, j, i)   #Creates block at position (j,i)
+                elif column == "F":
+                    Floor(self, j, )
                 elif column == "P":
                     Tile(self, j, i)
                     self.setplayer(j,i) #create player at position (j,i) 
@@ -62,22 +67,42 @@ class Game:
                 
     #changes map
 
-    def setplayer(self,j,i):
-        self.player = Player("player", self, PLAYER_LAYER, j, i, player_image,self.screen) 
+    # def setplayer(self,j,i):
+    #     self.player = Player("player", self, PLAYER_LAYER, j, i, player_image,self.screen) 
+    def setplayer(self, j, i):
+        if self.player is not None:
+            # Update the player's position without creating a new instance
+            self.player.rect.topleft = (j * TILE_SIZE, i * TILE_SIZE)
+        else:
+            # Create the player if it doesn't exist yet
+            self.player = Player("player", self, PLAYER_LAYER, j, i, player_image, self.screen)
+
 
     def setNurse(self):
         if len(self.character_locations["nurse"]) != 0:
             Nurse("nurse",self,PLAYER_LAYER,self.character_locations["nurse"][0],self.character_locations["nurse"][1],trainer_image,self.screen,self.player)
 
     def changeMap(self, newtilemap):
+        # self.tilemap = newtilemap
+        # self.all_sprites.empty() 
+        # self.blocks.empty()
+        # self.enemies.empty()
+        # #both get emptied to account for new ones in diff map generation
+        # self.character_locations["trainer"] = []
+        # self.character_locations["nurse"] = []
+        # self.createTilemap() 
+        # self.setTrainers()
+        # self.setNurse()
+    
         self.tilemap = newtilemap
-        self.all_sprites.empty() 
+        # Clear all non-player sprites
+        for sprite in self.all_sprites:
+            if sprite != self.player:
+                self.all_sprites.remove(sprite)
         self.blocks.empty()
         self.enemies.empty()
-        #both get emptied to account for new ones in diff map generation
-        self.character_locations["trainer"] = []
-        self.character_locations["nurse"] = []
-        self.createTilemap() 
+        # Repopulate the map
+        self.createTilemap()
         self.setTrainers()
         self.setNurse()
 
@@ -138,11 +163,22 @@ class Game:
                 self.isEncountered = True
             else:
                 for event in self.events_of_loop:
-                    if event.type == pygame.MOUSEBUTTONUP:                  #if user clicks on dialog box      
-                        if self.Dialog.get_rect().collidepoint(event.pos):
-                            self.isEncountered = self.Dialog.next_dialog()  #isEncountered will be set to false when there is not more dialog left in list
-                            if self.isEncountered:                          #draw next dialog
-                                self.Dialog.draw(self.screen)
+                    if event.type == pygame.MOUSEBUTTONUP:                  #if user clicks on dialog box    
+                            #=======ADD NEW VV
+                            print(self.Dialog.is_option)
+                            if not self.Dialog.is_option:                #if there is not a dialog option
+                            #=====
+                                if self.Dialog.get_rect().collidepoint(event.pos):
+                                    self.isEncountered = self.Dialog.next_dialog()  #isEncountered will be set to false when there is not more dialog left in list
+                                    if self.isEncountered:                          #draw next dialog
+                                        self.Dialog.draw(self.screen)
+                            #=====
+                            else:
+                                for count,option in enumerate(self.Dialog.option_rects):     #loop through all options
+                                    print(option,count)
+                                    if option.collidepoint(event.pos):
+                                        self.isEncountered = self.Dialog.trigger_option_func(count)
+                            #=====
                 if self.isEncountered:                   
                     self.Dialog.draw(self.screen)
                     self.player.stop_movement()
