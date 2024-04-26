@@ -52,105 +52,135 @@ class Player(Entity):                       #inherit from entity
             # Here you can choose which tilemap to switch to
             if self.game.tilemap == tilemap1[0] or self.game.tilemap == tilemap1[1] or self.game.tilemap == tilemap1[2] or self.game.tilemap == tilemap1[3]:
                 self.game.changeMap(tilemap[1]) 
+                pygame.display.set_caption("Landis")
             
         elif current_tile == '1':    #HCB PATH
             if self.game.tilemap == tilemap[0] or self.game.tilemap == tilemap[1]:    #from spawn to HCB
                 self.game.changeMap(tilemap1[0])
+                pygame.display.set_caption("HCB Path")
             elif self.game.tilemap == tilemap2[0] or self.game.tilemap == tilemap2[1]:                                  #from union to HCB path
                 self.game.changeMap(tilemap1[2])
+                pygame.display.set_caption("HCB Path")
             elif self.game.tilemap == tilemap4[0] or self.game.tilemap == tilemap4[1] or self.game.tilemap == tilemap4[2]:
                 self.game.changeMap(tilemap1[3])
+                pygame.display.set_caption("HCB Path")
 
         elif current_tile == '2':   #Path to union
             if self.game.tilemap == tilemap1[0] or self.game.tilemap == tilemap1[1] or self.game.tilemap == tilemap1[2] or self.game.tilemap == tilemap1[3]:
                 self.game.changeMap(tilemap2[0])
+                pygame.display.set_caption("Path to Union")
             elif self.game.tilemap == tilemap3:
                 self.game.changeMap(tilemap2[1])
+                pygame.display.set_caption("Path to Union")
 
         elif current_tile == '3':   #Union
             if self.game.tilemap == tilemap2[0] or tilemap2[1]:
                 self.game.changeMap(tilemap3)
+                pygame.display.set_caption("Union")
 
         elif current_tile == '4':   #Statue area
             if self.game.tilemap == tilemap1[0] or self.game.tilemap == tilemap1[1] or self.game.tilemap == tilemap1[2] or self.game.tilemap == tilemap1[3]:
                 self.game.changeMap(tilemap4[0])
+                pygame.display.set_caption("Statue Area (3 Legendaries)")
             elif self.game.tilemap == tilemap5[0] or self.game.tilemap == tilemap5[1]:
                 self.game.changeMap(tilemap4[1])
+                pygame.display.set_caption("Statue Area (3 Legendaries)")
             elif self.game.tilemap == tilemap7[0] or self.game.tilemap == tilemap7[1]:
                 self.game.changeMap(tilemap4[2])
+                pygame.display.set_caption("Statue Area (3 Legendaries)")
 
         elif current_tile == '5':   #Path to HWC
             if self.game.tilemap == tilemap4[0] or self.game.tilemap == tilemap4[1] or self.game.tilemap == tilemap4[2]:
                 self.game.changeMap(tilemap5[0])
+                pygame.display.set_caption("Path to Health and Wellness Center")
             elif self.game.tilemap == tilemap6:
                 self.game.changeMap(tilemap5[1])
+                pygame.display.set_caption("Path to Health and Wellness Center")
             
 
         elif current_tile == '6':   #HWC
             if self.game.tilemap == tilemap5[0] or self.game.tilemap == tilemap5[1]:
                 self.game.changeMap(tilemap6)
+                pygame.display.set_caption("Health and Wellness Center")
         
         elif current_tile == '7':
             if self.game.tilemap == tilemap4[0] or self.game.tilemap == tilemap4[1] or self.game.tilemap == tilemap4[2]:
                 self.game.changeMap(tilemap7[0])
+                pygame.display.set_caption("Path from Statues to Dirac Route")
             elif self.game.tilemap == tilemap8[0] or self.game.tilemap == tilemap8[1] or self.game.tilemap == tilemap8[2]:
                 self.game.changeMap(tilemap7[1])
+                pygame.display.set_caption("Path from Statues to Dirac Route")
             elif self.game.tilemap == tilemap_hide1[0] or self.game.tilemap == tilemap_hide1[1]:
                 self.game.changeMap(tilemap7[2])
+                pygame.display.set_caption("Path from Statues to Dirac Route")
 
         elif current_tile == '8':
             if self.game.tilemap == tilemap7[0] or self.game.tilemap == tilemap7[1]:
                 self.game.changeMap(tilemap8[0])
+                pygame.display.set_caption("Path near Dirac")
             elif self.game.tilemap == tilemap9[0] or self.game.tilemap == tilemap9[1]:
                 self.game.changeMap(tilemap8[1])
+                pygame.display.set_caption("Path near Dirac")
             elif self.game.tilemap == tilemap11[0] or self.game.tilemap == tilemap11[1] or self.game.tilemap == tilemap11[2]:
                 self.game.changeMap(tilemap8[2])
+                pygame.display.set_caption("Path near Dirac")
 
         elif current_tile == '9':
             if self.game.tilemap == tilemap8[0] or self.game.tilemap == tilemap8[1]or self.game.tilemap == tilemap8[2]:
                 self.game.changeMap(tilemap9[0])
+                pygame.display.set_caption("Path into Dirac")
             elif self.game.tilemap == tilemap10:
                 self.game.changeMap(tilemap9[1])
+                pygame.display.set_caption("Path into Dirac")
 
         elif current_tile == '*':   #10
             if self.game.tilemap == tilemap9[0] or self.game.tilemap == tilemap9[1]:
                 self.game.changeMap(tilemap10)
+                pygame.display.set_caption("Dirac Library")
 
         elif current_tile == '+':   #11
             if self.game.tilemap == tilemap8[0] or self.game.tilemap == tilemap8[1] or self.game.tilemap == tilemap8[2]:
                 self.game.changeMap(tilemap11[0])
+                pygame.display.set_caption("Path to Leach")
             elif self.game.tilemap == tilemap12[0] or self.game.tilemap == tilemap12[1]:
                 self.game.changeMap(tilemap11[1])
+                pygame.display.set_caption("Path to Leach")
             elif self.game.tilemap == tilemap_hide1[0] or self.game.tilemap == tilemap_hide1[1]:
                 self.game.changeMap(tilemap11[2])
+                pygame.display.set_caption("Path to Leach")
 
         elif current_tile == '=':   #12
             if self.game.tilemap == tilemap11[0] or self.game.tilemap == tilemap11[1] or self.game.tilemap == tilemap11[2]:
                 self.game.changeMap(tilemap12[0])
+                pygame.display.set_caption("Entrance to Leach")
             elif self.game.tilemap == tilemap13:
                 self.game.changeMap(tilemap12[1])
+                pygame.display.set_caption("Entrance to Leach")
                 
         elif current_tile == '-':
             if self.game.tilemap == tilemap12[0] or self.game.tilemap == tilemap12[1]:
                 self.game.changeMap(tilemap13)
+                pygame.display.set_caption("Leach Gym")
 
         elif current_tile == 'h':
             if self.game.tilemap == tilemap11[0] or self.game.tilemap == tilemap11[1] or self.game.tilemap == tilemap11[2]:
                 self.game.changeMap(tilemap_hide1[0])
+                pygame.display.set_caption("Easter Egg!!!")
             elif self.game.tilemap == tilemap7[2]:
                 self.game.changeMap(tilemap_hide1[1])
+                pygame.display.set_caption("Easter Egg!!!")
             
             
         #battle schemantics 
-        if (current_tile == '.' and self.facing != 'battle' and random.randint(1,300) == 1):
+        if (current_tile == '.' and self.facing != 'battle' and random.randint(1,200) == 1):
             self.trigger_battle("WILD")
 
     def trigger_battle(self, battleType, enemyParty=[]):
-        print("A WILD POKEMON APPEARS!") #this will be on the actual game screen, just for testing purposes 
+        # print("A WILD POKEMON APPEARS!") #this will be on the actual game screen, just for testing purposes 
         self.facing = 'battle' # self facing battle lets us change 
         if battleType=="WILD":
-            pokemon_battling = random.randint(1,148)
-            print(pokemon_battling)
+            pokemon_battling = random.randint(1,151)
+            # print(pokemon_battling)
             wild_pokemon = []
             wild_pokemon.append((copy.copy(pokedex.Pokedex[pokemon_battling-1])))
             battleTest.Battle(self.playerPokemon, wild_pokemon, battleType)
@@ -213,6 +243,7 @@ class Player(Entity):                       #inherit from entity
 class Spritesheet:
     def __init__(self, file):
         self.sheet = pygame.image.load(file).convert()
+    
 
     def get_sprite(self, x, y, width, height):
         sprite = pygame.Surface([width, height])
@@ -253,6 +284,26 @@ class Wall(pygame.sprite.Sprite):
         self.width = TILE_SIZE 
         self.height = TILE_SIZE
         self.image = pygame.transform.scale(pygame.image.load("images/wall.png"),(TILE_SIZE,TILE_SIZE))   #scale image size to a tile
+        #self.image = self.game.terrain_spritesheet.get_sprite(960, 448, self.width, self.height)        #rocks
+        self.rect = self.image.get_rect()
+        self.rect.x = self.x
+        self.rect.y = self.y
+        self.rect.width = self.width
+        self.rect.height = self.height
+
+class Bookshelf(pygame.sprite.Sprite):
+    def __init__(self, game, x, y):
+        self.game = game
+        self._layer = BLOCK_LAYER
+        self.groups = self.game.all_sprites, self.game.blocks
+        
+        pygame.sprite.Sprite.__init__(self, self.groups)
+        #block is square 32x32 pixels
+        self.x = x * TILE_SIZE
+        self.y = y * TILE_SIZE
+        self.width = TILE_SIZE 
+        self.height = TILE_SIZE
+        self.image = pygame.transform.scale(pygame.image.load("images/Bookshelf.png"),(TILE_SIZE,TILE_SIZE))   #scale image size to a tile
         #self.image = self.game.terrain_spritesheet.get_sprite(960, 448, self.width, self.height)        #rocks
         self.rect = self.image.get_rect()
         self.rect.x = self.x
@@ -304,7 +355,7 @@ class Lava(pygame.sprite.Sprite):
     def __init__(self, game, x, y):
         self.game = game
         self._layer = BLOCK_LAYER
-        self.groups = self.game.all_sprites
+        self.groups = self.game.all_sprites, self.game.blocks
         
         pygame.sprite.Sprite.__init__(self, self.groups)
         #block is square 32x32 pixels

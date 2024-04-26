@@ -52,6 +52,7 @@ class Dialog():
             elif func_triggered == 'healallpoke':
                 battleTest.HealParty(self.object_type.player.playerPokemon)
                 print('attempted to heal')
+                return False
             #elif .... add more checks here
 
         return True                                   

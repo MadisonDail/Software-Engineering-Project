@@ -101,8 +101,6 @@ def BattleScreen(userP, enemyP, userPokemonIndex, enemyPokemonIndex, switchFlag)
                                     current_text=pokemon_text
                                 if index=="Catch":
                                     return "CATCH"
-                                else:
-                                    print(index)
             screen.fill((120, 47, 64)) 
  
 
@@ -123,7 +121,6 @@ def BattleScreen(userP, enemyP, userPokemonIndex, enemyPokemonIndex, switchFlag)
 
             pygame.display.flip()
     else:
-        print("SWITCHING POKEMON")
         current_buttons = pokemon_buttons
         current_text = pokemon_text
         while running:
@@ -133,11 +130,8 @@ def BattleScreen(userP, enemyP, userPokemonIndex, enemyPokemonIndex, switchFlag)
                     pygame.quit() #should exit the game if you click x, gives error for now but it exits the screen at least lol
                     # sys.exit()
                 elif event.type == pygame.MOUSEBUTTONDOWN:
-                    print(f"Mouse clicked at: {event.pos}")  # Check the mouse click position
                     for rect, pokemon_name in zip(current_buttons, current_text):
-                        print(f"Checking button {rect} for {pokemon_name}")  # Debug which button is being checked
                         if rect.collidepoint(event.pos):
-                            print(f"Pokemon selected: {pokemon_name}")
                             running = False
                             return "POKEMON " + pokemon_name
 

@@ -13,6 +13,7 @@ class Game:
         self.clock = pygame.time.Clock()    #sets framerate
         #self.font = pygame.font.Font('Arial', 32)   #in-game font;
         self.tilemap = tilemap[0] #added for collision detection 
+        pygame.display.set_caption("Landis")
         self.running = True     #whether the game should be running or not (set to true on new game)
         self.character_locations = {} 
         self.character_locations["trainer"] = []
@@ -39,6 +40,8 @@ class Game:
                     Stop(self, j, i)
                 elif column == "T":
                     Tile(self, j, i)   #Creates block at position (j,i)
+                elif column == '#':
+                    Bookshelf(self, j, i)
                 elif column == "F":
                     Floor(self, j, i)
                 elif column == "w":
@@ -66,7 +69,7 @@ class Game:
                     Tile(self, j, i)
                     temp = self.character_locations["trainer"]
                     temp.append([j,i,"down"])
-                elif column == "L":
+                elif column == "l":
                     Tile(self, j, i)
                     temp = self.character_locations["trainer"]
                     temp.append([j,i,"left"])

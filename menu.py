@@ -59,11 +59,11 @@ class NewGameScreen:
         self.screen.blit(text_surf, (x, y))
     def start_new_game(self):
         # Logic to start a new game goes here
-        print(f"Starting New Game: {self.game_name}")
+        # print(f"Starting New Game: {self.game_name}")
         g = game.Game()  # Create a new Game instance
         g.new()  # Set up a new game
         while g.running:
-            pygame.display.set_caption(f"{self.game_name}")  
+            # pygame.display.set_caption(f"{self.game_name}")  
             g.main() 
             g.game_over()  
 
@@ -130,7 +130,7 @@ class MenuScreen:
                     # checks if buttons have been clicked
                     for action, info in self.buttons.items():
                         if info["x"] <= mouse_x <= info["x"] + info["width"] and info["y"] <= mouse_y <= info["y"] + info["height"]:
-                            print(f"{action} CLICKED!")
+                            # print(f"{action} CLICKED!")
                             if action == "QUIT GAME":
                                 running = False # exits the menu screen loop 
                             elif action == "LOAD GAME":

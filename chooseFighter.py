@@ -3,7 +3,6 @@ import sys
 import copy
 import pokedex
 
-
 # Initialize Pygame
 def chooseStarter():
     pygame.init()
@@ -50,7 +49,7 @@ def chooseStarter():
                     if btn_rect.collidepoint(mouse_pos):
                         print(f"{pokemon_names[i]} button clicked!")
                         if(pokemon_names[i] == "Bulbasaur"):
-                            return copy.copy(pokedex.Pokedex[0])
+                            return copy.copy(pokedex.Pokedex[132])
                         elif(pokemon_names[i] == "Charmander"):
                             return copy.copy(pokedex.Pokedex[3])
                         elif(pokemon_names[i] == "Squirtle"):
@@ -76,7 +75,4 @@ def chooseStarter():
 
         # Update the display
         pygame.display.flip()
-
-    # Quit Pygame
     pygame.quit()
-# chooseStarter()

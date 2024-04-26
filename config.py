@@ -73,14 +73,14 @@ tilemap = [[
     'BT.......T........TB',
     'BT......T.T.......TB',
     'BT.....T...T......TB',
-    'BT....T.....T.....TB',
+    'BT...RT.....T.....TB',
     'BT...T.......T....TB',
     'BT..T.........T...TB',
     'BTTTTTTTTTTTTTTTTTNB',
     'BT..T.........T...TB',
     'BT...T.......T....TB',
     'BT....T.....T.....TB',
-    'BT.....T...T......TB',
+    'BT.....T...Tl.....TB',
     'BT......T.T.......TB',
     'BT.......P........TB',
     'BBBBBBBB11111BBBBBBB'
@@ -98,7 +98,7 @@ tilemap1 = [[
     'B......BTTTTTBBBBBBB',
     'B......DTTTTTTTTTTT4',
     'B......TTTTTTTTTTTT4',
-    'B......TTTTTTTTTTTT4',
+    'B......TTTTTTTTUTTT4',
     'B......BTTTTTBBBBBBB',
     'B......BTTTTTB.....B',
     'B......BTTTTTB.....B',
@@ -117,7 +117,7 @@ tilemap1 = [[
     'B......BTTTTTBBBBBBB',
     'B......DTTTTTTTTTTT4',
     'B......TTTTTTTTTTTP4',
-    'B......TTTTTTTTTTTT4',
+    'B......TTTTTTTTUTTT4',
     'B......BTTTTTBBBBBBB',
     'B......BTTTTTB.....B',
     'B......BTTTTTB.....B',
@@ -180,7 +180,7 @@ tilemap2=[[
     'W.......TTTTT......B',
     'W.......TTTTT......B',
     '3TTTTTTTTTTTT......B',
-    '3TTTTTTTTTTTT......B',
+    '3TTTTTTTTUTTT......B',
     'WBBBBBBBBBBBBBBBBBBB'
 ]
 ,
@@ -199,7 +199,7 @@ tilemap2=[[
     'W.......TTTTT......B',
     'W.......TTTTT......B',
     '3PTTTTTTTTTTT......B',
-    '3TTTTTTTTTTTT......B',
+    '3TTTTTTTTUTTT......B',
     'WBBBBBBBBBBBBBBBBBBB'
 ]
 ]
@@ -207,7 +207,7 @@ tilemap2=[[
 #union
 tilemap3 = [
     'WWWWWWWWWWWWWWWWWWWW',
-    'WFFFFFFFFFFFFFFFFFFW',
+    'WFRFFFFFFFFFFFFFFFFW',
     'WFFFFFFFFFFFFFFFFFFW',
     'WFFFFFFFFFFFFFFFFFFW',
     'WFFFFFFFFFFFFFFFFFFW',
@@ -327,7 +327,7 @@ tilemap6= [
     'WWWWWWWWWWWWWWWWWWWW',
     'WFFFFFFFFFFFFFFFFFFW',
     '5FFFFFFFFFFFFFFFFFFW',
-    '5PFFFFFFFFFFFFFFFFFW',
+    '5PFFFFFFFFFFFFFFFDFW',
     '5FFFFFFFFFFFFFFFFFFW',
     'WFFFFFFFFFFFFFFFFFFW',
     'WFFFFFFFFFNFFFFFFFFW',
@@ -335,7 +335,7 @@ tilemap6= [
     'WFFFFFFFFFFFFFFFFFFW',
     'WFFFFFFFFFFFFFFFFFFW',
     'WFFFFFFFFFFFFFFFFFFW',
-    'WFFFFFFFFFFFFFFFFFFW',
+    'WFFFRFFFFFFFFFFFFFFW',
     'WFFFFFFFFFFFFFFFFFFW',
     'WFFFFFFFFFFFFFFFFFFW',
     'WWWWWWWWWWWWWWWWWWWW'
@@ -502,17 +502,17 @@ tilemap9= [
 tilemap10 = [
     'WWWWWWWWWWWWWWWWWWWW',
     'WTTTTTTTTTTTTTTTTTTW',
-    'WTTTTTTTTTTTTTTTTTTW',
-    'WTTTTTTTTTTTTTTTTTTW',
-    'WTTTTTTTTTTTTTTTTTTW',
-    'WTTTTTTTTTTTTTTTTTTW',
-    'WTTTTTTTTTTTTTTTTTT9',
-    'WTTTTTTTTTNTTTTTTTP9',
-    'WTTTTTTTTTTTTTTTTTT9',
-    'WTTTTTTTTTTTTTTTTTTW',
-    'WTTTTTTTTTTTTTTTTTTW',
-    'WTTTTTTTTTTTTTTTTTTW',
-    'WTTTTTTTTTTTTTTTTTTW',
+    'WTT#TT#TT#TT#TT#TTTW',
+    'WTT#TT#TT#TT#TT#TTTW',
+    'WTT#TT#TT#TT#TT#TTTW',
+    'WTT#TT#TT#TT#TT#TTTW',
+    'WTT#TT#TT#TT#TT#TTT9',
+    'WTT#TT#TT#NT#TT#TTP9',
+    'WTT#TT#TT#TT#TT#TTT9',
+    'WTT#TT#TT#TT#TT#TTTW',
+    'WTT#TT#TT#TT#TT#TTTW',
+    'WTT#TT#TT#TT#TT#TTTW',
+    'WTT#TT#TT#TT#TT#TTTW',
     'WTTTTTTTTTTTTTTTTTTW',
     'WWWWWWWWWWWWWWWWWWWW'
 ]
@@ -576,7 +576,7 @@ tilemap11= [
 ]
 ]
 
-#entrance to leach (-)
+#entrance to leach 
 tilemap12= [
 [
     'BBBBBBBBBBBBBBBBBBBW',
